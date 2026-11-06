@@ -2,6 +2,7 @@ backend:
   name: github
   repo: msarrafads-max/guia-rapido-tech
   branch: main
+  base_url: https://decap-cms-oauth-provider.vercel.app
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
