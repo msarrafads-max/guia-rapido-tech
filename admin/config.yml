@@ -1,0 +1,23 @@
+backend:
+  name: github
+  repo: msarrafads-max/guia-rapido-tech
+  branch: main
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "produtos"
+    label: "Produtos"
+    folder: "produtos"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título da Página (H1)", name: "title", widget: "string" }
+      - { label: "Título SEO (Meta Title)", name: "seo_title", widget: "string" }
+      - { label: "Descrição SEO (Meta Description)", name: "seo_description", widget: "text" }
+      - { label: "Palavras-Chave", name: "seo_keywords", widget: "string" }
+      - { label: "Preço Promocional", name: "price", widget: "string" }
+      - { label: "Link de Afiliado", name: "affiliate_link", widget: "string" }
+      - { label: "Imagem do Produto", name: "image", widget: "image" }
+      - { label: "Conteúdo da Análise", name: "body", widget: "markdown" }
