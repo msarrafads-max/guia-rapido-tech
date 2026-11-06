@@ -1,91 +1,23 @@
 backend:
   name: github
-  repo: SEU_USUARIO_GITHUB/guia-rapido-tech # Substitua pelo seu usuário e repositório
+  repo: msarrafads-max/guia-rapido-tech
   branch: main
 
-media_folder: "imagens/uploads"
-public_folder: "/imagens/uploads"
+media_folder: "assets/images"
+public_folder: "/assets/images"
 
 collections:
-  # 1. Coleção para Configurações Globais (Logo e Nome do Site)
-  - name: "configuracoes_globais"
-    label: "Configurações Globais do Site"
-    files:
-      - file: "content/config.json"
-        label: "Cabeçalho e Logotipo"
-        name: "config_geral"
-        fields:
-          - { label: "Texto da Logo", name: "logoTexto", widget: "string", default: "GUIA RÁPIDO TECH" }
-          - { label: "Imagem da Logo (Opcional - Substitui o ícone)", name: "logoImagem", widget: "image", required: false }
-
-  # 2. Coleção para Análises Individuais de Smartphones
-  - name: "smartphones"
-    label: "Smartphones (Análises)"
-    folder: "content/smartphones"
+  - name: "produtos"
+    label: "Produtos"
+    folder: "produtos"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Nome do Modelo", name: "title", widget: "string" }
-      - { label: "Categoria", name: "categoria", widget: "hidden", default: "Smartphones" }
-      - { label: "Marca", name: "marca", widget: "select", options: ["Motorola", "Samsung", "Xiaomi", "Apple", "Outros"] }
-      - { label: "Foto Principal", name: "fotoUrl", widget: "image", required: false }
-      
-      # Textos e Análise
-      - { label: "Título do Resumo", name: "resumoTitulo", widget: "string" }
-      - { label: "Texto da Análise", name: "resumoTexto", widget: "text" }
-      - { label: "Texto da Conclusão", name: "conclusaoTexto", widget: "text" }
-      
-      # Prós e Contras (Listas)
-      - { label: "Pontos Fortes (Prós)", name: "pros", widget: "list" }
-      - { label: "Pontos Fracos (Contras)", name: "cons", widget: "list" }
-      
-      # Preços e Links de Afiliados
-      - label: "Ofertas e Afiliados"
-        name: "ofertas"
-        widget: "object"
-        fields:
-          - label: "Amazon"
-            name: "amazon"
-            widget: "object"
-            fields:
-              - { label: "Preço", name: "preco", widget: "string" }
-              - { label: "Link de Afiliado", name: "url", widget: "string" }
-          - label: "Mercado Livre"
-            name: "mercadoLivre"
-            widget: "object"
-            fields:
-              - { label: "Preço", name: "preco", widget: "string" }
-              - { label: "Link de Afiliado", name: "url", widget: "string" }
-          - label: "Shopee"
-            name: "shopee"
-            widget: "object"
-            fields:
-              - { label: "Preço", name: "preco", widget: "string" }
-              - { label: "Link de Afiliado", name: "url", widget: "string" }
-
-      # Vídeo do YouTube
-      - { label: "ID do Vídeo do YouTube (ex: dQw4w9WgXcQ)", name: "youtubeVideoId", widget: "string" }
-
-  # 3. Coleção de Configurações do Hub de Smartphones (/smartphones/index.html)
-  - name: "smartphones_hub"
-    label: "Página Hub de Smartphones"
-    files:
-      - file: "content/smartphones_hub.json"
-        label: "Destaques e Configurações da Categoria"
-        name: "smartphones_hub_config"
-        fields:
-          - label: "Card de Destaque 2 (Direita)"
-            name: "destaqueCard2"
-            widget: "object"
-            fields:
-              - { label: "Título do Card (ex: Mais Potentes para Jogos)", name: "titulo", widget: "string", default: "Mais Potentes para Jogos" }
-              - { label: "Ícone FontAwesome (ex: fa-gamepad, fa-bolt)", name: "icone", widget: "string", default: "fa-gamepad" }
-              - { label: "Cor do Texto (ex: amber-400, purple-400)", name: "corTexto", widget: "string", default: "amber-400" }
-              - { label: "Selo de Canto (ex: Top 5, Melhores)", name: "selo", widget: "string", default: "Top 5" }
-
-          - label: "Menu Superior (Links Extras)"
-            name: "linksHeader"
-            widget: "list"
-            fields:
-              - { label: "Texto do Link (ex: Contato)", name: "label", widget: "string" }
-              - { label: "URL da Página (ex: /contato.html)", name: "url", widget: "string" }
+      - { label: "Título da Página (H1)", name: "title", widget: "string" }
+      - { label: "Título SEO (Meta Title)", name: "seo_title", widget: "string" }
+      - { label: "Descrição SEO (Meta Description)", name: "seo_description", widget: "text" }
+      - { label: "Palavras-Chave", name: "seo_keywords", widget: "string" }
+      - { label: "Preço Promocional", name: "price", widget: "string" }
+      - { label: "Link de Afiliado", name: "affiliate_link", widget: "string" }
+      - { label: "Imagem do Produto", name: "image", widget: "image" }
+      - { label: "Conteúdo da Análise", name: "body", widget: "markdown" }
