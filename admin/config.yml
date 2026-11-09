@@ -1,25 +1,96 @@
 backend:
   name: github
-  repo: msarrafads-max/guia-rapido-tech # substitui pelo caminho exato do teu repositório no GitHub
-  branch: main # ou a tua branch principal
+  repo: msarrafads-max/guia-rapido-tech
+  branch: main
   base_url: https://decap-oauth.msarraf-ads.workers.dev
   auth_endpoint: /auth
 
-media_folder: "assets/images"
-public_folder: "/assets/images"
+media_folder: "public/images"
+public_folder: "/images"
 
 collections:
   - name: "produtos"
     label: "Produtos"
-    folder: "produtos"
+    folder: "content/produtos"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Título da Página (H1)", name: "title", widget: "string" }
       - { label: "Título SEO (Meta Title)", name: "seo_title", widget: "string" }
       - { label: "Descrição SEO (Meta Description)", name: "seo_description", widget: "text" }
-      - { label: "Palavras-Chave", name: "seo_keywords", widget: "string" }
-      - { label: "Preço Promocional", name: "price", widget: "string" }
-      - { label: "Link de Afiliado", name: "affiliate_link", widget: "string" }
-      - { label: "Imagem do Produto", name: "image", widget: "image" }
-      - { label: "Conteúdo da Análise", name: "body", widget: "markdown" }
+      - { label: "Palavras-chave", name: "keywords", widget: "string" }
+      - { label: "Imagem do Produto", name: "image", widget: "image", required: false }
+      - { label: "Selo do Produto (ex: EM ANÁLISE, RECOMENDADO)", name: "badge", widget: "string", default: "EM ANÁLISE" }
+      
+      # SEÇÃO: FICHA TÉCNICA DO PRODUTO PRINCIPAL
+      - { label: "Ponto Forte / Destaque", name: "destaque_principal", widget: "string", required: false }
+      - { label: "Sub-destaque (Bateria/Recurso)", name: "sub_destaque_principal", widget: "string", required: false }
+      - { label: "Tela / Display", name: "tela", widget: "string" }
+      - { label: "Processador", name: "processador", widget: "string" }
+      - { label: "Bateria / Carregamento", name: "bateria", widget: "string" }
+      - { label: "Preço Estimado (Texto ex: ~ R$ 899,00)", name: "preco_estimado", widget: "string" }
+
+      # SEÇÃO: OFERTAS E LOJAS (CARDS AMAZON, MERCADO LIVRE, SHOPEE)
+      - label: "Oferta Amazon"
+        name: "oferta_amazon"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Preço Anunciado (ex: R$ 899,00)", name: "preco", widget: "string", required: false }
+          - { label: "Tag de Condição (ex: CONSULTE ENTREGA)", name: "tag", widget: "string", default: "CONSULTE ENTREGA" }
+          - { label: "Detalhe de Envio (ex: Consulte parcelamento e frete)", name: "detalhe", widget: "string", default: "Consulte parcelamento e frete" }
+          - { label: "Link de Afiliado Amazon", name: "url", widget: "string", required: false }
+
+      - label: "Oferta Mercado Livre"
+        name: "oferta_mercadolivre"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Preço Anunciado (ex: R$ 919,00)", name: "preco", widget: "string", required: false }
+          - { label: "Tag de Condição (ex: VER CONDIÇÕES)", name: "tag", widget: "string", default: "VER CONDIÇÕES" }
+          - { label: "Detalhe de Envio (ex: Confira prazo e modalidade de envio)", name: "detalhe", widget: "string", default: "Confira prazo e modalidade de envio" }
+          - { label: "Link de Afiliado Mercado Livre", name: "url", widget: "string", required: false }
+
+      - label: "Oferta Shopee"
+        name: "oferta_shopee"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Preço Anunciado (ex: R$ 889,00)", name: "preco", widget: "string", required: false }
+          - { label: "Tag de Condição (ex: CUPONS PODEM VARIAR)", name: "tag", widget: "string", default: "CUPONS PODEM VARIAR" }
+          - { label: "Detalhe de Envio (ex: Confira cupons e condições no app)", name: "detalhe", widget: "string", default: "Confira cupons e condições no app" }
+          - { label: "Link de Afiliado Shopee", name: "url", widget: "string", required: false }
+
+      # SEÇÃO: COMPARAR ANTES DE COMPRAR (CONCORRENTES)
+      - label: "Concorrente 1"
+        name: "concorrente_1"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Nome do Aparelho", name: "nome", widget: "string", required: false }
+          - { label: "Badge Ponto Forte (ex: Tela Super AMOLED)", name: "badge", widget: "string", required: false }
+          - { label: "Linha 1 Ponto Forte", name: "forte_1", widget: "string", required: false }
+          - { label: "Linha 2 Ponto Forte", name: "forte_2", widget: "string", required: false }
+          - { label: "Tela / Display", name: "tela", widget: "string", required: false }
+          - { label: "Processador", name: "processador", widget: "string", required: false }
+          - { label: "Bateria / Carregamento", name: "bateria", widget: "string", required: false }
+          - { label: "Preço Estimado", name: "preco", widget: "string", required: false }
+          - { label: "Link de Oferta do Concorrente", name: "url", widget: "string", required: false }
+
+      - label: "Concorrente 2"
+        name: "concorrente_2"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Nome do Aparelho", name: "nome", widget: "string", required: false }
+          - { label: "Badge Ponto Forte (ex: Câmera de 108 MP)", name: "badge", widget: "string", required: false }
+          - { label: "Linha 1 Ponto Forte", name: "forte_1", widget: "string", required: false }
+          - { label: "Linha 2 Ponto Forte", name: "forte_2", widget: "string", required: false }
+          - { label: "Tela / Display", name: "tela", widget: "string", required: false }
+          - { label: "Processador", name: "processador", widget: "string", required: false }
+          - { label: "Bateria / Carregamento", name: "bateria", widget: "string", required: false }
+          - { label: "Preço Estimado", name: "preco", widget: "string", required: false }
+          - { label: "Link de Oferta do Concorrente", name: "url", widget: "string", required: false }
+
+      # CONTEÚDO EM TEXTO DA ANÁLISE
+      - { label: "Conteúdo da Análise (Review completo em Markdown)", name: "body", widget: "markdown" }
