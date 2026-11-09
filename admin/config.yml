@@ -1,7 +1,9 @@
 backend:
   name: github
-  repo: msarrafads-max/guia-rapido-tech
-  branch: main
+  repo: msarrafads-max/guia-rapido-tech # substitui pelo caminho exato do teu repositório no GitHub
+  branch: main # ou a tua branch principal
+  base_url: https://decap-oauth.msarraf-ads.workers.dev
+  auth_endpoint: /auth
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
