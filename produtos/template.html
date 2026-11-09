@@ -168,16 +168,6 @@
             </div>
         </section>
 
-        <!-- VÍDEO DO YOUTUBE -->
-        <section id="bloco-video" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm space-y-4 hidden">
-            <h2 class="text-xl font-bold font-heading text-slate-900 dark:text-white flex items-center gap-2">
-                <i class="fa-brands fa-youtube text-red-600"></i> Vídeo de Análise
-            </h2>
-            <div class="aspect-video w-full rounded-2xl overflow-hidden bg-slate-950">
-                <iframe id="iframe-youtube" class="w-full h-full" src="" title="Análise YouTube" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </section>
-
         <!-- VEREDITO FINAL -->
         <section class="bg-gradient-to-br from-blue-900 via-slate-900 to-slate-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl space-y-3">
             <span class="eyebrow bg-blue-500/20 text-sky-300 px-3 py-1 rounded-full border border-blue-400/30">
@@ -210,20 +200,18 @@
         </div>
     </footer>
 
-    <!-- SCRIPT DE CARREGAMENTO DINÂMICO UNIVERSAL -->
+    <!-- SCRIPT DE LEITURA COMPLETA DO MARKDOWN -->
     <script>
         async function carregarLogoGlobal() {
             try {
                 const resposta = await fetch('/content/config.json');
                 if (!resposta.ok) return;
                 const config = await resposta.json();
-
                 if (config.logoTexto) {
                     const elTexto = document.getElementById('logo-texto');
                     if (elTexto) elTexto.innerText = config.logoTexto;
                     document.querySelectorAll('.footer-logo-texto, .brand-name').forEach(el => el.innerText = config.logoTexto);
                 }
-
                 if (config.logoImagem) {
                     const container = document.getElementById('logo-container');
                     if (container) {
@@ -231,7 +219,7 @@
                     }
                 }
             } catch (e) {
-                console.log("Usando dados de logo padrão.");
+                console.log("Logo padrão.");
             }
         }
 
@@ -243,33 +231,39 @@
 
                 if (!slug) return;
 
-                // Tenta carregar o arquivo .md diretamente da pasta correspondente
                 const resposta = await fetch(`/${pasta}/${slug}.md`); 
                 if (!resposta.ok) throw new Error("Arquivo Markdown não encontrado");
 
                 const text = await resposta.text();
 
-                // Função auxiliar para extrair dados do Frontmatter do Markdown
+                // Separa o Frontmatter (cabeçalho YAML) do Corpo do texto
+                const partes = text.split('---');
+                const frontmatter = partes[1] || '';
+                const corpoMd = partes.slice(2).join('---').trim();
+
                 const getField = (regex) => {
-                    const match = text.match(regex);
+                    const match = frontmatter.match(regex);
                     return match ? match[1].replace(/['"]/g, '').trim() : '';
                 };
 
                 const title = getField(/^title:\s*(.*)$/m) || slug;
                 const seoTitle = getField(/^seo_title:\s*(.*)$/m) || title;
-                const seoDesc = getField(/^seo_description:\s*(.*)$/m) || 'Análise técnica detalhada.';
+                const seoDesc = getField(/^seo_description:\s*(.*)$/m) || '';
                 const fotoUrl = getField(/^image:\s*(.*)$/m);
                 
-                // Extração dos links e preços de ofertas do frontmatter
+                // Extração dos preços e links de ofertas
                 const amazonUrl = getField(/url:\s*(https:\/\/www\.amazon\.com[^\s]+)/m);
                 const amazonPreco = getField(/preco:\s*(R\$[^\s]+)/m);
 
                 const mlUrl = getField(/url:\s*(https:\/\/www\.mercadolivre\.com[^\s]+)/m);
                 const mlPreco = getField(/preco:\s*(R\$[^\s]+)/m);
 
-                // Renderiza os dados coletados na tela
+                const shopeeUrl = getField(/url:\s*(https:\/\/shopee\.com[^\s]+)/m);
+                const shopeePreco = getField(/preco:\s*(R\$[^\s]+)/m);
+
+                // Renderiza título e imagem
                 document.title = `${seoTitle} | Guia Rápido Tech`;
-                document.getElementById('main-title').innerHTML = `${title}: <span class="text-brand-600 dark:text-blue-400">Análise Completa</span>`;
+                document.getElementById('main-title.innerHTML = `${title}`;
 
                 if (fotoUrl) {
                     const img = document.getElementById('foto-aparelho');
@@ -278,26 +272,38 @@
                     document.getElementById('foto-placeholder').classList.add('hidden');
                 }
 
-                document.getElementById('resumo-titulo').innerText = "O que achamos deste modelo";
-                document.getElementById('resumo-texto').innerText = seoDesc;
-                document.getElementById('texto-conclusao').innerText = `O ${title} consolida-se como uma excelente escolha na categoria, entregando especificações parrudas e alta eficiência para o dia a dia.`;
+                // Renderiza o corpo do texto escrito no Decap CMS
+                if (corpoMd) {
+                    // Substitui quebras de linha por parágrafos para formatar bonito
+                    const htmlCorpo = corpoMd.split('\n\n').map(paragrafo => `<p>${paragrafo}</p>`).join('');
+                    document.getElementById('resumo-texto').innerHTML = htmlCorpo;
+                } else if (seoDesc) {
+                    document.getElementById('resumo-texto').innerText = seoDesc;
+                } else {
+                    document.getElementById('resumo-texto').innerText = "Análise técnica completa do dispositivo.";
+                }
 
-                // Prós e Contras padrão estruturados
-                document.getElementById('lista-pros').innerHTML = `
-                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> <span>Construção de alto padrão e design refinado</span></li>
-                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> <span>Excelente autonomia de bateria e carregamento rápido</span></li>
-                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> <span>Conjunto fotográfico de altíssima resolução</span></li>
-                `;
-                document.getElementById('lista-cons').innerHTML = `
-                    <li class="flex items-start gap-2"><i class="fa-solid fa-xmark text-rose-500 mt-0.5"></i> <span>Preço de lançamento elevado no mercado nacional</span></li>
-                `;
-
-                // Preenchendo as ofertas com os links de afiliado salvos no CMS
+                // Preços e Links
                 if (amazonPreco) document.getElementById('preco-amazon').innerText = amazonPreco;
                 if (amazonUrl) document.getElementById('btn-amazon').href = amazonUrl;
 
                 if (mlPreco) document.getElementById('preco-ml').innerText = mlPreco;
                 if (mlUrl) document.getElementById('btn-ml').href = mlUrl;
+
+                if (shopeePreco) document.getElementById('preco-shopee').innerText = shopeePreco;
+                if (shopeeUrl) document.getElementById('btn-shopee').href = shopeeUrl;
+
+                // Prós, Contras e Veredito Padrão / Extraídos
+                document.getElementById('lista-pros').innerHTML = `
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> <span>Construção de altíssimo padrão e design moderno</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> <span>Autonomia de bateria estendida com suporte a carregamento rápido</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> <span>Hardware de ponta e câmeras de alta resolução</span></li>
+                `;
+                document.getElementById('lista-cons').innerHTML = `
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-xmark text-rose-500 mt-0.5"></i> <span>Preço de lançamento elevado no mercado brasileiro</span></li>
+                `;
+
+                document.getElementById('texto-conclusao').innerText = `O ${title} entrega exatamente o que promete para quem busca desempenho topo de linha, câmeras poderosas e uma experiência fluida sem engasgos. Altamente recomendado para quem quer investir em tecnologia de ponta.`;
 
             } catch (e) {
                 console.log("Erro ao carregar o arquivo do produto:", e);
