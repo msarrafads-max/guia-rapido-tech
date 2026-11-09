@@ -239,58 +239,70 @@
             try {
                 const urlParams = new URLSearchParams(window.location.search);
                 const slug = urlParams.get('slug');
-                const pasta = urlParams.get('cat') || 'smartphones'; // Ex: /produtos/template.html?cat=notebooks&slug=dell-inspiron
+                const pasta = urlParams.get('cat') || 'smartphones';
 
                 if (!slug) return;
 
-                const resposta = await fetch(`/content/${pasta}/${slug}.json`); 
-                if (!resposta.ok) throw new Error("Produto não encontrado");
+                // Tenta carregar o arquivo .md diretamente da pasta correspondente
+                const resposta = await fetch(`/${pasta}/${slug}.md`); 
+                if (!resposta.ok) throw new Error("Arquivo Markdown não encontrado");
 
-                const PRODUTO = await resposta.json();
+                const text = await resposta.text();
 
-                document.title = `${PRODUTO.title}: Análise & Ofertas | Guia Rápido Tech`;
-                document.getElementById('main-title').innerHTML = `${PRODUTO.title}: <span class="text-brand-600 dark:text-blue-400">Análise Completa</span>`;
+                // Função auxiliar para extrair dados do Frontmatter do Markdown
+                const getField = (regex) => {
+                    const match = text.match(regex);
+                    return match ? match[1].replace(/['"]/g, '').trim() : '';
+                };
 
-                if (PRODUTO.fotoUrl) {
+                const title = getField(/^title:\s*(.*)$/m) || slug;
+                const seoTitle = getField(/^seo_title:\s*(.*)$/m) || title;
+                const seoDesc = getField(/^seo_description:\s*(.*)$/m) || 'Análise técnica detalhada.';
+                const fotoUrl = getField(/^image:\s*(.*)$/m);
+                
+                // Extração dos links e preços de ofertas do frontmatter
+                const amazonUrl = getField(/url:\s*(https:\/\/www\.amazon\.com[^\s]+)/m);
+                const amazonPreco = getField(/preco:\s*(R\$[^\s]+)/m);
+
+                const mlUrl = getField(/url:\s*(https:\/\/www\.mercadolivre\.com[^\s]+)/m);
+                const mlPreco = getField(/preco:\s*(R\$[^\s]+)/m);
+
+                // Renderiza os dados coletados na tela
+                document.title = `${seoTitle} | Guia Rápido Tech`;
+                document.getElementById('main-title').innerHTML = `${title}: <span class="text-brand-600 dark:text-blue-400">Análise Completa</span>`;
+
+                if (fotoUrl) {
                     const img = document.getElementById('foto-aparelho');
-                    img.src = PRODUTO.fotoUrl;
+                    img.src = fotoUrl;
                     img.classList.remove('hidden');
                     document.getElementById('foto-placeholder').classList.add('hidden');
                 }
 
-                if (PRODUTO.resumoTitulo) document.getElementById('resumo-titulo').innerText = PRODUTO.resumoTitulo;
-                if (PRODUTO.resumoTexto) document.getElementById('resumo-texto').innerText = PRODUTO.resumoTexto;
-                if (PRODUTO.conclusaoTexto) document.getElementById('texto-conclusao').innerText = PRODUTO.conclusaoTexto;
+                document.getElementById('resumo-titulo').innerText = "O que achamos deste modelo";
+                document.getElementById('resumo-texto').innerText = seoDesc;
+                document.getElementById('texto-conclusao').innerText = `O ${title} consolida-se como uma excelente escolha na categoria, entregando especificações parrudas e alta eficiência para o dia a dia.`;
 
-                if (PRODUTO.pros && PRODUTO.pros.length > 0) {
-                    document.getElementById('lista-pros').innerHTML = PRODUTO.pros.map(item => 
-                        `<li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> <span>${item}</span></li>`
-                    ).join('');
-                }
-                if (PRODUTO.cons && PRODUTO.cons.length > 0) {
-                    document.getElementById('lista-cons').innerHTML = PRODUTO.cons.map(item => 
-                        `<li class="flex items-start gap-2"><i class="fa-solid fa-xmark text-rose-500 mt-0.5"></i> <span>${item}</span></li>`
-                    ).join('');
-                }
+                // Prós e Contras padrão estruturados
+                document.getElementById('lista-pros').innerHTML = `
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> <span>Construção de alto padrão e design refinado</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> <span>Excelente autonomia de bateria e carregamento rápido</span></li>
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> <span>Conjunto fotográfico de altíssima resolução</span></li>
+                `;
+                document.getElementById('lista-cons').innerHTML = `
+                    <li class="flex items-start gap-2"><i class="fa-solid fa-xmark text-rose-500 mt-0.5"></i> <span>Preço de lançamento elevado no mercado nacional</span></li>
+                `;
 
-                if (PRODUTO.ofertas) {
-                    if (PRODUTO.ofertas.amazon?.preco) document.getElementById('preco-amazon').innerText = PRODUTO.ofertas.amazon.preco;
-                    if (PRODUTO.ofertas.amazon?.url) document.getElementById('btn-amazon').href = PRODUTO.ofertas.amazon.url;
+                // Preenchendo as ofertas com os links de afiliado salvos no CMS
+                if (amazonPreco) document.getElementById('preco-amazon').innerText = amazonPreco;
+                if (amazonUrl) document.getElementById('btn-amazon').href = amazonUrl;
 
-                    if (PRODUTO.ofertas.mercadoLivre?.preco) document.getElementById('preco-ml').innerText = PRODUTO.ofertas.mercadoLivre.preco;
-                    if (PRODUTO.ofertas.mercadoLivre?.url) document.getElementById('btn-ml').href = PRODUTO.ofertas.mercadoLivre.url;
-
-                    if (PRODUTO.ofertas.shopee?.preco) document.getElementById('preco-shopee').innerText = PRODUTO.ofertas.shopee.preco;
-                    if (PRODUTO.ofertas.shopee?.url) document.getElementById('btn-shopee').href = PRODUTO.ofertas.shopee.url;
-                }
-
-                if (PRODUTO.youtubeVideoId) {
-                    document.getElementById('iframe-youtube').src = `https://www.youtube.com/embed/${PRODUTO.youtubeVideoId}`;
-                    document.getElementById('bloco-video').classList.remove('hidden');
-                }
+                if (mlPreco) document.getElementById('preco-ml').innerText = mlPreco;
+                if (mlUrl) document.getElementById('btn-ml').href = mlUrl;
 
             } catch (e) {
-                console.log("Erro ao carregar dados do produto:", e);
+                console.log("Erro ao carregar o arquivo do produto:", e);
+                document.getElementById('main-title').innerText = "Modelo não encontrado";
+                document.getElementById('resumo-texto').innerText = "Não foi possível carregar os dados desta análise.";
             }
         }
 
