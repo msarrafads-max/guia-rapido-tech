@@ -2,8 +2,6 @@ backend:
   name: github
   repo: msarrafads-max/guia-rapido-tech
   branch: main
-  base_url: https://api.squeezycms.com
-  auth_endpoint: /auth/github
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
