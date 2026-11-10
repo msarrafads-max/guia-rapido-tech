@@ -1,1 +1,18 @@
-{}
+{
+  "blocoEsquerdo": [
+    {
+      "nome": "DSADA",
+      "spec": "DSADSA",
+      "preco": "DSAD",
+      "url": "DSA"
+    },
+    {
+      "nome": "DSADSA",
+      "spec": "DSADAS",
+      "preco": "DASDA",
+      "url": "DSAD"
+    }
+  ],
+  "bannerTitulo": "OS MAIS BARATÕES DO MÊS",
+  "bannerSub": "MODELOS LEGAIS"
+}
