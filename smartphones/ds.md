@@ -1,6 +1,6 @@
 ---
 title: ds
-marca: ds
+marca: Motorola
 modelo: ds
 published: true
 date: 2026-11-10T13:45:00.000-03:00
