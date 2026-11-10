@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101d36">
+    <title>Smartphones | Guia Rápido Tech</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Script de blindagem do modo escuro para evitar flash branco -->
+    <script>
+        if (localStorage.getItem('guiaTech_theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+        }
+
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif']
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#172554'
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        :root { color-scheme: light; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-image: radial-gradient(ellipse at 8% 0%, rgba(37,99,235,.065), transparent 34%); }
+        h1, h2, h3, .font-heading { font-family: 'Space Grotesk', sans-serif; letter-spacing: -.035em; }
+        .surface-card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+        .surface-card:hover { transform: translateY(-4px); border-color: rgba(37,99,235,.35); box-shadow: 0 16px 36px rgba(15,23,42,.085); }
+        .dark body { background-image: radial-gradient(ellipse at 8% 0%, rgba(37,99,235,.13), transparent 38%); }
+        .eyebrow { display: inline-flex; align-items: center; gap: .5rem; color: #2563eb; font-size: .68rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+        .dark .eyebrow { color: #60a5fa; }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased selection:bg-brand-600 selection:text-white">
+
+    <!-- CABEÇALHO -->
+    <header class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20 gap-4">
+                
+                <!-- LOGO DINÂMICA VIA DECAP -->
+                <a href="/index.html" class="flex items-center gap-3 shrink-0">
+                    <div id="logo-container" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white shadow-md shadow-brand-600/30 overflow-hidden">
+                        <i class="fa-solid fa-tablet-screen-button text-lg sm:text-xl" id="logo-icon"></i>
+                    </div>
+                    <span id="logo-texto" class="font-heading font-black text-lg sm:text-xl text-slate-900 dark:text-white tracking-tight uppercase">
+                        GUIA RÁPIDO TECH
+                    </span>
+                </a>
+
+                <nav id="header-nav" class="hidden md:flex items-center gap-6 text-xs sm:text-sm font-bold">
+                    <a href="/smartphones/index.html" class="text-brand-600 dark:text-blue-400">Smartphones</a>
+                    <a href="/tablets/index.html" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition">Tablets</a>
+                    <a href="/notebooks/index.html" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition">Notebooks</a>
+                </nav>
+
+                <div class="flex items-center gap-3">
+                    <button type="button" onclick="toggleDarkMode()" aria-label="Alternar tema" class="p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                        <i id="themeIcon" class="fa-solid fa-moon text-sm"></i>
+                    </button>
+                    <a href="/index.html" class="text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 hover:underline">
+                        <i class="fa-solid fa-arrow-left mr-1"></i> Início
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+
+        <!-- CABEÇALHO DA CATEGORIA -->
+        <div class="space-y-2 border-b border-slate-200 dark:border-slate-800 pb-6">
+            <span class="eyebrow"><i class="fa-solid fa-mobile-screen-button"></i> Catálogo de Celulares</span>
+            <h1 class="text-3xl sm:text-5xl font-extrabold font-heading text-slate-950 dark:text-white">
+                Smartphones
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-2xl">
+                Análises técnicas, comparativos diretos e a busca pelas melhores ofertas atualizadas do mercado.
+            </p>
+        </div>
+
+        <!-- SEÇÃO DE DESTAQUES -->
+        <section class="space-y-4">
+            <div class="relative overflow-hidden bg-gradient-to-r from-blue-950 via-slate-900 to-indigo-950 text-white rounded-3xl p-6 sm:p-10 border border-blue-900/60 shadow-xl">
+                <div class="absolute right-0 top-1/2 -translate-y-1/2 w-72 h-72 opacity-20 pointer-events-none mix-blend-lighten">
+                    <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&auto=format&fit=crop" alt="Watermark" class="w-full h-full object-contain filter grayscale">
+                </div>
+
+                <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="space-y-3 max-w-xl text-center md:text-left">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-[11px] font-extrabold uppercase tracking-wider border border-emerald-500/30 backdrop-blur-sm">
+                            <i class="fa-solid fa-piggy-bank"></i> Custo-Benefício Imbatível
+                        </span>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold font-heading tracking-tight drop-shadow-md">
+                            Os Mais Baratinhos do Mês
+                        </h2>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed drop-shadow">
+                            Modelos selecionados abaixo de R$ 1.000 com bateria duradoura, boa tela e desempenho suficiente para redes sociais e tarefas do dia a dia.
+                        </p>
+                    </div>
+                    <div class="shrink-0 z-10">
+                        <button onclick="filtrarCategoria('baratos')" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl transition shadow-lg shadow-emerald-500/20 flex items-center gap-2">
+                            <span>Ver Baratinhos no Catálogo</span>
+                            <i class="fa-solid fa-arrow-down text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Card Esquerda (Câmeras) -->
+                <div class="relative overflow-hidden bg-slate-900 text-white rounded-3xl p-6 border border-slate-800 shadow-lg flex flex-col justify-between min-h-[320px]">
+                    <div id="cameraWatermark" class="absolute -right-8 -bottom-8 w-64 h-64 opacity-15 pointer-events-none transition-all duration-500"></div>
+                    <div class="flex items-center justify-between border-b border-slate-800/80 pb-3 z-10 backdrop-blur-sm">
+                        <span class="inline-flex items-center gap-2 text-xl sm:text-2xl font-black font-heading uppercase tracking-tight text-purple-400 drop-shadow-md">
+                            <i class="fa-solid fa-camera-retro"></i> <span id="camera-title-text">Melhores Câmeras</span>
+                        </span>
+                        <span class="text-[10px] bg-purple-950/80 text-purple-300 border border-purple-800/50 px-2.5 py-1 rounded-full font-mono font-bold">Top 5</span>
+                    </div>
+                    <div id="cameraSlideContent" class="py-6 space-y-3 z-10"></div>
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-800/80 z-10">
+                        <div class="flex gap-1.5" id="cameraDots"></div>
+                        <div class="flex gap-2">
+                            <button onclick="prevCameraSlide()" class="w-8 h-8 rounded-full bg-slate-800/80 hover:bg-slate-700 text-white flex items-center justify-center transition"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+                            <button onclick="nextCameraSlide()" class="w-8 h-8 rounded-full bg-slate-800/80 hover:bg-slate-700 text-white flex items-center justify-center transition"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Direita (Editável via Decap CMS) -->
+                <div class="relative overflow-hidden bg-slate-900 text-white rounded-3xl p-6 border border-slate-800 shadow-lg flex flex-col justify-between min-h-[320px]">
+                    <div id="jogoWatermark" class="absolute -right-8 -bottom-8 w-64 h-64 opacity-15 pointer-events-none transition-all duration-500"></div>
+                    <div class="flex items-center justify-between border-b border-slate-800/80 pb-3 z-10 backdrop-blur-sm">
+                        <span id="card2-header-title" class="inline-flex items-center gap-2 text-xl sm:text-2xl font-black font-heading uppercase tracking-tight text-amber-400 drop-shadow-md">
+                            <i id="card2-icon" class="fa-solid fa-bolt"></i> <span id="card2-title-text">Mais Potentes para Jogos</span>
+                        </span>
+                        <span id="card2-badge" class="text-[10px] bg-amber-950/80 text-amber-300 border border-amber-800/50 px-2.5 py-1 rounded-full font-mono font-bold">Top 5</span>
+                    </div>
+                    <div id="jogoSlideContent" class="py-6 space-y-3 z-10"></div>
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-800/80 z-10">
+                        <div class="flex gap-1.5" id="jogoDots"></div>
+                        <div class="flex gap-2">
+                            <button onclick="prevJogoSlide()" class="w-8 h-8 rounded-full bg-slate-800/80 hover:bg-slate-700 text-white flex items-center justify-center transition"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+                            <button onclick="nextJogoSlide()" class="w-8 h-8 rounded-full bg-slate-800/80 hover:bg-slate-700 text-white flex items-center justify-center transition"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATÁLOGO -->
+        <section class="space-y-6 pt-4" id="catalogo">
+            <div class="flex flex-col sm:flex-row gap-4 items-center justify-between">
+                <div class="flex flex-wrap gap-2 w-full sm:w-auto">
+                    <button onclick="filtrarMarca('todos')" id="btn-todos" class="btn-filter bg-brand-600 text-white px-4 py-2 rounded-xl text-xs font-bold transition">Todas as Marcas</button>
+                    <button onclick="filtrarMarca('Motorola')" id="btn-Motorola" class="btn-filter bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-4 py-2 rounded-xl text-xs font-bold hover:bg-brand-600 hover:text-white transition">Motorola</button>
+                    <button onclick="filtrarMarca('Samsung')" id="btn-Samsung" class="btn-filter bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-4 py-2 rounded-xl text-xs font-bold hover:bg-brand-600 hover:text-white transition">Samsung</button>
+                    <button onclick="filtrarMarca('Xiaomi')" id="btn-Xiaomi" class="btn-filter bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-4 py-2 rounded-xl text-xs font-bold hover:bg-brand-600 hover:text-white transition">Xiaomi</button>
+                    <button onclick="filtrarMarca('Outros')" id="btn-Outros" class="btn-filter bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-4 py-2 rounded-xl text-xs font-bold hover:bg-brand-600 hover:text-white transition">Outros</button>
+                </div>
+                <div class="relative w-full sm:w-72">
+                    <input type="text" id="searchInput" onkeyup="buscarProduto()" placeholder="Pesquisar modelo..." class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl py-2.5 pl-9 pr-4 text-xs font-medium text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-600">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-xs text-slate-400"></i>
+                </div>
+            </div>
+            <div id="gridProdutos" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-9 text-xs text-slate-500 dark:text-slate-400 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5 text-center">
+            <div class="flex justify-center items-center gap-2 font-heading font-bold tracking-wider text-slate-950 dark:text-white">
+                <span class="w-8 h-8 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-brand-600 dark:text-blue-300 grid place-items-center"><i class="fa-solid fa-book-open"></i></span>
+                <span class="footer-logo-texto">GUIA RÁPIDO TECH</span>
+            </div>
+            <p class="max-w-3xl mx-auto leading-relaxed text-[11px]">
+                <strong class="text-slate-700 dark:text-slate-300">Aviso de transparência:</strong>
+                O Guia Rápido Tech pode receber comissões quando você compra por meio de alguns links desta página, sem custo adicional para você.
+            </p>
+            <div class="w-16 h-px bg-slate-200 dark:bg-slate-700 mx-auto"></div>
+            <p class="text-[10px] tracking-wide">
+                © 2026 <span class="footer-logo-texto">Guia Rápido Tech</span> · 
+                <a href="/privacidade.html" class="hover:underline text-slate-600 dark:text-slate-400 font-semibold">Política de Privacidade</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        let cameraProducts = [
+            { nome: "Motorola Moto G06", spec: "Câmera 50 MP AI + Quad Pixel", preco: "R$ 899", url: "/produtos/template.html?cat=smartphones&slug=moto-g06", img: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&auto=format&fit=crop" },
+            { nome: "Samsung Galaxy A15 5G", spec: "Câmera Tripla 50 MP + Ultrawide", preco: "R$ 949", url: "#", img: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&auto=format&fit=crop" }
+        ];
+
+        let bateriaProducts = [
+            { nome: "Poco X6 Pro 5G", spec: "Processador Dimensity 8300-Ultra", preco: "R$ 2.099", url: "#", img: "https://images.unsplash.com/photo-1546054454-aa26e2b734c7?w=600&auto=format&fit=crop" },
+            { nome: "Xiaomi Poco F6", spec: "Snapdragon 8s Gen 3", preco: "R$ 2.499", url: "#", img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop" }
+        ];
+
+        let currentCamIndex = 0;
+        let currentBatIndex = 0;
+
+        function renderCameraSlide(index) {
+            const item = cameraProducts[index];
+            document.getElementById('cameraWatermark').innerHTML = `<img src="${item.img}" class="w-full h-full object-contain filter grayscale" alt="Watermark">`;
+            document.getElementById('cameraSlideContent').innerHTML = `
+                <div class="space-y-1">
+                    <span class="text-[10px] text-purple-300 font-bold uppercase tracking-wider drop-shadow">${item.spec}</span>
+                    <h3 class="text-xl font-bold font-heading text-white drop-shadow">${item.nome}</h3>
+                </div>
+                <div class="flex items-center justify-between pt-2">
+                    <span class="text-lg font-extrabold text-purple-400 drop-shadow">${item.preco}</span>
+                    <a href="${item.url}" class="bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs px-4 py-2 rounded-lg transition shadow-md">Ver Análise</a>
+                </div>
+            `;
+            updateDots('cameraDots', cameraProducts.length, index);
+        }
+
+        function renderJogoSlide(index) {
+            const item = bateriaProducts[index];
+            document.getElementById('jogoWatermark').innerHTML = `<img src="${item.img}" class="w-full h-full object-contain filter grayscale" alt="Watermark">`;
+            document.getElementById('jogoSlideContent').innerHTML = `
+                <div class="space-y-1">
+                    <span class="text-[10px] text-amber-300 font-bold uppercase tracking-wider drop-shadow">${item.spec}</span>
+                    <h3 class="text-xl font-bold font-heading text-white drop-shadow">${item.nome}</h3>
+                </div>
+                <div class="flex items-center justify-between pt-2">
+                    <span class="text-lg font-extrabold text-amber-400 drop-shadow">${item.preco}</span>
+                    <a href="${item.url}" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs px-4 py-2 rounded-lg transition shadow-md">Ver Análise</a>
+                </div>
+            `;
+            updateDots('jogoDots', bateriaProducts.length, index);
+        }
+
+        function updateDots(containerId, total, current) {
+            const container = document.getElementById(containerId);
+            let html = '';
+            for(let i=0; i<total; i++) {
+                const active = i === current ? 'w-5 bg-brand-500' : 'w-2 bg-slate-700';
+                html += `<div class="h-2 rounded-full transition-all duration-300 ${active}"></div>`;
+            }
+            container.innerHTML = html;
+        }
+
+        function nextCameraSlide() {
+            currentCamIndex = (currentCamIndex + 1) % cameraProducts.length;
+            renderCameraSlide(currentCamIndex);
+        }
+        function prevCameraSlide() {
+            currentCamIndex = (currentCamIndex - 1 + cameraProducts.length) % cameraProducts.length;
+            renderCameraSlide(currentCamIndex);
+        }
+
+        function nextJogoSlide() {
+            currentBatIndex = (currentBatIndex + 1) % bateriaProducts.length;
+            renderJogoSlide(currentBatIndex);
+        }
+        function prevJogoSlide() {
+            currentBatIndex = (currentBatIndex - 1 + bateriaProducts.length) % bateriaProducts.length;
+            renderJogoSlide(currentBatIndex);
+        }
+
+        setInterval(nextCameraSlide, 4000);
+        setInterval(nextJogoSlide, 4500);
+
+        let todosProdutos = [];
+
+        async function carregarLogoGlobal() {
+            try {
+                const resposta = await fetch('/content/config.json');
+                if (!resposta.ok) return;
+                const config = await resposta.json();
+
+                if (config.logoTexto) {
+                    const elTexto = document.getElementById('logo-texto');
+                    if (elTexto) elTexto.innerText = config.logoTexto;
+                    document.querySelectorAll('.footer-logo-texto').forEach(el => el.innerText = config.logoTexto);
+                }
+
+                if (config.logoImagem) {
+                    const container = document.getElementById('logo-container');
+                    if (container) {
+                        container.innerHTML = `<img src="${config.logoImagem}" alt="Logo" class="w-full h-full object-cover">`;
+                    }
+                }
+            } catch (e) {
+                console.log("Usando logo padrão.");
+            }
+        }
+
+        async function carregarConfigHub() {
+            try {
+                const resposta = await fetch('/content/smartphones_hub.json');
+                if (!resposta.ok) return;
+                const config = await resposta.json();
+
+                if (config.cardInferiorEsquerdo) {
+                    const card = config.cardInferiorEsquerdo;
+                    const title = document.getElementById('camera-title-text');
+                    if (title && card.titulo) title.textContent = card.titulo;
+                    if (Array.isArray(card.artigos) && card.artigos.length) {
+                        cameraProducts = card.artigos.map(a => ({ nome: a.titulo, spec: a.descricao || '', preco: a.preco || 'Consulte', url: a.url, img: a.imagem || '' }));
+                    }
+                }
+                if (config.cardInferiorDireito) {
+                    const card = config.cardInferiorDireito;
+                    if (card.titulo) document.getElementById('card2-title-text').innerText = card.titulo;
+                    if (Array.isArray(card.artigos) && card.artigos.length) {
+                        bateriaProducts = card.artigos.map(a => ({ nome: a.titulo, spec: a.descricao || '', preco: a.preco || 'Consulte', url: a.url, img: a.imagem || '' }));
+                    }
+                }
+                if (config.badge) document.getElementById('card2-badge').innerText = config.badge;
+                if (config.titulo) {
+                    const bannerTitle = document.querySelector('main h1');
+                    if (bannerTitle) bannerTitle.textContent = config.titulo;
+                }
+                if (config.subtitulo) {
+                    const bannerSub = document.querySelector('main h1')?.parentElement?.querySelector('p');
+                    if (bannerSub) bannerSub.textContent = config.subtitulo;
+                }
+                if (config.linksHeader && config.linksHeader.length > 0) {
+                    const nav = document.getElementById('header-nav');
+                    config.linksHeader.forEach(link => {
+                        const a = document.createElement('a');
+                        a.href = link.url;
+                        a.innerText = link.label;
+                        a.className = "text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition";
+                        nav.appendChild(a);
+                    });
+                }
+            } catch (e) {
+                console.log("Mantendo configurações padrão do hub.");
+            }
+            if (cameraProducts.length) renderCameraSlide(currentCamIndex % cameraProducts.length);
+            if (bateriaProducts.length) renderJogoSlide(currentBatIndex % bateriaProducts.length);
+        }
+
+        async function carregarCatalogoDecap() {
+            try {
+                const res = await fetch('/content/smartphones/index.json', { cache: 'no-store' });
+                if (!res.ok) throw new Error('Índice de smartphones não encontrado. Verifique o build do Cloudflare Pages.');
+                const artigos = await res.json();
+                todosProdutos = artigos.map(a => ({
+                    id: a.slug, marca: a.marca || 'Outras', nome: a.title || a.slug,
+                    tag: a.badge || 'ANÁLISE', preco: a.preco || 'Consulte',
+                    desc: a.description || a.seo_description || 'Análise técnica completa do dispositivo.',
+                    url: a.url || `/produtos/template.html?cat=smartphones&slug=${encodeURIComponent(a.slug)}`,
+                    img: a.image || '', barato: false
+                }));
+            } catch (e) {
+                console.error('Falha ao carregar catálogo:', e);
+                todosProdutos = [];
+            }
+            renderCatalogo(todosProdutos);
+        }
+
+        function renderCatalogo(lista) {
+            const grid = document.getElementById('gridProdutos');
+            if(lista.length === 0) {
+                grid.innerHTML = `<p class="col-span-full text-center py-8 text-xs text-slate-500">Nenhum smartphone encontrado para este filtro.</p>`;
+                return;
+            }
+            grid.innerHTML = lista.map(p => `
+                <div class="relative overflow-hidden surface-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 flex flex-col justify-between shadow-sm">
+                    <div class="absolute -right-6 -bottom-6 w-36 h-36 opacity-10 dark:opacity-15 pointer-events-none">
+                        <img src="${p.img}" class="w-full h-full object-contain filter grayscale" alt="Watermark">
+                    </div>
+                    <div class="space-y-3 relative z-10">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-extrabold uppercase bg-blue-50 dark:bg-blue-950/80 text-brand-600 dark:text-blue-300 px-2.5 py-1 rounded-md">${p.tag}</span>
+                            <span class="text-xs font-bold text-slate-400">${p.marca}</span>
+                        </div>
+                        <h3 class="font-heading font-bold text-lg text-slate-900 dark:text-white">${p.nome}</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">${p.desc}</p>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between relative z-10">
+                        <div>
+                            <span class="text-[10px] text-slate-400 block">Preço médio</span>
+                            <span class="text-sm font-extrabold text-brand-600 dark:text-blue-400">${p.preco}</span>
+                        </div>
+                        <a href="${p.url}" class="bg-slate-100 dark:bg-slate-800 hover:bg-brand-600 hover:text-white text-slate-900 dark:text-slate-100 font-bold text-xs px-4 py-2 rounded-xl transition">Ver Análise</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filtrarMarca(marca) {
+            document.querySelectorAll('.btn-filter').forEach(btn => {
+                btn.className = "btn-filter bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-4 py-2 rounded-xl text-xs font-bold hover:bg-brand-600 hover:text-white transition";
+            });
+            const selectedBtn = document.getElementById(`btn-${marca}`);
+            if(selectedBtn) selectedBtn.className = "btn-filter bg-brand-600 text-white px-4 py-2 rounded-xl text-xs font-bold transition";
+
+            if(marca === 'todos') {
+                renderCatalogo(todosProdutos);
+            } else if(marca === 'Outros') {
+                const principais = ['Motorola', 'Samsung', 'Xiaomi'];
+                renderCatalogo(todosProdutos.filter(p => !principais.includes(p.marca)));
+            } else {
+                renderCatalogo(todosProdutos.filter(p => p.marca === marca));
+            }
+        }
+
+        function filtrarCategoria(tipo) {
+            if(tipo === 'baratos') {
+                renderCatalogo(todosProdutos.filter(p => p.barato));
+                document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function buscarProduto() {
+            const termo = document.getElementById('searchInput').value.toLowerCase();
+            const filtrados = todosProdutos.filter(p => 
+                p.nome.toLowerCase().includes(termo) || p.marca.toLowerCase().includes(termo)
+            );
+            renderCatalogo(filtrados);
+        }
+
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            const isDark = html.classList.toggle('dark');
+            html.classList.toggle('light', !isDark);
+            localStorage.setItem('guiaTech_theme', isDark ? 'dark' : 'light');
+            if (icon) {
+                icon.className = isDark ? 'fa-solid fa-sun text-sm text-amber-400' : 'fa-solid fa-moon text-sm';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCameraSlide(0);
+            renderJogoSlide(0);
+            carregarLogoGlobal();
+            carregarConfigHub();
+            carregarCatalogoDecap();
+        });
+    </script>
+</body>
+</html>
