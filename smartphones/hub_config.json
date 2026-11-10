@@ -14,5 +14,10 @@
     }
   ],
   "bannerTitulo": "OS MAIS BARATÕES DO MÊS",
-  "bannerSub": "MODELOS LEGAIS"
+  "bannerSub": "MODELOS LEGAIS",
+  "bannerTopo": {
+    "titulo": "Melhores dos melhores",
+    "badge": "dsa",
+    "btnTexto": "dsad"
+  }
 }
