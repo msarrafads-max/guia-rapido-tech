@@ -146,9 +146,9 @@
         <!-- RESUMO DA ANÁLISE -->
         <section class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
             <h2 id="resumo-titulo" class="text-xl font-bold font-heading text-slate-950 dark:text-white">O que achamos deste modelo</h2>
-            <p id="resumo-texto" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed space-y-3">
+            <div id="resumo-texto" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed space-y-3">
                 Carregando detalhes da análise...
-            </p>
+            </div>
         </section>
 
         <!-- PRÓS E CONTRAS -->
@@ -200,7 +200,7 @@
         </div>
     </footer>
 
-    <!-- SCRIPT DE LEITURA COMPLETA DO MARKDOWN -->
+    <!-- SCRIPT DE LEITURA DIRETA DO MARKDOWN -->
     <script>
         async function carregarLogoGlobal() {
             try {
@@ -231,12 +231,12 @@
 
                 if (!slug) return;
 
+                // CORREÇÃO CRUCIAL: Aponta diretamente para a pasta absoluta correta onde o .md está salvo
                 const resposta = await fetch(`/${pasta}/${slug}.md`); 
-                if (!resposta.ok) throw new Error("Arquivo Markdown não encontrado");
+                if (!resposta.ok) throw new Error("Arquivo Markdown não encontrado em /" + pasta + "/" + slug + ".md");
 
                 const text = await resposta.text();
 
-                // Separa o Frontmatter (cabeçalho YAML) do Corpo do texto
                 const partes = text.split('---');
                 const frontmatter = partes[1] || '';
                 const corpoMd = partes.slice(2).join('---').trim();
@@ -251,7 +251,6 @@
                 const seoDesc = getField(/^seo_description:\s*(.*)$/m) || '';
                 const fotoUrl = getField(/^image:\s*(.*)$/m);
                 
-                // Extração dos preços e links de ofertas
                 const amazonUrl = getField(/url:\s*(https:\/\/www\.amazon\.com[^\s]+)/m);
                 const amazonPreco = getField(/preco:\s*(R\$[^\s]+)/m);
 
@@ -261,9 +260,8 @@
                 const shopeeUrl = getField(/url:\s*(https:\/\/shopee\.com[^\s]+)/m);
                 const shopeePreco = getField(/preco:\s*(R\$[^\s]+)/m);
 
-                // Renderiza título e imagem
                 document.title = `${seoTitle} | Guia Rápido Tech`;
-                document.getElementById('main-title.innerHTML = `${title}`;
+                document.getElementById('main-title').innerHTML = `${title}`;
 
                 if (fotoUrl) {
                     const img = document.getElementById('foto-aparelho');
@@ -272,9 +270,7 @@
                     document.getElementById('foto-placeholder').classList.add('hidden');
                 }
 
-                // Renderiza o corpo do texto escrito no Decap CMS
                 if (corpoMd) {
-                    // Substitui quebras de linha por parágrafos para formatar bonito
                     const htmlCorpo = corpoMd.split('\n\n').map(paragrafo => `<p>${paragrafo}</p>`).join('');
                     document.getElementById('resumo-texto').innerHTML = htmlCorpo;
                 } else if (seoDesc) {
@@ -283,7 +279,6 @@
                     document.getElementById('resumo-texto').innerText = "Análise técnica completa do dispositivo.";
                 }
 
-                // Preços e Links
                 if (amazonPreco) document.getElementById('preco-amazon').innerText = amazonPreco;
                 if (amazonUrl) document.getElementById('btn-amazon').href = amazonUrl;
 
@@ -293,7 +288,6 @@
                 if (shopeePreco) document.getElementById('preco-shopee').innerText = shopeePreco;
                 if (shopeeUrl) document.getElementById('btn-shopee').href = shopeeUrl;
 
-                // Prós, Contras e Veredito Padrão / Extraídos
                 document.getElementById('lista-pros').innerHTML = `
                     <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> <span>Construção de altíssimo padrão e design moderno</span></li>
                     <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> <span>Autonomia de bateria estendida com suporte a carregamento rápido</span></li>
@@ -308,7 +302,7 @@
             } catch (e) {
                 console.log("Erro ao carregar o arquivo do produto:", e);
                 document.getElementById('main-title').innerText = "Modelo não encontrado";
-                document.getElementById('resumo-texto').innerText = "Não foi possível carregar os dados desta análise.";
+                document.getElementById('resumo-texto').innerText = "Não foi possível carregar os dados desta análise. Verifique o console para detalhes.";
             }
         }
 
