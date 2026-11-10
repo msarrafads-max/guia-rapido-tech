@@ -1,22 +1,80 @@
 backend:
   name: github
-  repo: msarrafads-max/guia-rapido-tech # Substitua se necessário, mantendo seu usuário/repo
+  repo: msarrafads-max/guia-rapido-tech
   branch: main
 
 media_folder: "images"
 public_folder: "/images"
 
 collections:
-  # 1. SMARTPHONES
+  # -------------------------------------------------------------
+  # 1. PÁGINAS DE HUBS E DESTAQUES (Smartphones, Tablets, Notebooks)
+  # -------------------------------------------------------------
+  - name: "hubs"
+    label: "Páginas & Destaques (Hubs)"
+    files:
+      # HUB DE SMARTPHONES
+      - name: "smartphones_hub"
+        label: "Hub de Smartphones (Destaques & Slides)"
+        file: "content/smartphones_hub.json"
+        fields:
+          - label: "Slide 1: Melhores Câmeras"
+            name: "cameraProducts"
+            widget: "list"
+            fields:
+              - { label: "Nome do Modelo", name: "nome", widget: "string" }
+              - { label: "Especificação / Destaque", name: "spec", widget: "string" }
+              - { label: "Preço", name: "preco", widget: "string" }
+              - { label: "URL da Análise", name: "url", widget: "string" }
+              - { label: "Imagem de Fundo/Watermark", name: "img", widget: "image" }
+
+          - label: "Slide 2: Card Editável (ex: Mais Potentes para Jogos)"
+            name: "destaqueCard2"
+            widget: "object"
+            fields:
+              - { label: "Título do Card", name: "titulo", widget: "string" }
+              - { label: "Selo / Badge (ex: Top 5)", name: "selo", widget: "string" }
+              - { label: "Ícone FontAwesome (ex: fa-bolt)", name: "icone", widget: "string" }
+              - label: "Lista de Produtos do Slide 2"
+                name: "bateriaProducts"
+                widget: "list"
+                fields:
+                  - { label: "Nome do Modelo", name: "nome", widget: "string" }
+                  - { label: "Especificação / Destaque", name: "spec", widget: "string" }
+                  - { label: "Preço", name: "preco", widget: "string" }
+                  - { label: "URL da Análise", name: "url", widget: "string" }
+                  - { label: "Imagem de Fundo/Watermark", name: "img", widget: "image" }
+
+      # HUB DE TABLETS
+      - name: "tablets_hub"
+        label: "Hub de Tablets (Banner & Destaques)"
+        file: "content/tablets_hub.json"
+        fields:
+          - { label: "Título do Banner de Destaque", name: "bannerTitulo", widget: "string", default: "Melhores com Suporte a Caneta" }
+          - { label: "Subtítulo do Banner", name: "bannerSub", widget: "string" }
+          - { label: "Categoria do Banner (Badge)", name: "bannerBadge", widget: "string", default: "ESTUDO E CRIATIVIDADE" }
+
+      # HUB DE NOTEBOOKS
+      - name: "notebooks_hub"
+        label: "Hub de Notebooks (Banner & Destaques)"
+        file: "content/notebooks_hub.json"
+        fields:
+          - { label: "Título do Banner de Destaque", name: "bannerTitulo", widget: "string", default: "Melhores para Trabalho e Estudos" }
+          - { label: "Subtítulo do Banner", name: "bannerSub", widget: "string" }
+          - { label: "Categoria do Banner (Badge)", name: "bannerBadge", widget: "string", default: "PRODUTIVIDADE & ESCRITÓRIO" }
+
+  # -------------------------------------------------------------
+  # 2. COLEÇÕES DE ARTIGOS / ANÁLISES INDIVIDUAIS
+  # -------------------------------------------------------------
   - name: "smartphones"
-    label: "Smartphones"
+    label: "Smartphones (Análises)"
     folder: "smartphones"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Título do Produto (H1)", name: "title", widget: "string" }
-      - { label: "Marca (ex: Motorola, Samsung)", name: "marca", widget: "string" }
-      - { label: "Selo / Badge (ex: PRÉ-VENDA, DESTAQUE)", name: "badge", widget: "string", default: "ANÁLISE" }
+      - { label: "Marca", name: "marca", widget: "string" }
+      - { label: "Selo / Badge", name: "badge", widget: "string", default: "ANÁLISE" }
       - { label: "Imagem do Produto", name: "image", widget: "image", required: false }
       - { label: "Tela / Display", name: "tela", widget: "string", required: false }
       - { label: "Processador", name: "processador", widget: "string", required: false }
@@ -39,9 +97,8 @@ collections:
               - { label: "Link de Afiliado", name: "url", widget: "string", required: false }
       - { label: "Texto Completo da Análise", name: "body", widget: "markdown" }
 
-  # 2. TABLETS
   - name: "tablets"
-    label: "Tablets"
+    label: "Tablets (Análises)"
     folder: "tablets"
     create: true
     slug: "{{slug}}"
@@ -50,9 +107,8 @@ collections:
       - { label: "Marca", name: "marca", widget: "string" }
       - { label: "Selo / Badge", name: "badge", widget: "string", default: "ANÁLISE" }
       - { label: "Imagem do Produto", name: "image", widget: "image", required: false }
-      - { label: "Tela / Display", name: "tela", widget: "string", required: false }
+      - { label: "Tela", name: "tela", widget: "string", required: false }
       - { label: "Processador", name: "processador", widget: "string", required: false }
-      - { label: "Bateria", name: "bateria", widget: "string", required: false }
       - label: "Ofertas e Afiliados"
         name: "ofertas"
         widget: "object"
@@ -65,9 +121,8 @@ collections:
               - { label: "Link de Afiliado", name: "url", widget: "string", required: false }
       - { label: "Texto Completo da Análise", name: "body", widget: "markdown" }
 
-  # 3. NOTEBOOKS
   - name: "notebooks"
-    label: "Notebooks"
+    label: "Notebooks (Análises)"
     folder: "notebooks"
     create: true
     slug: "{{slug}}"
@@ -78,7 +133,6 @@ collections:
       - { label: "Imagem do Produto", name: "image", widget: "image", required: false }
       - { label: "Tela", name: "tela", widget: "string", required: false }
       - { label: "Processador", name: "processador", widget: "string", required: false }
-      - { label: "Memória RAM / Armazenamento", name: "bateria", widget: "string", required: false }
       - label: "Ofertas e Afiliados"
         name: "ofertas"
         widget: "object"
