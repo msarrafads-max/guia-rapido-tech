@@ -7,19 +7,24 @@ media_folder: "images"
 public_folder: "/images"
 
 collections:
-  # -------------------------------------------------------------
-  # CONFIGURAÇÃO DOS HUBS (PÁGINAS DE CATEGORIAS)
-  # -------------------------------------------------------------
+  # HUBS (PÁGINAS DE CATEGORIAS)
   - name: "hubs_config"
-    label: "Páginas de Hubs"
+    label: "🎨 Personalizar Hubs"
     files:
       - name: "smartphones_hub"
-        label: "Hub de Smartphones"
+        label: "📱 Hub de Smartphones"
         file: "smartphones/hub_config.json"
         fields:
-          - { label: "Título do Banner Superior", name: "bannerTitulo", widget: "string", default: "Os Más Baratinhos do Mês" }
-          - { label: "Subtítulo do Banner", name: "bannerSub", widget: "string", required: false }
-          - label: "Lista de Destaques (Esquerdo/Câmeras)"
+          - label: "Banner de Destaque Superior"
+            name: "bannerTopo"
+            widget: "object"
+            fields:
+              - { label: "Título do Banner", name: "titulo", widget: "string", default: "Os Mais Baratinhos do Mês" }
+              - { label: "Subtítulo / Descrição", name: "sub", widget: "string", required: false }
+              - { label: "Badge / Selo", name: "badge", widget: "string", default: "CUSTO-BENEFÍCIO IMPATÍVEL" }
+              - { label: "Texto do Botão", name: "btnTexto", widget: "string", default: "Ver Baratinhos no Catálogo" }
+
+          - label: "Lista de Destaques (Esquerdo)"
             name: "blocoEsquerdo"
             widget: "list"
             fields:
@@ -27,7 +32,8 @@ collections:
               - { label: "Destaque / Especificação", name: "spec", widget: "string" }
               - { label: "Preço", name: "preco", widget: "string" }
               - { label: "Link da Análise", name: "url", widget: "string" }
-          - label: "Lista de Destaques (Direito/Jogos)"
+
+          - label: "Lista de Destaques (Direito)"
             name: "blocoDireito"
             widget: "list"
             fields:
@@ -37,50 +43,32 @@ collections:
               - { label: "Link da Análise", name: "url", widget: "string" }
 
       - name: "tablets_hub"
-        label: "Hub de Tablets"
+        label: "✏️ Hub de Tablets"
         file: "tablets/hub_config.json"
         fields:
           - { label: "Título do Banner Superior", name: "bannerTitulo", widget: "string", default: "Melhores com Suporte a Caneta" }
           - { label: "Subtítulo do Banner", name: "bannerSub", widget: "string", required: false }
-          - label: "Destaques do Hub de Tablets"
-            name: "blocoEsquerdo"
-            widget: "list"
-            fields:
-              - { label: "Nome do Modelo", name: "nome", widget: "string" }
-              - { label: "Destaque / Especificação", name: "spec", widget: "string" }
-              - { label: "Preço", name: "preco", widget: "string" }
-              - { label: "Link da Análise", name: "url", widget: "string" }
 
       - name: "notebooks_hub"
-        label: "Hub de Notebooks"
+        label: "💻 Hub de Notebooks"
         file: "notebooks/hub_config.json"
         fields:
           - { label: "Título do Banner Superior", name: "bannerTitulo", widget: "string", default: "Melhores para Trabalho e Estudos" }
           - { label: "Subtítulo do Banner", name: "bannerSub", widget: "string", required: false }
-          - label: "Destaques do Hub de Notebooks"
-            name: "blocoEsquerdo"
-            widget: "list"
-            fields:
-              - { label: "Nome do Modelo", name: "nome", widget: "string" }
-              - { label: "Destaque / Especificação", name: "spec", widget: "string" }
-              - { label: "Preço", name: "preco", widget: "string" }
-              - { label: "Link da Análise", name: "url", widget: "string" }
 
-  # -------------------------------------------------------------
-  # 1. SMARTPHONES (ARTIGOS)
-  # -------------------------------------------------------------
+  # ARTIGOS DE SMARTPHONES (Exclui arquivos JSON para não sumir com o Signature 27)
   - name: "smartphones"
-    label: "Smartphones"
+    label: "📱 Artigos: Smartphones"
     folder: "smartphones"
     create: true
     slug: "{{slug}}"
-    filter: { field: "title", pattern: "*" }
+    extension: "md"
     fields:
       - { label: "Título do Produto (H1)", name: "title", widget: "string" }
-      - { label: "Marca (ex: Motorola, Samsung)", name: "marca", widget: "string" }
-      - { label: "Selo / Badge (ex: PRÉ-VENDA, DESTAQUE)", name: "badge", widget: "string", default: "ANÁLISE" }
+      - { label: "Marca", name: "marca", widget: "string" }
+      - { label: "Selo / Badge", name: "badge", widget: "string", default: "ANÁLISE" }
       - { label: "Imagem do Produto", name: "image", widget: "image", required: false }
-      - { label: "Tela / Display", name: "tela", widget: "string", required: false }
+      - { label: "Tela", name: "tela", widget: "string", required: false }
       - { label: "Processador", name: "processador", widget: "string", required: false }
       - { label: "Bateria", name: "bateria", widget: "string", required: false }
       - label: "Ofertas e Afiliados"
@@ -94,67 +82,35 @@ collections:
               - { label: "Preço", name: "preco", widget: "string", required: false }
               - { label: "Link de Afiliado", name: "url", widget: "string", required: false }
           - label: "Mercado Livre"
-            name: "mercadoLivre"
+            name: "mercadolivre"
             widget: "object"
             fields:
               - { label: "Preço", name: "preco", widget: "string", required: false }
               - { label: "Link de Afiliado", name: "url", widget: "string", required: false }
-      - { label: "Texto Completo da Análise", name: "body", widget: "markdown" }
+      - { label: "Texto da Análise", name: "body", widget: "markdown" }
 
-  # -------------------------------------------------------------
-  # 2. TABLETS (ARTIGOS)
-  # -------------------------------------------------------------
+  # ARTIGOS DE TABLETS
   - name: "tablets"
-    label: "Tablets"
+    label: "✏️ Artigos: Tablets"
     folder: "tablets"
     create: true
     slug: "{{slug}}"
-    filter: { field: "title", pattern: "*" }
+    extension: "md"
     fields:
       - { label: "Título do Produto (H1)", name: "title", widget: "string" }
       - { label: "Marca", name: "marca", widget: "string" }
-      - { label: "Selo / Badge", name: "badge", widget: "string", default: "ANÁLISE" }
       - { label: "Imagem do Produto", name: "image", widget: "image", required: false }
-      - { label: "Tela / Display", name: "tela", widget: "string", required: false }
-      - { label: "Processador", name: "processador", widget: "string", required: false }
-      - { label: "Bateria", name: "bateria", widget: "string", required: false }
-      - label: "Ofertas e Afiliados"
-        name: "ofertas"
-        widget: "object"
-        fields:
-          - label: "Amazon"
-            name: "amazon"
-            widget: "object"
-            fields:
-              - { label: "Preço", name: "preco", widget: "string", required: false }
-              - { label: "Link de Afiliado", name: "url", widget: "string", required: false }
-      - { label: "Texto Completo da Análise", name: "body", widget: "markdown" }
+      - { label: "Texto da Análise", name: "body", widget: "markdown" }
 
-  # -------------------------------------------------------------
-  # 3. NOTEBOOKS (ARTIGOS)
-  # -------------------------------------------------------------
+  # ARTIGOS DE NOTEBOOKS
   - name: "notebooks"
-    label: "Notebooks"
+    label: "💻 Artigos: Notebooks"
     folder: "notebooks"
     create: true
     slug: "{{slug}}"
-    filter: { field: "title", pattern: "*" }
+    extension: "md"
     fields:
       - { label: "Título do Produto (H1)", name: "title", widget: "string" }
       - { label: "Marca", name: "marca", widget: "string" }
-      - { label: "Selo / Badge", name: "badge", widget: "string", default: "ANÁLISE" }
       - { label: "Imagem do Produto", name: "image", widget: "image", required: false }
-      - { label: "Tela", name: "tela", widget: "string", required: false }
-      - { label: "Processador", name: "processador", widget: "string", required: false }
-      - { label: "Memória RAM / Armazenamento", name: "bateria", widget: "string", required: false }
-      - label: "Ofertas e Afiliados"
-        name: "ofertas"
-        widget: "object"
-        fields:
-          - label: "Amazon"
-            name: "amazon"
-            widget: "object"
-            fields:
-              - { label: "Preço", name: "preco", widget: "string", required: false }
-              - { label: "Link de Afiliado", name: "url", widget: "string", required: false }
-      - { label: "Texto Completo da Análise", name: "body", widget: "markdown" }
+      - { label: "Texto da Análise", name: "body", widget: "markdown" }
