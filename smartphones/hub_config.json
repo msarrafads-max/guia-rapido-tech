@@ -1,0 +1,30 @@
+{
+  "titulo": "Melhores smartphones de dezembro de 2026",
+  "subtitulo": "Reviews independentes para escolher melhor.",
+  "badge": "GUIA DE COMPRA",
+  "cardPrincipal": {
+    "titulo": "Reviews e comparativos de smartphones",
+    "descricao": "Confira nossas análises completas.",
+    "imagem": "",
+    "botao": "Ver análises",
+    "url": "/smartphones/"
+  },
+  "cardInferiorEsquerdo": {
+    "titulo": "Melhores baterias",
+    "subtitulo": "Autonomia para o dia todo",
+    "artigos": []
+  },
+  "cardInferiorDireito": {
+    "titulo": "Melhores câmeras",
+    "subtitulo": "Fotografia e vídeo",
+    "artigos": []
+  },
+  "marcas": [
+    "Motorola",
+    "Samsung",
+    "Apple",
+    "Xiaomi",
+    "Realme",
+    "Outras"
+  ]
+}
