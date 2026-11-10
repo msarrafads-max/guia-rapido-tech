@@ -1,18 +1,80 @@
 backend:
   name: github
-  repo: msarrafads-max/guia-rapido-tech # Substitua se necessário, mantendo seu usuário/repo
+  repo: msarrafads-max/guia-rapido-tech
   branch: main
 
 media_folder: "images"
 public_folder: "/images"
 
 collections:
-  # 1. SMARTPHONES
+  # -------------------------------------------------------------
+  # CONFIGURAÇÃO DOS HUBS (PÁGINAS DE CATEGORIAS)
+  # -------------------------------------------------------------
+  - name: "hubs_config"
+    label: "Páginas de Hubs"
+    files:
+      - name: "smartphones_hub"
+        label: "Hub de Smartphones"
+        file: "smartphones/hub_config.json"
+        fields:
+          - { label: "Título do Banner Superior", name: "bannerTitulo", widget: "string", default: "Os Más Baratinhos do Mês" }
+          - { label: "Subtítulo do Banner", name: "bannerSub", widget: "string", required: false }
+          - label: "Lista de Destaques (Esquerdo/Câmeras)"
+            name: "blocoEsquerdo"
+            widget: "list"
+            fields:
+              - { label: "Nome do Modelo", name: "nome", widget: "string" }
+              - { label: "Destaque / Especificação", name: "spec", widget: "string" }
+              - { label: "Preço", name: "preco", widget: "string" }
+              - { label: "Link da Análise", name: "url", widget: "string" }
+          - label: "Lista de Destaques (Direito/Jogos)"
+            name: "blocoDireito"
+            widget: "list"
+            fields:
+              - { label: "Nome do Modelo", name: "nome", widget: "string" }
+              - { label: "Destaque / Especificação", name: "spec", widget: "string" }
+              - { label: "Preço", name: "preco", widget: "string" }
+              - { label: "Link da Análise", name: "url", widget: "string" }
+
+      - name: "tablets_hub"
+        label: "Hub de Tablets"
+        file: "tablets/hub_config.json"
+        fields:
+          - { label: "Título do Banner Superior", name: "bannerTitulo", widget: "string", default: "Melhores com Suporte a Caneta" }
+          - { label: "Subtítulo do Banner", name: "bannerSub", widget: "string", required: false }
+          - label: "Destaques do Hub de Tablets"
+            name: "blocoEsquerdo"
+            widget: "list"
+            fields:
+              - { label: "Nome do Modelo", name: "nome", widget: "string" }
+              - { label: "Destaque / Especificação", name: "spec", widget: "string" }
+              - { label: "Preço", name: "preco", widget: "string" }
+              - { label: "Link da Análise", name: "url", widget: "string" }
+
+      - name: "notebooks_hub"
+        label: "Hub de Notebooks"
+        file: "notebooks/hub_config.json"
+        fields:
+          - { label: "Título do Banner Superior", name: "bannerTitulo", widget: "string", default: "Melhores para Trabalho e Estudos" }
+          - { label: "Subtítulo do Banner", name: "bannerSub", widget: "string", required: false }
+          - label: "Destaques do Hub de Notebooks"
+            name: "blocoEsquerdo"
+            widget: "list"
+            fields:
+              - { label: "Nome do Modelo", name: "nome", widget: "string" }
+              - { label: "Destaque / Especificação", name: "spec", widget: "string" }
+              - { label: "Preço", name: "preco", widget: "string" }
+              - { label: "Link da Análise", name: "url", widget: "string" }
+
+  # -------------------------------------------------------------
+  # 1. SMARTPHONES (ARTIGOS)
+  # -------------------------------------------------------------
   - name: "smartphones"
     label: "Smartphones"
     folder: "smartphones"
     create: true
     slug: "{{slug}}"
+    filter: { field: "title", pattern: "*" }
     fields:
       - { label: "Título do Produto (H1)", name: "title", widget: "string" }
       - { label: "Marca (ex: Motorola, Samsung)", name: "marca", widget: "string" }
@@ -39,12 +101,15 @@ collections:
               - { label: "Link de Afiliado", name: "url", widget: "string", required: false }
       - { label: "Texto Completo da Análise", name: "body", widget: "markdown" }
 
-  # 2. TABLETS
+  # -------------------------------------------------------------
+  # 2. TABLETS (ARTIGOS)
+  # -------------------------------------------------------------
   - name: "tablets"
     label: "Tablets"
     folder: "tablets"
     create: true
     slug: "{{slug}}"
+    filter: { field: "title", pattern: "*" }
     fields:
       - { label: "Título do Produto (H1)", name: "title", widget: "string" }
       - { label: "Marca", name: "marca", widget: "string" }
@@ -65,12 +130,15 @@ collections:
               - { label: "Link de Afiliado", name: "url", widget: "string", required: false }
       - { label: "Texto Completo da Análise", name: "body", widget: "markdown" }
 
-  # 3. NOTEBOOKS
+  # -------------------------------------------------------------
+  # 3. NOTEBOOKS (ARTIGOS)
+  # -------------------------------------------------------------
   - name: "notebooks"
     label: "Notebooks"
     folder: "notebooks"
     create: true
     slug: "{{slug}}"
+    filter: { field: "title", pattern: "*" }
     fields:
       - { label: "Título do Produto (H1)", name: "title", widget: "string" }
       - { label: "Marca", name: "marca", widget: "string" }
