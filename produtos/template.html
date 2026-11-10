@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#101d36">
-    <title id="seo-title">Análise Completa | Guia Rápido Tech</title>
+    <title id="seo-title">Guia Rápido Tech</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Script de blindagem do modo escuro para evitar flash branco -->
     <script>
         if (localStorage.getItem('guiaTech_theme') === 'dark') {
             document.documentElement.classList.add('dark');
@@ -34,7 +33,10 @@
                             600: '#2563eb',
                             700: '#1d4ed8',
                             900: '#172554'
-                        }
+                        },
+                        amazon: '#ff9900',
+                        mercadolivre: '#ffe600',
+                        shopee: '#ee4d2d'
                     }
                 }
             }
@@ -42,187 +44,450 @@
     </script>
 
     <style>
-        :root { color-scheme: light; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-image: radial-gradient(ellipse at 8% 0%, rgba(37,99,235,.065), transparent 34%); }
-        h1, h2, h3, .font-heading { font-family: 'Space Grotesk', sans-serif; letter-spacing: -.035em; }
-        .surface-card { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
-        .dark body { background-image: radial-gradient(ellipse at 8% 0%, rgba(37,99,235,.13), transparent 38%); }
-        .eyebrow { display: inline-flex; align-items: center; gap: .5rem; color: #2563eb; font-size: .68rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+        :root {
+            color-scheme: light;
+            --brand: #2563eb;
+            --ink: #101d36;
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color .3s, color .3s;
+            background-image: radial-gradient(ellipse at 8% 0%, rgba(37,99,235,.065), transparent 34%);
+        }
+
+        h1, h2, h3, .font-heading { font-family: 'Space Grotesk', sans-serif; }
+        h1, h2, h3 { letter-spacing: -.035em; }
+
+        .custom-scrollbar::-webkit-scrollbar { height: 6px; width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            color: #2563eb;
+            font-size: .68rem;
+            font-weight: 800;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+
         .dark .eyebrow { color: #60a5fa; }
+
+        header { box-shadow: 0 4px 24px rgba(15,23,42,.045); }
+
+        .book-wrapper {
+            position: relative;
+            background: #fff;
+            border-radius: 1.15rem;
+            box-shadow: 0 2px 5px rgba(15,23,42,.025), 0 14px 38px rgba(15,23,42,.065);
+        }
+
+        .dark .book-wrapper {
+            background: #0f172a;
+            box-shadow: 0 12px 34px rgba(0,0,0,.32);
+        }
+
+        .book-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 12px;
+            right: 12px;
+            height: 6px;
+            background: #e2e8f0;
+            border: 1px solid #cbd5e1;
+            border-top: 0;
+            border-radius: 0 0 8px 8px;
+            z-index: -1;
+        }
+
+        .dark .book-wrapper::after {
+            background: #1e293b;
+            border-color: #334155;
+        }
+
+        .book-spine-shadow {
+            position: absolute;
+            left: 28%;
+            top: 0;
+            bottom: 0;
+            width: 16px;
+            background: linear-gradient(90deg, rgba(0,0,0,.035), transparent 50%, rgba(0,0,0,.035));
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .dark .book-spine-shadow {
+            background: linear-gradient(90deg, rgba(0,0,0,.25), transparent 50%, rgba(0,0,0,.25));
+        }
+
+        .surface-card {
+            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+        }
+
+        .surface-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(37,99,235,.35);
+            box-shadow: 0 16px 36px rgba(15,23,42,.085);
+        }
+
+        .dark .surface-card:hover {
+            box-shadow: 0 16px 36px rgba(0,0,0,.28);
+        }
+
+        .offer-card {
+            position: relative;
+            overflow: hidden;
+            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+        }
+
+        .offer-card::before {
+            content: '';
+            position: absolute;
+            inset: 0 0 auto;
+            height: 3px;
+            background: var(--offer-accent, #2563eb);
+            opacity: .9;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 38px rgba(15,23,42,.1);
+        }
+
+        .offer-price { letter-spacing: -.055em; }
+
+        .dark body {
+            background-image: radial-gradient(ellipse at 8% 0%, rgba(37,99,235,.13), transparent 38%);
+        }
+
+        ::selection { background: #2563eb; color: white; }
     </style>
 </head>
 
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 antialiased selection:bg-brand-600 selection:text-white">
 
     <!-- CABEÇALHO -->
-    <header class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800">
+    <header class="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 sm:h-20 gap-4">
                 
-                <a href="/index.html" class="flex items-center gap-3 shrink-0">
-                    <div id="logo-container" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white shadow-md shadow-brand-600/30 overflow-hidden">
-                        <i class="fa-solid fa-tablet-screen-button text-lg sm:text-xl" id="logo-icon"></i>
+                <a href="/index.html" class="flex items-center gap-3 shrink-0" aria-label="Guia Rápido Tech - início">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white shadow-md shadow-brand-600/30">
+                        <i class="fa-solid fa-tablet-screen-button text-lg sm:text-xl"></i>
                     </div>
-                    <span id="logo-texto" class="font-heading font-black text-lg sm:text-xl text-slate-900 dark:text-white tracking-tight uppercase">
+                    <span class="font-heading font-black text-lg sm:text-xl text-slate-900 dark:text-white tracking-tight uppercase">
                         GUIA RÁPIDO TECH
                     </span>
                 </a>
 
-                <nav class="hidden md:flex items-center gap-6 text-xs sm:text-sm font-bold">
-                    <a href="/smartphones/index.html" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition">Smartphones</a>
-                    <a href="/tablets/index.html" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition">Tablets</a>
-                    <a href="/notebooks/index.html" class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400 transition">Notebooks</a>
+                <nav class="flex items-center gap-4 sm:gap-8 text-xs sm:text-sm font-bold">
+                    <a href="/smartphones/index.html" class="text-brand-600 dark:text-brand-400 transition-colors">Smartphones</a>
+                    <a href="/tablets/index.html" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Tablets</a>
+                    <a href="/notebooks/index.html" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors">Notebooks</a>
                 </nav>
 
                 <div class="flex items-center gap-3">
-                    <button type="button" onclick="toggleDarkMode()" aria-label="Alternar tema" class="p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    <button id="themeToggle" type="button" onclick="toggleDarkMode()" aria-label="Ativar modo escuro" class="p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition flex items-center justify-center">
                         <i id="themeIcon" class="fa-solid fa-moon text-sm"></i>
                     </button>
                     <a href="/index.html" class="text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 hover:underline">
                         <i class="fa-solid fa-arrow-left mr-1"></i> Início
                     </a>
                 </div>
+
             </div>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 sm:py-9 space-y-10">
 
-        <!-- CABEÇALHO DO PRODUTO -->
-        <div class="space-y-3 border-b border-slate-200 dark:border-slate-800 pb-6">
-            <span class="eyebrow"><i class="fa-solid fa-bolt text-amber-400"></i> Análise Completa</span>
-            <h1 id="main-title" class="text-3xl sm:text-4xl font-extrabold font-heading text-slate-950 dark:text-white leading-tight">
-                Carregando modelo...
-            </h1>
-            <p class="text-xs text-slate-500 dark:text-slate-400">Publicado por <span class="brand-name">Guia Rápido Tech</span> · Atualizado para 2026</p>
-        </div>
+        <!-- BREADCRUMB E TÍTULO -->
+        <section class="space-y-3">
+            <div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                <a href="/smartphones/index.html" class="hover:text-brand-600 transition">Smartphones</a>
+                <i class="fa-solid fa-chevron-right text-[9px]"></i>
+                <span id="breadcrumb-marca" class="hover:text-brand-600 transition">Motorola</span>
+                <i class="fa-solid fa-chevron-right text-[9px]"></i>
+                <span id="breadcrumb-modelo" class="text-slate-900 dark:text-white font-semibold">Análise</span>
+            </div>
 
-        <!-- FOTO PRINCIPAL & CARD DE OFERTAS -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-            <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm flex items-center justify-center min-h-[320px]">
-                <img id="foto-aparelho" src="" alt="Foto do Produto" class="max-h-72 object-contain filter drop-shadow-md hidden">
-                <div id="foto-placeholder" class="text-slate-400 text-xs flex flex-col items-center gap-2">
-                    <i class="fa-solid fa-box-open text-4xl"></i>
-                    <span>Imagem do produto</span>
+            <div class="flex flex-wrap items-center gap-3">
+                <div class="space-y-2">
+                    <span class="eyebrow" id="eyebrow-categoria"><i class="fa-solid fa-microchip"></i> Análise técnica</span>
+                    <h1 class="text-3xl sm:text-4xl lg:text-[2.7rem] font-bold text-slate-950 dark:text-white leading-tight" id="main-title">
+                        Carregando análise...
+                    </h1>
                 </div>
+                <span id="badge-selo" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide bg-emerald-50 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/70">
+                    <i class="fa-solid fa-circle-check"></i> Ficha atualizada 2026
+                </span>
             </div>
-
-            <!-- CAIXA DE PREÇOS -->
-            <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm space-y-6">
-                <div>
-                    <span class="text-[10px] font-extrabold uppercase bg-blue-50 dark:bg-blue-950/80 text-brand-600 dark:text-blue-300 px-2.5 py-1 rounded-md">Melhores Preços</span>
-                    <h2 class="text-xl font-bold font-heading text-slate-900 dark:text-white mt-2">Onde comprar com segurança:</h2>
-                </div>
-
-                <div class="space-y-3">
-                    <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
-                        <div>
-                            <span class="text-xs font-bold text-slate-700 dark:text-slate-300 block"><i class="fa-brands fa-amazon text-amber-500 mr-1"></i> Amazon</span>
-                            <span id="preco-amazon" class="text-sm font-extrabold text-brand-600 dark:text-blue-400">Consulte</span>
-                        </div>
-                        <a id="btn-amazon" href="#" target="_blank" class="bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold px-4 py-2 rounded-xl transition">Ir à Loja</a>
-                    </div>
-
-                    <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
-                        <div>
-                            <span class="text-xs font-bold text-slate-700 dark:text-slate-300 block"><i class="fa-solid fa-bag-shopping text-yellow-500 mr-1"></i> Mercado Livre</span>
-                            <span id="preco-ml" class="text-sm font-extrabold text-brand-600 dark:text-blue-400">Consulte</span>
-                        </div>
-                        <a id="btn-ml" href="#" target="_blank" class="bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold px-4 py-2 rounded-xl transition">Ir à Loja</a>
-                    </div>
-
-                    <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800">
-                        <div>
-                            <span class="text-xs font-bold text-slate-700 dark:text-slate-300 block"><i class="fa-solid fa-store text-orange-500 mr-1"></i> Shopee</span>
-                            <span id="preco-shopee" class="text-sm font-extrabold text-brand-600 dark:text-blue-400">Consulte</span>
-                        </div>
-                        <a id="btn-shopee" href="#" target="_blank" class="bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold px-4 py-2 rounded-xl transition">Ir à Loja</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- RESUMO DA ANÁLISE -->
-        <section class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
-            <h2 id="resumo-titulo" class="text-xl font-bold font-heading text-slate-950 dark:text-white">O que achamos deste modelo</h2>
-            <div id="resumo-texto" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed space-y-3">
-                Carregando detalhes da análise...
-            </div>
-        </section>
-
-        <!-- PRÓS E CONTRAS -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40 rounded-3xl p-6 shadow-sm space-y-3">
-                <h3 class="text-base font-bold font-heading text-emerald-700 dark:text-emerald-400 flex items-center gap-2">
-                    <i class="fa-solid fa-thumbs-up"></i> Pontos Fortes (Prós)
-                </h3>
-                <ul id="lista-pros" class="text-xs text-slate-700 dark:text-slate-300 space-y-2"></ul>
-            </div>
-
-            <div class="bg-rose-50/50 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900/40 rounded-3xl p-6 shadow-sm space-y-3">
-                <h3 class="text-base font-bold font-heading text-rose-700 dark:text-rose-400 flex items-center gap-2">
-                    <i class="fa-solid fa-thumbs-down"></i> Pontos Fracos (Contras)
-                </h3>
-                <ul id="lista-cons" class="text-xs text-slate-700 dark:text-slate-300 space-y-2"></ul>
-            </div>
-        </section>
-
-        <!-- VEREDITO FINAL -->
-        <section class="bg-gradient-to-br from-blue-900 via-slate-900 to-slate-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl space-y-3">
-            <span class="eyebrow bg-blue-500/20 text-sky-300 px-3 py-1 rounded-full border border-blue-400/30">
-                <i class="fa-solid fa-award text-amber-400"></i> Veredito
-            </span>
-            <h2 class="text-2xl font-bold font-heading">Vale a pena comprar?</h2>
-            <p id="texto-conclusao" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Carregando conclusão...
+            <p class="max-w-3xl text-sm text-slate-500 dark:text-slate-400 leading-relaxed" id="main-subtitle">
+                Uma análise direta ao ponto: veja os destaques, compare as especificações e encontre opções de compra antes de decidir.
             </p>
         </section>
 
+        <!-- 1. ANÁLISE INICIAL DA PÁGINA -->
+        <section class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-5 sm:p-7 shadow-sm surface-card">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-7 lg:gap-9 items-start">
+                
+                <div class="md:col-span-4 flex flex-col items-center justify-center p-6 sm:p-8 bg-gradient-to-br from-slate-50 to-blue-50/70 dark:from-slate-800/80 dark:to-blue-950/30 rounded-2xl border border-slate-100 dark:border-slate-700/80">
+                    <span class="eyebrow mb-5"><i class="fa-solid fa-mobile-screen"></i> Em foco</span>
+                    
+                    <div id="container-foto-produto" class="w-36 h-60 flex items-center justify-center relative">
+                        <!-- Preenchido via JS -->
+                    </div>
+
+                    <span class="text-xs font-bold text-slate-600 dark:text-slate-300 mt-4" id="nome-aparelho-card">Aparelho</span>
+                    <span class="text-[10px] text-slate-400 mt-1">Visão geral do modelo</span>
+                </div>
+
+                <div class="md:col-span-8 space-y-5">
+                    <div>
+                        <span class="eyebrow"><i class="fa-solid fa-clipboard-check"></i> Nossa leitura</span>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-950 dark:text-white mt-1" id="resumo-titulo">O que achamos deste modelo</h2>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed" id="resumo-texto">
+                            Carregando descrição...
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
+                        <!-- PONTOS FORTES -->
+                        <div class="bg-emerald-50/70 dark:bg-emerald-950/25 border border-emerald-200 dark:border-emerald-900/60 rounded-2xl p-4 space-y-2">
+                            <span class="font-extrabold text-emerald-900 dark:text-emerald-300 flex items-center gap-2 text-[10px] uppercase tracking-[.14em]">
+                                <i class="fa-solid fa-circle-check text-emerald-600"></i> Onde ele se destaca
+                            </span>
+                            <ul class="space-y-2 text-emerald-950 dark:text-emerald-200 text-xs leading-relaxed" id="lista-pros">
+                                <li class="flex gap-2">Construção de alto padrão</li>
+                                <li class="flex gap-2">Excelente autonomia</li>
+                            </ul>
+                        </div>
+
+                        <!-- PONTOS FRACOS -->
+                        <div class="bg-rose-50/70 dark:bg-rose-950/25 border border-rose-200 dark:border-rose-900/60 rounded-2xl p-4 space-y-2">
+                            <span class="font-extrabold text-rose-900 dark:text-rose-300 flex items-center gap-2 text-[10px] uppercase tracking-[.14em]">
+                                <i class="fa-solid fa-circle-xmark text-rose-600"></i> Onde poderia melhorar
+                            </span>
+                            <ul class="space-y-2 text-rose-950 dark:text-rose-200 text-xs leading-relaxed" id="lista-cons">
+                                <li class="flex gap-2">Preço de lançamento no mercado nacional</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- VEREDITO / CONCLUSÃO -->
+                    <div class="bg-gradient-to-r from-blue-50 to-slate-50 dark:from-blue-950/35 dark:to-slate-800/70 p-4 rounded-2xl border border-blue-100 dark:border-blue-900/60">
+                        <span class="text-[10px] font-extrabold text-brand-700 dark:text-brand-300 uppercase tracking-[.14em] flex items-center gap-2">
+                            <i class="fa-solid fa-lightbulb"></i> Nossa conclusão
+                        </span>
+                        <p class="text-sm font-semibold text-slate-900 dark:text-slate-100 mt-2 leading-relaxed" id="texto-conclusao">
+                            Carregando veredito...
+                        </p>
+                    </div>
+
+                    <div class="pt-1">
+                        <a href="#comparativo" class="inline-flex items-center gap-2 text-xs sm:text-sm font-extrabold text-brand-600 dark:text-brand-400 hover:gap-3 transition-all">
+                            Compare com outros modelos <i class="fa-solid fa-arrow-down"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. COMPARATIVO (TABELA LADO A LADO) -->
+        <section id="comparativo" class="space-y-5 pt-1">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+                <div class="space-y-1">
+                    <span class="eyebrow"><i class="fa-solid fa-scale-balanced"></i> Escolha com informação</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-950 dark:text-white">Compare antes de comprar</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Coloque lado a lado os recursos que realmente fazem diferença.</p>
+                </div>
+            </div>
+
+            <div class="book-wrapper border border-slate-200 dark:border-slate-800 overflow-hidden relative">
+                <div class="book-spine-shadow hidden md:block"></div>
+                <div class="overflow-x-auto custom-scrollbar">
+                    <table class="w-full text-left border-collapse min-w-[700px]">
+                        <thead>
+                            <tr class="border-b border-slate-200 dark:border-slate-800 text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                                <th class="py-4 px-4 font-extrabold w-1/4 bg-slate-50/80 dark:bg-slate-900/70">
+                                    <div class="flex items-center gap-2 text-slate-700 dark:text-slate-300">
+                                        <i class="fa-solid fa-list-check text-brand-600"></i> Ficha técnica
+                                    </div>
+                                </th>
+                                <th class="py-5 px-4 w-1/4 bg-blue-50/70 dark:bg-blue-950/25 border-r border-slate-200/80 dark:border-slate-800 text-center relative">
+                                    <div class="flex flex-col items-center gap-2">
+                                        <div id="thumb-comparativo-principal" class="w-12 h-16 flex items-center justify-center mx-auto"></div>
+                                        <span class="font-extrabold text-sm text-slate-950 dark:text-white" id="comp-principal-nome">Modelo</span>
+                                        <span class="text-[9px] text-brand-700 dark:text-blue-300 font-extrabold bg-blue-100 dark:bg-blue-950/80 px-2.5 py-1 rounded-full border border-blue-200 dark:border-blue-900">Em análise</span>
+                                    </div>
+                                </th>
+                                <th class="py-5 px-4 w-1/4 text-center">
+                                    <div class="flex flex-col items-center gap-2">
+                                        <div id="thumb-comparativo-concorrente1" class="w-12 h-16 flex items-center justify-center mx-auto"></div>
+                                        <span class="font-bold text-sm text-slate-900 dark:text-white" id="comp-conc1-nome">Concorrente 1</span>
+                                    </div>
+                                </th>
+                                <th class="py-5 px-4 w-1/4 text-center">
+                                    <div class="flex flex-col items-center gap-2">
+                                        <div id="thumb-comparativo-concorrente2" class="w-12 h-16 flex items-center justify-center mx-auto"></div>
+                                        <span class="font-bold text-sm text-slate-900 dark:text-white" id="comp-conc2-nome">Concorrente 2</span>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-xs sm:text-sm">
+                            <tr class="bg-slate-50/80 dark:bg-slate-800/40">
+                                <td class="py-4 px-4 font-extrabold text-slate-900 dark:text-white">
+                                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-star text-amber-500"></i> Destaques</span>
+                                </td>
+                                <td class="py-4 px-4 bg-blue-50/70 dark:bg-blue-950/25 border-r border-slate-200/80 dark:border-slate-800 text-center" id="comp-principal-fortes">Bateria de 7.000 mAh</td>
+                                <td class="py-4 px-4 text-center" id="comp-conc1-fortes">Câmera Tripla</td>
+                                <td class="py-4 px-4 text-center" id="comp-conc2-fortes">Snapdragon 8 Gen 3</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 font-semibold text-slate-700 dark:text-slate-300">Tela / Display</td>
+                                <td class="py-3 px-4 bg-blue-50/50 dark:bg-blue-950/15 border-r border-slate-200/80 dark:border-slate-800 text-center" id="comp-principal-tela">Extreme AMOLED 120Hz</td>
+                                <td class="py-3 px-4 text-center" id="comp-conc1-tela">AMOLED 6.6" 120Hz</td>
+                                <td class="py-3 px-4 text-center" id="comp-conc2-tela">AMOLED 6.8" 144Hz</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 font-semibold text-slate-700 dark:text-slate-300">Processador</td>
+                                <td class="py-3 px-4 bg-blue-50/50 dark:bg-blue-950/15 border-r border-slate-200/80 dark:border-slate-800 text-center" id="comp-principal-cpu">Snapdragon 8 Elite</td>
+                                <td class="py-3 px-4 text-center" id="comp-conc1-cpu">Dimensity 8300</td>
+                                <td class="py-3 px-4 text-center" id="comp-conc2-cpu">Snapdragon 8 Gen 3</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 font-semibold text-slate-700 dark:text-slate-300">Bateria / Carregamento</td>
+                                <td class="py-3 px-4 bg-blue-50/50 dark:bg-blue-950/15 border-r border-slate-200/80 dark:border-slate-800 text-center font-bold text-emerald-600 dark:text-emerald-400" id="comp-principal-bateria">7.000 mAh (90W)</td>
+                                <td class="py-3 px-4 text-center" id="comp-conc1-bateria">5.000 mAh (67W)</td>
+                                <td class="py-3 px-4 text-center" id="comp-conc2-bateria">5.100 mAh (120W)</td>
+                            </tr>
+                            <tr class="bg-slate-50/60 dark:bg-slate-800/30">
+                                <td class="py-3.5 px-4 font-bold text-slate-900 dark:text-white">Preço estimado</td>
+                                <td class="py-3.5 px-4 bg-blue-50/70 dark:bg-blue-950/25 border-r border-slate-200/80 dark:border-slate-800 text-center font-extrabold text-brand-700 dark:text-brand-300" id="comp-principal-preco">R$ 10.799</td>
+                                <td class="py-3.5 px-4 text-center font-bold" id="comp-conc1-preco">R$ 2.499</td>
+                                <td class="py-3.5 px-4 text-center font-bold" id="comp-conc2-preco">R$ 4.599</td>
+                            </tr>
+                            <tr class="bg-slate-50/40 dark:bg-slate-800/20">
+                                <td class="py-4 px-4 font-bold text-slate-900 dark:text-white">Consultar oferta</td>
+                                <td class="py-4 px-4 bg-blue-50/70 dark:bg-blue-950/25 border-r border-slate-200/80 dark:border-slate-800 text-center">
+                                    <a href="#ofertas" class="bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-[11px] py-2.5 px-3 rounded-lg block transition shadow-sm">Ver ofertas</a>
+                                </td>
+                                <td class="py-4 px-4 text-center">
+                                    <a id="link-oferta-conc1" href="#" target="_blank" rel="nofollow sponsored" class="border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-[11px] py-2.5 px-3 rounded-lg block transition">Ver oferta</a>
+                                </td>
+                                <td class="py-4 px-4 text-center">
+                                    <a id="link-oferta-conc2" href="#" target="_blank" rel="nofollow sponsored" class="border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold text-[11px] py-2.5 px-3 rounded-lg block transition">Ver oferta</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. OFERTAS COM LINKS DE AFILIADO -->
+        <section id="ofertas" class="space-y-5 pt-2">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="eyebrow justify-center"><i class="fa-solid fa-tags"></i> Onde encontrar</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-950 dark:text-white">Encontre uma boa oferta</h2>
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Compare as condições nas lojas e confira o preço final, o frete e a reputação do vendedor antes de comprar.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- CARD AMAZON -->
+                <div class="offer-card surface-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 space-y-5 flex flex-col justify-between shadow-sm" style="--offer-accent:#ff9900">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center gap-2">
+                            <span class="text-amber-600 dark:text-amber-400 font-black text-xl tracking-tight"><i class="fa-brands fa-amazon mr-1"></i>amazon</span>
+                            <span class="text-[9px] font-extrabold uppercase tracking-wide bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300 px-2.5 py-1 rounded-full">Consulte entrega</span>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="text-[10px] uppercase tracking-wider font-bold text-slate-400">Preço anunciado</div>
+                            <div class="text-3xl font-extrabold offer-price text-slate-950 dark:text-white" id="preco-amazon">R$ --</div>
+                            <div class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i>Consulte parcelamento e frete</div>
+                        </div>
+                    </div>
+                    <a id="btn-amazon" href="#" target="_blank" rel="nofollow sponsored" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold text-xs py-3.5 rounded-xl text-center shadow-sm transition">Consultar na Amazon <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></a>
+                </div>
+
+                <!-- CARD MERCADO LIVRE -->
+                <div class="offer-card surface-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 space-y-5 flex flex-col justify-between shadow-sm" style="--offer-accent:#facc15">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center gap-2">
+                            <span class="text-slate-900 dark:text-amber-400 font-black text-lg tracking-tight"><i class="fa-solid fa-bag-shopping text-amber-500 mr-1"></i>mercado livre</span>
+                            <span class="text-[9px] font-extrabold uppercase tracking-wide bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 px-2.5 py-1 rounded-full">Ver condições</span>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="text-[10px] uppercase tracking-wider font-bold text-slate-400">Preço anunciado</div>
+                            <div class="text-3xl font-extrabold offer-price text-slate-950 dark:text-white" id="preco-ml">R$ --</div>
+                            <div class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold"><i class="fa-solid fa-truck-fast mr-1"></i>Confira prazo e modalidade de envio</div>
+                        </div>
+                    </div>
+                    <a id="btn-ml" href="#" target="_blank" rel="nofollow sponsored" class="w-full bg-mercadolivre hover:bg-yellow-400 text-slate-950 font-extrabold text-xs py-3.5 rounded-xl text-center shadow-sm transition">Consultar no Mercado Livre <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></a>
+                </div>
+
+                <!-- CARD SHOPEE -->
+                <div class="offer-card surface-card bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 space-y-5 flex flex-col justify-between shadow-sm" style="--offer-accent:#ee4d2d">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center gap-2">
+                            <span class="text-shopee font-black text-xl"><i class="fa-solid fa-store mr-1"></i>Shopee</span>
+                            <span class="text-[9px] font-extrabold uppercase tracking-wide bg-orange-100 text-orange-800 dark:bg-orange-950 dark:text-orange-300 px-2.5 py-1 rounded-full">Cupons podem variar</span>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="text-[10px] uppercase tracking-wider font-bold text-slate-400">Preço anunciado</div>
+                            <div class="text-3xl font-extrabold offer-price text-slate-950 dark:text-white" id="preco-shopee">R$ --</div>
+                            <div class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold"><i class="fa-solid fa-ticket mr-1"></i>Confira cupons e condições no app</div>
+                        </div>
+                    </div>
+                    <a id="btn-shopee" href="#" target="_blank" rel="nofollow sponsored" class="w-full bg-shopee hover:bg-orange-600 text-white font-extrabold text-xs py-3.5 rounded-xl text-center shadow-sm transition">Consultar na Shopee <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. VÍDEO DO YOUTUBE -->
+        <section id="bloco-video" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center space-y-5 shadow-sm hidden">
+            <div class="space-y-2">
+                <span class="eyebrow justify-center text-red-600 dark:text-red-400"><i class="fa-brands fa-youtube"></i> Conteúdo em vídeo</span>
+                <h2 class="text-xl sm:text-2xl font-bold text-slate-950 dark:text-white">Quer ver o aparelho em ação?</h2>
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
+                    Assista ao vídeo e complemente sua pesquisa antes de tomar uma decisão.
+                </p>
+            </div>
+
+            <div class="max-w-[310px] mx-auto aspect-[9/16] rounded-2xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-700 bg-slate-950">
+                <iframe id="iframe-youtube" class="w-full h-full" src="" title="Vídeo do produto" frameborder="0" loading="lazy" allowfullscreen></iframe>
+            </div>
+        </section>
     </main>
 
     <!-- RODAPÉ -->
-    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-9 text-xs text-slate-500 dark:text-slate-400 mt-16">
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-9 text-xs text-slate-500 dark:text-slate-400 mt-12 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5 text-center">
             <div class="flex justify-center items-center gap-2 font-heading font-bold tracking-wider text-slate-950 dark:text-white">
                 <span class="w-8 h-8 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-brand-600 dark:text-blue-300 grid place-items-center"><i class="fa-solid fa-book-open"></i></span>
-                <span class="footer-logo-texto">GUIA RÁPIDO TECH</span>
+                GUIA RÁPIDO TECH
             </div>
             <p class="max-w-3xl mx-auto leading-relaxed text-[11px]">
                 <strong class="text-slate-700 dark:text-slate-300">Aviso de transparência:</strong>
-                O <span class="brand-name">Guia Rápido Tech</span> pode receber comissões quando você compra por meio de alguns links desta página, sem custo adicional para você.
+                O Guia Rápido Tech pode receber comissões quando você compra por meio de alguns links desta página, sem custo adicional para você.
             </p>
             <div class="w-16 h-px bg-slate-200 dark:bg-slate-700 mx-auto"></div>
-            <p class="text-[10px] tracking-wide">
-                © 2026 <span class="footer-logo-texto">Guia Rápido Tech</span> · 
-                <a href="/privacidade.html" class="hover:underline text-slate-600 dark:text-slate-400 font-semibold">Política de Privacidade</a>
-            </p>
+            <p class="text-[10px] tracking-wide">© 2026 Guia Rápido Tech · guiarapidotech.com.br</p>
         </div>
     </footer>
 
-    <!-- SCRIPT DE LEITURA DIRETA DO MARKDOWN -->
+    <!-- SCRIPT DE INTEGRAÇÃO MARKDOWN (DECAP CMS) COM O LAYOUT RICO -->
     <script>
-        async function carregarLogoGlobal() {
-            try {
-                const resposta = await fetch('/content/config.json');
-                if (!resposta.ok) return;
-                const config = await resposta.json();
-                if (config.logoTexto) {
-                    const elTexto = document.getElementById('logo-texto');
-                    if (elTexto) elTexto.innerText = config.logoTexto;
-                    document.querySelectorAll('.footer-logo-texto, .brand-name').forEach(el => el.innerText = config.logoTexto);
-                }
-                if (config.logoImagem) {
-                    const container = document.getElementById('logo-container');
-                    if (container) {
-                        container.innerHTML = `<img src="${config.logoImagem}" alt="Logo" class="w-full h-full object-cover">`;
-                    }
-                }
-            } catch (e) {
-                console.log("Logo padrão.");
-            }
-        }
-
         async function carregarDadosPagina() {
             try {
                 const urlParams = new URLSearchParams(window.location.search);
@@ -231,12 +496,13 @@
 
                 if (!slug) return;
 
-                // CORREÇÃO CRUCIAL: Aponta diretamente para a pasta absoluta correta onde o .md está salvo
-                const resposta = await fetch(`/${pasta}/${slug}.md`); 
-                if (!resposta.ok) throw new Error("Arquivo Markdown não encontrado em /" + pasta + "/" + slug + ".md");
+                // Busca o arquivo Markdown gerado pelo Decap CMS na pasta smartphones
+                const resposta = await fetch(`/${pasta}/${slug}.md`);
+                if (!resposta.ok) throw new Error("Arquivo Markdown não encontrado");
 
                 const text = await resposta.text();
 
+                // Separa o Frontmatter do Corpo do texto
                 const partes = text.split('---');
                 const frontmatter = partes[1] || '';
                 const corpoMd = partes.slice(2).join('---').trim();
@@ -247,62 +513,91 @@
                 };
 
                 const title = getField(/^title:\s*(.*)$/m) || slug;
-                const seoTitle = getField(/^seo_title:\s*(.*)$/m) || title;
-                const seoDesc = getField(/^seo_description:\s*(.*)$/m) || '';
+                const marca = getField(/^marca:\s*(.*)$/m) || 'Motorola';
+                const badge = getField(/^badge:\s*(.*)$/m) || 'PRÉ-VENDA';
                 const fotoUrl = getField(/^image:\s*(.*)$/m);
+                const tela = getField(/^tela:\s*(.*)$/m) || 'Extreme AMOLED 120Hz';
+                const cpu = getField(/^processador:\s*(.*)$/m) || 'Snapdragon 8 Elite';
+                const bateria = getField(/^bateria:\s*(.*)$/m) || '7.000 mAh (90W)';
                 
+                // Preços e Links
                 const amazonUrl = getField(/url:\s*(https:\/\/www\.amazon\.com[^\s]+)/m);
                 const amazonPreco = getField(/preco:\s*(R\$[^\s]+)/m);
 
                 const mlUrl = getField(/url:\s*(https:\/\/www\.mercadolivre\.com[^\s]+)/m);
                 const mlPreco = getField(/preco:\s*(R\$[^\s]+)/m);
 
-                const shopeeUrl = getField(/url:\s*(https:\/\/shopee\.com[^\s]+)/m);
-                const shopeePreco = getField(/preco:\s*(R\$[^\s]+)/m);
+                // Preenchimento de Títulos e Metadados
+                document.title = `${title}: Análise & Comparativo | Guia Rápido Tech`;
+                document.getElementById('seo-title').innerText = document.title;
+                document.getElementById('main-title').innerHTML = `${title}: <span class="text-brand-600 dark:text-brand-400">Análise & Comparativo</span>`;
+                document.getElementById('nome-aparelho-card').innerText = title;
 
-                document.title = `${seoTitle} | Guia Rápido Tech`;
-                document.getElementById('main-title').innerHTML = `${title}`;
+                document.getElementById('breadcrumb-marca').innerText = marca;
+                document.getElementById('breadcrumb-modelo').innerText = title;
 
-                if (fotoUrl) {
-                    const img = document.getElementById('foto-aparelho');
-                    img.src = fotoUrl;
-                    img.classList.remove('hidden');
-                    document.getElementById('foto-placeholder').classList.add('hidden');
+                // Badge de status
+                const badgeEl = document.getElementById('badge-selo');
+                if (badge) {
+                    badgeEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${badge}`;
                 }
 
+                // Renderiza foto
+                renderFoto(document.getElementById('container-foto-produto'), fotoUrl, title, 'w-36 h-60');
+                renderFoto(document.getElementById('thumb-comparativo-principal'), fotoUrl, title, 'w-12 h-16');
+
+                // Corpo da Análise
                 if (corpoMd) {
-                    const htmlCorpo = corpoMd.split('\n\n').map(paragrafo => `<p>${paragrafo}</p>`).join('');
+                    const htmlCorpo = corpoMd.split('\n\n').map(paragrafo => `<p class="mb-3">${paragrafo}</p>`).join('');
                     document.getElementById('resumo-texto').innerHTML = htmlCorpo;
-                } else if (seoDesc) {
-                    document.getElementById('resumo-texto').innerText = seoDesc;
-                } else {
-                    document.getElementById('resumo-texto').innerText = "Análise técnica completa do dispositivo.";
                 }
 
+                // Veredito Dinâmico
+                document.getElementById('texto-conclusao').innerText = `O ${title} consolida-se como uma das escolhas mais audaciosas e completas da categoria, unindo autonomia monstro e desempenho de ponta.`;
+
+                // Ofertas e Afiliados
                 if (amazonPreco) document.getElementById('preco-amazon').innerText = amazonPreco;
                 if (amazonUrl) document.getElementById('btn-amazon').href = amazonUrl;
 
                 if (mlPreco) document.getElementById('preco-ml').innerText = mlPreco;
                 if (mlUrl) document.getElementById('btn-ml').href = mlUrl;
 
-                if (shopeePreco) document.getElementById('preco-shopee').innerText = shopeePreco;
-                if (shopeeUrl) document.getElementById('btn-shopee').href = shopeeUrl;
+                // Tabela Comparativa (Preenchendo o produto principal)
+                document.getElementById('comp-principal-nome').innerText = title;
+                document.getElementById('comp-principal-fortes').innerHTML = `<div class="text-[11px] text-slate-600 dark:text-slate-300 font-semibold">${bateria}</div>`;
+                document.getElementById('comp-principal-tela').innerText = tela;
+                document.getElementById('comp-principal-cpu').innerText = cpu;
+                document.getElementById('comp-principal-bateria').innerText = bateria;
+                document.getElementById('comp-principal-preco').innerText = amazonPreco || mlPreco || "R$ 10.799";
 
-                document.getElementById('lista-pros').innerHTML = `
-                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> <span>Construção de altíssimo padrão e design moderno</span></li>
-                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> <span>Autonomia de bateria estendida com suporte a carregamento rápido</span></li>
-                    <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-500 mt-0.5"></i> <span>Hardware de ponta e câmeras de alta resolução</span></li>
-                `;
-                document.getElementById('lista-cons').innerHTML = `
-                    <li class="flex items-start gap-2"><i class="fa-solid fa-xmark text-rose-500 mt-0.5"></i> <span>Preço de lançamento elevado no mercado brasileiro</span></li>
-                `;
+                // Concorrentes Padrão para manter a tabela rica e bonita
+                document.getElementById('comp-conc1-nome').innerText = "Galaxy S24 Ultra";
+                document.getElementById('comp-conc1-fortes').innerHTML = `<div class="text-[11px] text-slate-600 dark:text-slate-300 font-semibold">Câmera de 200 MP</div>`;
+                document.getElementById('comp-conc1-tela').innerText = "Dynamic AMOLED 6.8\"";
+                document.getElementById('comp-conc1-cpu').innerText = "Snapdragon 8 Gen 3";
+                document.getElementById('comp-conc1-bateria').innerText = "5.000 mAh (45W)";
+                document.getElementById('comp-conc1-preco').innerText = "R$ 7.299";
 
-                document.getElementById('texto-conclusao').innerText = `O ${title} entrega exatamente o que promete para quem busca desempenho topo de linha, câmeras poderosas e uma experiência fluida sem engasgos. Altamente recomendado para quem quer investir em tecnologia de ponta.`;
+                document.getElementById('comp-conc2-nome').innerText = "iPhone 16 Pro Max";
+                document.getElementById('comp-conc2-fortes').innerHTML = `<div class="text-[11px] text-slate-600 dark:text-slate-300 font-semibold">Ecossistema Apple</div>`;
+                document.getElementById('comp-conc2-tela').innerText = "Super Retina OLED 6.9\"";
+                document.getElementById('comp-conc2-cpu').innerText = "Apple A18 Pro";
+                document.getElementById('comp-conc2-bateria').innerText = "4.685 mAh";
+                document.getElementById('comp-conc2-preco').innerText = "R$ 9.499";
 
             } catch (e) {
-                console.log("Erro ao carregar o arquivo do produto:", e);
-                document.getElementById('main-title').innerText = "Modelo não encontrado";
-                document.getElementById('resumo-texto').innerText = "Não foi possível carregar os dados desta análise. Verifique o console para detalhes.";
+                console.log("Erro ao carregar dados do Markdown:", e);
+            }
+        }
+
+        function renderFoto(container, url, altText, tamanhoCss) {
+            if (url) {
+                container.innerHTML = `<img src="${url}" alt="${altText}" class="max-h-full max-w-full object-contain drop-shadow-md hover:scale-105 transition-transform duration-300">`;
+            } else {
+                container.innerHTML = `
+                    <div class="${tamanhoCss} bg-slate-950 rounded-xl border border-slate-700 flex items-center justify-center text-white shadow">
+                        <i class="fa-solid fa-mobile-screen text-xl text-sky-300"></i>
+                    </div>`;
             }
         }
 
@@ -311,16 +606,11 @@
             const icon = document.getElementById('themeIcon');
             const isDark = html.classList.toggle('dark');
             html.classList.toggle('light', !isDark);
+            icon.className = isDark ? 'fa-solid fa-sun text-sm text-amber-400' : 'fa-solid fa-moon text-sm';
             localStorage.setItem('guiaTech_theme', isDark ? 'dark' : 'light');
-            if (icon) {
-                icon.className = isDark ? 'fa-solid fa-sun text-sm text-amber-400' : 'fa-solid fa-moon text-sm';
-            }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            carregarLogoGlobal();
-            carregarDadosPagina();
-        });
+        document.addEventListener('DOMContentLoaded', carregarDadosPagina);
     </script>
 </body>
 </html>
