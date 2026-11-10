@@ -7,13 +7,9 @@ media_folder: "images"
 public_folder: "/images"
 
 collections:
-  # -------------------------------------------------------------
-  # CONFIGURAÇÃO VISUAL DAS PÁGINAS (HUBS) - PADRONIZADAS
-  # -------------------------------------------------------------
   - name: "hubs"
     label: "🎨 Personalizar Páginas (Hubs)"
     files:
-      # --- SMARTPHONES ---
       - name: "smartphones_hub"
         label: "📱 Página: Smartphones"
         file: "smartphones/hub_config.json"
@@ -31,9 +27,9 @@ collections:
             name: "blocoEsquerdo"
             widget: "object"
             fields:
-              - { label: "Título do Bloco (ex: Melhores Câmeras)", name: "titulo", widget: "string", default: "Melhores Câmeras" }
-              - { label: "Selo / Badge (ex: Top 5)", name: "selo", widget: "string", default: "Top 5" }
-              - { label: "Ícone FontAwesome (ex: fa-camera)", name: "icone", widget: "string", default: "fa-camera" }
+              - { label: "Título do Bloco", name: "titulo", widget: "string", default: "Melhores Câmeras" }
+              - { label: "Selo / Badge", name: "selo", widget: "string", default: "Top 5" }
+              - { label: "Ícone FontAwesome", name: "icone", widget: "string", default: "fa-camera" }
               - label: "Lista de Produtos deste Bloco"
                 name: "produtos"
                 widget: "list"
@@ -48,9 +44,9 @@ collections:
             name: "blocoDireito"
             widget: "object"
             fields:
-              - { label: "Título do Bloco (ex: Mais Potentes para Jogos)", name: "titulo", widget: "string", default: "Mais Potentes para Jogos" }
-              - { label: "Selo / Badge (ex: Top 5)", name: "selo", widget: "string", default: "Top 5" }
-              - { label: "Ícone FontAwesome (ex: fa-bolt)", name: "icone", widget: "string", default: "fa-bolt" }
+              - { label: "Título do Bloco", name: "titulo", widget: "string", default: "Mais Potentes para Jogos" }
+              - { label: "Selo / Badge", name: "selo", widget: "string", default: "Top 5" }
+              - { label: "Ícone FontAwesome", name: "icone", widget: "string", default: "fa-bolt" }
               - label: "Lista de Produtos deste Bloco"
                 name: "produtos"
                 widget: "list"
@@ -61,7 +57,6 @@ collections:
                   - { label: "URL da Análise", name: "url", widget: "string" }
                   - { label: "Imagem / Watermark", name: "img", widget: "image", required: false }
 
-      # --- TABLETS ---
       - name: "tablets_hub"
         label: "✏️ Página: Tablets"
         file: "tablets/hub_config.json"
@@ -109,7 +104,6 @@ collections:
                   - { label: "URL da Análise", name: "url", widget: "string" }
                   - { label: "Imagem / Watermark", name: "img", widget: "image", required: false }
 
-      # --- NOTEBOOKS ---
       - name: "notebooks_hub"
         label: "💻 Página: Notebooks"
         file: "notebooks/hub_config.json"
@@ -157,9 +151,6 @@ collections:
                   - { label: "URL da Análise", name: "url", widget: "string" }
                   - { label: "Imagem / Watermark", name: "img", widget: "image", required: false }
 
-  # -------------------------------------------------------------
-  # ARTIGOS E ANÁLISES INDIVIDUAIS
-  # -------------------------------------------------------------
   - name: "smartphones"
     label: "📱 Artigos: Smartphones"
     folder: "smartphones"
