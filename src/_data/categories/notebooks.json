@@ -1,0 +1,30 @@
+{
+  "title": "Notebooks",
+  "description": "Análises de notebooks para estudo, trabalho, criação e jogos.",
+  "seo_title": "Reviews de notebooks | Guia Rápido Tech",
+  "seo_description": "Compare notebooks por processador, memória, tela e autonomia.",
+  "brands": [
+    "Lenovo",
+    "Acer",
+    "Dell",
+    "ASUS"
+  ],
+  "main_card": {
+    "title": "Melhores notebooks do momento",
+    "description": "Seleções para diferentes orçamentos e necessidades.",
+    "badge": "GUIA DE COMPRA",
+    "article_slugs": []
+  },
+  "left_card": {
+    "title": "Notebooks para trabalho",
+    "description": "Produtividade, portabilidade e autonomia.",
+    "badge": "TRABALHO",
+    "article_slugs": []
+  },
+  "right_card": {
+    "title": "Notebooks para jogos",
+    "description": "Desempenho gráfico e refrigeração.",
+    "badge": "GAMING",
+    "article_slugs": []
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "title": "Tablets",
+  "description": "Reviews e comparativos de tablets para estudar, trabalhar e se divertir.",
+  "seo_title": "Reviews de tablets | Guia Rápido Tech",
+  "seo_description": "Compare tablets por tela, desempenho, bateria e preço.",
+  "brands": [
+    "Samsung",
+    "Apple",
+    "Lenovo",
+    "Xiaomi"
+  ],
+  "main_card": {
+    "title": "Melhores tablets do momento",
+    "description": "Guias e comparativos para diferentes perfis.",
+    "badge": "GUIA DE COMPRA",
+    "article_slugs": []
+  },
+  "left_card": {
+    "title": "Tablets para estudar",
+    "description": "Modelos para aulas, leitura e anotações.",
+    "badge": "ESTUDO",
+    "article_slugs": []
+  },
+  "right_card": {
+    "title": "Tablets para trabalho",
+    "description": "Produtividade e versatilidade.",
+    "badge": "PRODUTIVIDADE",
+    "article_slugs": []
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "title": "Smartphones",
+  "description": "Análises técnicas, comparativos diretos e guias para encontrar o celular ideal.",
+  "seo_title": "Reviews de smartphones | Guia Rápido Tech",
+  "seo_description": "Compare smartphones por marca, desempenho, bateria e custo-benefício.",
+  "brands": [
+    "Motorola",
+    "Samsung",
+    "Xiaomi",
+    "Apple"
+  ],
+  "main_card": {
+    "title": "Melhores smartphones do momento",
+    "description": "Seleções e comparativos para escolher melhor.",
+    "badge": "GUIA DE COMPRA",
+    "article_slugs": []
+  },
+  "left_card": {
+    "title": "Melhores câmeras",
+    "description": "Veja os modelos que merecem atenção.",
+    "badge": "FOTO E VÍDEO",
+    "article_slugs": []
+  },
+  "right_card": {
+    "title": "Melhores baterias",
+    "description": "Autonomia para acompanhar sua rotina.",
+    "badge": "AUTONOMIA",
+    "article_slugs": []
+  }
+}
