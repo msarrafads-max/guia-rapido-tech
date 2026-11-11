@@ -1,0 +1,47 @@
+---
+layout: layouts/base.njk
+permalink: /index.html
+---
+<section class="home-hero container">
+  <div class="hero-copy"><span class="eyebrow">GUIA RÁPIDO TECH</span><h1>{{ home.hero_title }}</h1><p>{{ home.hero_description }}</p>
+    {% if home.hero_article_slug %}<a class="button" href="/smartphones/{{ home.hero_article_slug }}.html">{{ home.hero_button_text or "Ver análise" }} ↗</a>{% else %}<a class="button" href="/smartphones/">{{ home.hero_button_text or "Explorar reviews" }} ↗</a>{% endif %}
+  </div>
+  <div class="hero-art"><div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div><div class="hero-device"><span>GRT</span><strong>Escolha<br>melhor.</strong><small>Reviews • Comparativos • Tecnologia</small></div></div>
+</section>
+
+<section class="container section-block">
+  <div class="section-heading"><div><span class="eyebrow">EXPLORE POR CATEGORIA</span><h2>Encontre o que procura</h2><p>Conteúdo organizado para ajudar na sua próxima escolha.</p></div></div>
+  <div class="category-tiles">
+    <a href="/smartphones/" class="category-tile"><span class="tile-icon">▣</span><strong>Smartphones</strong><span>Ver análises ↗</span></a>
+    <a href="/tablets/" class="category-tile"><span class="tile-icon">▤</span><strong>Tablets</strong><span>Ver análises ↗</span></a>
+    <a href="/notebooks/" class="category-tile"><span class="tile-icon">▱</span><strong>Notebooks</strong><span>Ver análises ↗</span></a>
+  </div>
+</section>
+
+{% if home.featured_cards and home.featured_cards.length %}
+<section class="container section-block">
+  <div class="section-heading"><div><span class="eyebrow">SELEÇÃO EDITORIAL</span><h2>Guias para escolher melhor</h2><p>Cards editáveis pelo painel administrativo.</p></div></div>
+  <div class="feature-grid">
+  {% for card in home.featured_cards %}
+    {% set destination = "/" + (card.article_category or "smartphones") + "/" %}
+    {% if card.article_slug %}{% set destination = "/" + (card.article_category or "smartphones") + "/" + card.article_slug + ".html" %}{% endif %}
+    {% include "partials/featured-card.njk" %}
+  {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if home.show_latest_reviews %}
+<section class="container section-block">
+  <div class="section-heading section-heading-row"><div><span class="eyebrow">PUBLICAÇÕES RECENTES</span><h2>{{ home.latest_title }}</h2><p>{{ home.latest_description }}</p></div><a href="/smartphones/" class="text-link">Explorar categorias ↗</a></div>
+  <div class="article-grid">
+    {% for article in collections.articles | slice(0, home.latest_count or 6) %}
+      {% include "partials/article-card.njk" %}
+    {% else %}
+      <div class="empty-state"><span>✦</span><h3>As próximas análises estão chegando</h3><p>Os artigos publicados pelo painel aparecerão automaticamente aqui.</p></div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<section class="container closing-cta"><div><span class="eyebrow">GUIA RÁPIDO TECH</span><h2>Escolha com mais informação.</h2><p>Compare características, entenda as diferenças e encontre o produto ideal para sua rotina.</p></div><a class="button button-light" href="/sobre/">Conheça o projeto ↗</a></section>
