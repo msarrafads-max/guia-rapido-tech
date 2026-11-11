@@ -1,0 +1,36 @@
+{
+  "hero_title": "Tecnologia explicada para você escolher melhor",
+  "hero_description": "Reviews independentes, comparativos e guias práticos de smartphones, tablets e notebooks.",
+  "hero_button_text": "Explorar reviews",
+  "hero_article_slug": "",
+  "latest_title": "Últimos lançamentos e reviews",
+  "latest_description": "Confira as análises mais recentes do Guia Rápido Tech.",
+  "featured_cards": [
+    {
+      "title": "Smartphones em destaque",
+      "description": "Compare modelos e encontre o aparelho certo para você.",
+      "image": "/assets/images/phone-placeholder.svg",
+      "button_text": "Ver smartphones",
+      "article_slug": "",
+      "article_category": "smartphones"
+    },
+    {
+      "title": "Tablets para estudar e trabalhar",
+      "description": "Veja análises, diferenças e opções para cada perfil.",
+      "image": "/assets/images/tablet-placeholder.svg",
+      "button_text": "Ver tablets",
+      "article_slug": "",
+      "article_category": "tablets"
+    },
+    {
+      "title": "Notebooks para cada necessidade",
+      "description": "Compare desempenho, autonomia e custo-benefício.",
+      "image": "/assets/images/laptop-placeholder.svg",
+      "button_text": "Ver notebooks",
+      "article_slug": "",
+      "article_category": "notebooks"
+    }
+  ],
+  "show_latest_reviews": true,
+  "latest_count": 6
+}
