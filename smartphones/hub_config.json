@@ -2,5 +2,18 @@
   "badge": "CELULARES E MOBILIDADE",
   "titulo": "Smartphones",
   "subtitulo": "Análises aprofundadas, fichas técnicas completas, comparativos e os melhores preços em celulares.",
-  "banner_img": ""
+  "banner_img": "",
+  "cardInferiorEsquerdo": {
+    "titulo": "teste",
+    "subtitulo": "ssdd"
+  },
+  "cardInferiorDireito": {
+    "titulo": "teste2",
+    "subtitulo": "sas"
+  },
+  "cardPrincipal": {
+    "titulo": "cxcx",
+    "botao": "cx",
+    "url": "cxc"
+  }
 }
