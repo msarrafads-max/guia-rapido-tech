@@ -1,0 +1,6 @@
+<article class="feature-card">
+  <a href="{{ destination }}" class="feature-card-link">
+    {% if card.image %}<img class="feature-image" src="{{ card.image }}" alt="" loading="lazy">{% endif %}
+    <div class="feature-card-body"><span class="eyebrow">GUIA RÁPIDO TECH</span><h3>{{ card.title }}</h3><p>{{ card.description }}</p><span class="button button-small">{{ card.button_text or "Ver análises" }} ↗</span></div>
+  </a>
+</article>

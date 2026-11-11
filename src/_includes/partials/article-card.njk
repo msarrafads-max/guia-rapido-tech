@@ -1,0 +1,13 @@
+<article class="article-card">
+  <a class="article-card-link" href="{{ article.url }}">
+    <div class="article-card-image">
+      {% if article.data.image %}<img src="{{ article.data.image }}" alt="{{ article.data.image_alt or article.data.title }}" loading="lazy">{% else %}<div class="image-placeholder"><span>{{ article.data.category | default("Review") | title }}</span></div>{% endif %}
+    </div>
+    <div class="article-card-content">
+      <span class="eyebrow">{{ article.data.brand or article.data.category or "Review" }}</span>
+      <h3>{{ article.data.title }}</h3>
+      <p>{{ article.data.summary_analysis or article.data.seo_description or "Confira a análise completa e os principais pontos deste produto." | striptags | truncate(125) }}</p>
+      <span class="text-link">Ver análise <span aria-hidden="true">↗</span></span>
+    </div>
+  </a>
+</article>

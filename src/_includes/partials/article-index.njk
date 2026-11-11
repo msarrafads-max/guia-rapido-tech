@@ -1,0 +1,7 @@
+<script>
+window.GRT_ARTICLES = [
+{% for article in collections.articles %}
+{"slug":{{ article.data.slug | default(article.fileSlug) | jsonSafe | safe }},"category":{{ article.data.category | jsonSafe | safe }},"title":{{ article.data.title | jsonSafe | safe }},"url":{{ article.url | jsonSafe | safe }}},
+{% endfor %}
+];
+</script>
