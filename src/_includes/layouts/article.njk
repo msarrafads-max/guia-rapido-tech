@@ -1,0 +1,129 @@
+---
+layout: layouts/base.njk
+---
+<article class="review-page review-redesign container">
+  <nav class="breadcrumbs" aria-label="Você está aqui"><a href="/">Início</a><span>›</span><a href="/{{ category }}/">{{ category | title }}</a><span>›</span><span>{{ title }}</span></nav>
+
+  <header class="review-heading review-heading-redesign">
+    <span class="eyebrow">{{ badge or "ANÁLISE" }}{% if brand %} · {{ brand }}{% endif %}</span>
+    <h1>{{ title }}</h1>
+    {% if seo_description %}<p class="review-deck">{{ seo_description }}</p>{% endif %}
+    <p class="published-date">Publicado em <time datetime="{{ date | dateISO }}">{{ date | dateBR }}</time>{% if updated %} · Atualizado em <time datetime="{{ updated | dateISO }}">{{ updated | dateBR }}</time>{% endif %}</p>
+  </header>
+
+  <section class="product-overview review-hero-panel">
+    <div class="product-photo product-gallery-wrap">
+      {% if image %}
+        <a class="product-main-image" href="{{ image }}" target="_blank" rel="noopener" aria-label="Ampliar imagem de {{ title }}"><img src="{{ image }}" alt="{{ image_alt or title }}" fetchpriority="high"></a>
+      {% else %}<div class="image-placeholder large"><span>Adicione a imagem principal no CMS</span></div>{% endif %}
+      {% if gallery and gallery.length %}
+        <div class="product-gallery" aria-label="Mais fotos do produto">
+          {% for photo in gallery %}
+            {% if photo.image %}<a class="gallery-thumb" href="{{ photo.image }}" target="_blank" rel="noopener"><img src="{{ photo.image }}" alt="{{ photo.alt or photo.caption or (title + ' — foto ' + loop.index) }}" loading="lazy">{% if photo.caption %}<span>{{ photo.caption }}</span>{% endif %}</a>{% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+      {% if estimated_price %}<p class="estimated-price">Preço estimado: <strong>{{ estimated_price }}</strong></p>{% endif %}
+    </div>
+
+    <div class="offers-panel offers-panel-redesign">
+      <div class="offers-heading"><span class="eyebrow">COMPARE AS OFERTAS</span><h2>Onde comprar</h2><p>Confira preço e disponibilidade nas lojas.</p></div>
+      {% set store_names = ["Amazon", "Mercado Livre", "Shopee"] %}
+      {% set store_keys = ["amazon", "mercadolivre", "shopee"] %}
+      {% set store_classes = ["amazon", "mercadolivre", "shopee"] %}
+      {% for key in store_keys %}
+        {% set offer = offers[key] %}
+        <div class="offer-card offer-card-brand offer-{{ store_classes[loop.index0] }}">
+          <div class="offer-main">
+            <div class="store-brand store-brand-{{ store_classes[loop.index0] }}" aria-label="{{ store_names[loop.index0] }}">
+              {% if key == "amazon" %}<span class="store-symbol">a</span><span class="store-word">amazon</span>
+              {% elif key == "mercadolivre" %}<span class="store-symbol store-symbol-ml">ML</span><span class="store-word">Mercado Livre</span>
+              {% else %}<span class="store-symbol store-symbol-shopee">S</span><span class="store-word">Shopee</span>{% endif %}
+            </div>
+            {% if offer and offer.availability == "available" and offer.price %}<strong class="offer-price">{{ offer.price }}</strong>{% endif %}
+            <p class="offer-detail">{% if not offer or offer.availability == "unknown" %}Disponibilidade não verificada{% elif offer.availability == "unavailable" %}Produto indisponível no momento{% else %}{{ offer.detail or "Consulte preço, frete e condições na loja." }}{% endif %}</p>
+            {% if offer and offer.rating_status == "rated" and offer.rating != "" and offer.rating != null %}
+              <div class="store-rating" aria-label="Avaliação {{ offer.rating }} de 5">
+                <span class="stars" aria-hidden="true"><span class="stars-empty">★★★★★</span><span class="stars-filled" style="width: {{ (offer.rating / 5 * 100) }}%">★★★★★</span></span>
+                <span class="rating-number">{{ offer.rating }}/5</span>
+              </div>
+            {% elif offer and offer.rating_status == "prelaunch" %}<span class="rating-note rating-prelaunch">Pré-venda · ainda sem avaliações</span>
+            {% elif offer and offer.rating_status == "no_reviews" %}<span class="rating-note">Ainda sem avaliações</span>
+            {% elif offer and offer.rating_status == "unavailable" %}<span class="rating-note">Avaliação não disponível</span>{% endif %}
+          </div>
+          <div class="offer-action">
+            {% if offer and offer.availability == "available" and offer.url %}<a class="button button-small store-button store-button-{{ store_classes[loop.index0] }}" href="{{ offer.url }}" target="_blank" rel="sponsored nofollow noopener">Ver oferta <span aria-hidden="true">↗</span></a>
+            {% else %}<span class="availability-pill">{% if offer and offer.availability == "unavailable" %}Indisponível{% else %}Consultar{% endif %}</span>{% endif %}
+          </div>
+        </div>
+      {% endfor %}
+      <p class="affiliate-note">Os preços, avaliações e a disponibilidade podem mudar. Confira as condições diretamente na loja. Alguns links podem gerar comissão para o Guia Rápido Tech.</p>
+    </div>
+  </section>
+
+  {% if summary_analysis %}
+  <section class="summary-analysis summary-analysis-redesign">
+    <span class="eyebrow">RESUMO DA ANÁLISE</span>
+    <h2>O que achamos do {{ model or title }}</h2>
+    <p>{{ summary_analysis }}</p>
+  </section>
+  {% endif %}
+
+  {% if specs %}
+  <section class="spec-section review-section-card">
+    <div class="section-heading"><div><span class="eyebrow">FICHA TÉCNICA</span><h2>Principais características</h2><p>Os detalhes que mais importam na hora de escolher.</p></div></div>
+    <div class="spec-grid">
+      {% for pair in [["Tela / display", specs.screen], ["Processador", specs.processor], ["Memória / armazenamento", specs.memory], ["Bateria / autonomia", specs.battery], ["Câmeras / gráficos", specs.camera_graphics], ["Sistema operacional", specs.os]] %}
+        {% if pair[1] %}<div class="spec-item"><span>{{ pair[0] }}</span><strong>{{ pair[1] }}</strong></div>{% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if comparisons and comparisons.length %}
+  <section class="comparison-section review-section-card">
+    <div class="section-heading"><div><span class="eyebrow">COMPARATIVO</span><h2>{{ model or title }} vs. concorrentes</h2><p>Compare os principais dados lado a lado antes de decidir.</p></div></div>
+    <div class="comparison-cards">
+      <div class="comparison-product-card comparison-current">
+        {% if image %}<img src="{{ image }}" alt="{{ image_alt or title }}" loading="lazy">{% else %}<div class="comparison-no-image">Imagem não informada</div>{% endif %}
+        <span class="comparison-label">Produto analisado</span><strong>{{ model or title }}</strong>
+        {% if estimated_price %}<span class="comparison-price">{{ estimated_price }}</span>{% endif %}
+      </div>
+      {% for competitor in comparisons %}
+      <div class="comparison-product-card">
+        {% if competitor.image %}<img src="{{ competitor.image }}" alt="{{ competitor.image_alt or competitor.name }}" loading="lazy">{% else %}<div class="comparison-no-image">Adicione a foto no CMS</div>{% endif %}
+        <span class="comparison-label">Concorrente {{ loop.index }}</span><strong>{{ competitor.name }}</strong>
+        {% if competitor.price %}<span class="comparison-price">{{ competitor.price }}</span>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    <div class="table-wrap"><table class="comparison-table">
+      <thead><tr><th>Característica</th><th>{{ model or title }}</th><th>{{ comparisons[0].name }}</th><th>{{ comparisons[1].name }}</th></tr></thead>
+      <tbody>
+        {% set rows = [["Destaque", badge or "—", comparisons[0].highlight, comparisons[1].highlight], ["Tela / display", specs.screen, comparisons[0].screen, comparisons[1].screen], ["Processador", specs.processor, comparisons[0].processor, comparisons[1].processor], ["Memória / armazenamento", specs.memory, comparisons[0].memory, comparisons[1].memory], ["Bateria / autonomia", specs.battery, comparisons[0].battery, comparisons[1].battery], ["Câmeras / gráficos", specs.camera_graphics, comparisons[0].camera_graphics, comparisons[1].camera_graphics], ["Preço estimado", estimated_price, comparisons[0].price, comparisons[1].price]] %}
+        {% for row in rows %}<tr>{% for cell in row %}<td>{{ cell or "—" }}</td>{% endfor %}</tr>{% endfor %}
+      </tbody>
+    </table></div>
+    <div class="comparison-actions">
+      {% for competitor in comparisons %}
+        {% if competitor.article_slug %}<a class="button button-secondary" href="/{{ category }}/{{ competitor.article_slug }}">Ver análise de {{ competitor.name }} ↗</a>{% elif competitor.external_url %}<a class="button button-secondary" href="{{ competitor.external_url }}" target="_blank" rel="nofollow noopener">Ver {{ competitor.name }} ↗</a>{% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <section class="article-body prose review-section-card">
+    <div class="section-heading"><div><span class="eyebrow">ANÁLISE COMPLETA</span><h2>O que você precisa saber</h2></div></div>
+    {{ content | safe }}
+  </section>
+
+  {% if youtube_url %}
+  <section class="video-section review-section-card">
+    <div class="section-heading"><div><span class="eyebrow">VÍDEO</span><h2>Veja também</h2><p>Uma análise em vídeo para complementar a leitura.</p></div></div>
+    {% set video_id = youtube_url | youtubeId %}
+    {% if video_id %}<div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/{{ video_id }}" title="Vídeo do Guia Rápido Tech" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    {% else %}<p><a href="{{ youtube_url }}" rel="noopener" target="_blank">Assistir no YouTube ↗</a></p>{% endif %}
+  </section>
+  {% endif %}
+  <footer class="review-footer review-footer-redesign"><p>Este conteúdo tem finalidade informativa. Confira as especificações e condições diretamente com o fabricante ou a loja.</p><a href="/{{ category }}/" class="text-link">← Ver mais {{ category }}</a></footer>
+</article>
