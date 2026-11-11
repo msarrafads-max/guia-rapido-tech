@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="meta-title">Guia Rápido Tech - Análises e Comparativos de Tecnologia</title>
+    <meta id="meta-desc" name="description" content="Encontre as análises mais completas, comparativos detalhados e os melhores preços em smartphones, tablets e notebooks.">
+
+    <!-- Tailwind CSS & FontAwesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darker: '#090d16',
+                        carddark: '#111827'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-darker text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+    <!-- HEADER / MENU -->
+    <header class="border-b border-slate-800 bg-darker/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="/" class="text-xl font-extrabold tracking-tight text-white flex items-center gap-2">
+                <i class="fa-solid fa-bolt text-indigo-500"></i> Guia Rápido <span class="text-indigo-400">Tech</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+                <a href="/" class="text-indigo-400 font-semibold transition">Home</a>
+                <a href="/smartphones/" class="hover:text-white transition">Smartphones</a>
+                <a href="/tablets/" class="hover:text-white transition">Tablets</a>
+                <a href="/notebooks/" class="hover:text-white transition">Notebooks</a>
+            </nav>
+            <a href="/admin/#/" target="_blank" class="text-xs px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg border border-slate-700 transition flex items-center gap-1.5">
+                <i class="fa-solid fa-lock text-[10px]"></i> Admin
+            </a>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="flex-grow">
+        
+        <!-- HERO SLIDER (Controlado via content/home.json no Decap CMS) -->
+        <section id="hero-slider-container" class="relative bg-gradient-to-br from-indigo-950 to-slate-900 border-b border-slate-800 py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+            <div class="max-w-7xl mx-auto relative z-10">
+                <div class="max-w-3xl">
+                    <span id="hero-badge" class="inline-block text-xs font-bold px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-full border border-indigo-500/30 mb-4 tracking-wider uppercase">
+                        LANÇAMENTO 2026
+                    </span>
+                    <h1 id="hero-titulo" class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+                        Descubra os Melhores Dispositivos do Mercado
+                    </h1>
+                    <p id="hero-subtitulo" class="text-slate-300 text-lg sm:text-xl mb-8 leading-relaxed">
+                        Análises imparciais, fichas técnicas completas e os menores preços atualizados em tempo real nas principais lojas.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a id="hero-btn" href="#categorias" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl transition shadow-xl flex items-center gap-2">
+                            Explorar Categorias <i class="fa-solid fa-arrow-down text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Elemento decorativo de fundo -->
+            <div class="absolute right-0 bottom-0 translate-x-1/4 translate-y-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
+        </section>
+
+        <!-- SEÇÃO DE CATEGORIAS (HUBS) -->
+        <section id="categorias" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl font-extrabold text-white tracking-tight mb-3">Escolha uma Categoria</h2>
+                <p class="text-slate-400 text-sm sm:text-base">Explore análises aprofundadas divididas por tipo de dispositivo.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card Smartphones -->
+                <a href="/smartphones/" class="group bg-carddark border border-slate-800 rounded-2xl p-8 hover:border-indigo-500/50 transition duration-300 flex flex-col justify-between shadow-lg hover:shadow-indigo-500/10">
+                    <div>
+                        <div class="w-12 h-12 bg-indigo-500/10 border border-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-400 text-xl mb-6 group-hover:scale-110 transition duration-300">
+                            <i class="fa-solid fa-mobile-screen"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-indigo-400 transition">Smartphones</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Testes de câmera, bateria, desempenho em jogos e comparativos de preços entre lojas.</p>
+                    </div>
+                    <span class="text-xs font-bold text-indigo-400 flex items-center gap-1 group-hover:translate-x-1 transition">
+                        Acessar Categoria <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </span>
+                </a>
+
+                <!-- Card Tablets -->
+                <a href="/tablets/" class="group bg-carddark border border-slate-800 rounded-2xl p-8 hover:border-purple-500/50 transition duration-300 flex flex-col justify-between shadow-lg hover:shadow-purple-500/10">
+                    <div>
+                        <div class="w-12 h-12 bg-purple-500/10 border border-purple-500/20 rounded-xl flex items-center justify-center text-purple-400 text-xl mb-6 group-hover:scale-110 transition duration-300">
+                            <i class="fa-solid fa-tablet-screen-button"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition">Tablets</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Opções para produtividade, estudos, desenho com caneta Stylus e entretenimento multimídia.</p>
+                    </div>
+                    <span class="text-xs font-bold text-purple-400 flex items-center gap-1 group-hover:translate-x-1 transition">
+                        Acessar Categoria <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </span>
+                </a>
+
+                <!-- Card Notebooks -->
+                <a href="/notebooks/" class="group bg-carddark border border-slate-800 rounded-2xl p-8 hover:border-blue-500/50 transition duration-300 flex flex-col justify-between shadow-lg hover:shadow-blue-500/10">
+                    <div>
+                        <div class="w-12 h-12 bg-blue-500/10 border border-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 text-xl mb-6 group-hover:scale-110 transition duration-300">
+                            <i class="fa-solid fa-laptop"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition">Notebooks</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Avaliações de desempenho de processadores, placas de vídeo, telas e autonomia de bateria.</p>
+                    </div>
+                    <span class="text-xs font-bold text-blue-400 flex items-center gap-1 group-hover:translate-x-1 transition">
+                        Acessar Categoria <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800/80 bg-slate-950 py-10 mt-20 text-sm text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <p>&copy; 2026 Guia Rápido Tech. Todos os direitos reservados.</p>
+            <div class="flex items-center gap-6">
+                <a href="/privacidade.html" class="hover:text-slate-300 transition">Política de Privacidade</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT DE CARREGAMENTO DO HOME.JSON -->
+    <script>
+        async function carregarHomeData() {
+            try {
+                const res = await fetch('/content/home.json');
+                if (!res.ok) return;
+                const data = await res.json();
+
+                if(data.seo_title) {
+                    document.getElementById('meta-title').innerText = data.seo_title;
+                }
+                if(data.seo_desc) {
+                    document.getElementById('meta-desc').content = data.seo_desc;
+                }
+
+                // Se houver slider configurado, pega o primeiro item
+                if(data.hero_slider && data.hero_slider.length > 0) {
+                    const hero = data.hero_slider[0];
+                    if(hero.badge) document.getElementById('hero-badge').innerText = hero.badge;
+                    if(hero.titulo) document.getElementById('hero-titulo').innerText = hero.titulo;
+                    if(hero.subtitulo) document.getElementById('hero-subtitulo').innerText = hero.subtitulo;
+                    if(hero.btn_text) document.getElementById('hero-btn').innerHTML = `${hero.btn_text} <i class="fa-solid fa-arrow-down text-xs"></i>`;
+                    if(hero.btn_link) document.getElementById('hero-btn').href = hero.btn_link;
+                }
+            } catch (e) {
+                console.log("Usando dados padrão para a Home.");
+            }
+        }
+
+        carregarHomeData();
+    </script>
+</body>
+</html>
