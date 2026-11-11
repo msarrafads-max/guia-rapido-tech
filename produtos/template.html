@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="meta-title">Análise Completa | Guia Rápido Tech</title>
+    <meta id="meta-desc" name="description" content="">
+    <meta id="meta-keywords" name="keywords" content="">
+
+    <!-- Tailwind CSS & FontAwesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Marked.js para interpretar o Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darker: '#090d16',
+                        carddark: '#111827'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-darker text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+    <!-- HEADER / MENU -->
+    <header class="border-b border-slate-800 bg-darker/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="/" class="text-xl font-extrabold tracking-tight text-white flex items-center gap-2">
+                <i class="fa-solid fa-bolt text-indigo-500"></i> Guia Rápido <span class="text-indigo-400">Tech</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+                <a href="/" class="hover:text-white transition">Home</a>
+                <a href="/smartphones/" class="hover:text-white transition">Smartphones</a>
+                <a href="/tablets/" class="hover:text-white transition">Tablets</a>
+                <a href="/notebooks/" class="hover:text-white transition">Notebooks</a>
+            </nav>
+            <a href="/admin/#/" target="_blank" class="text-xs px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg border border-slate-700 transition flex items-center gap-1.5">
+                <i class="fa-solid fa-lock text-[10px]"></i> Admin
+            </a>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO DA ANÁLISE -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+        
+        <!-- TAG E TÍTULO PRINCIPAL -->
+        <div class="mb-8">
+            <span id="review-tag" class="inline-block text-xs font-bold px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-full border border-indigo-500/20 mb-3 tracking-wider uppercase">
+                ANÁLISE TECH
+            </span>
+            <h1 id="review-title" class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
+                Carregando análise...
+            </h1>
+            <p id="review-date" class="text-xs text-slate-400 flex items-center gap-2">
+                <i class="fa-regular fa-calendar"></i> <span id="date-val">--/--/----</span>
+            </p>
+        </div>
+
+        <!-- SEÇÃO TOPO: IMAGEM GRANDE (ESQUERDA) + OFERTAS LADO A LADO (DIREITA) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-14 items-start">
+            
+            <!-- ESQUERDA: IMAGEM PRINCIPAL DO PRODUTO (GRANDE) -->
+            <div class="lg:col-span-5 bg-carddark border border-slate-800 rounded-2xl p-6 flex items-center justify-center min-h-[350px] shadow-xl">
+                <img id="review-image" src="" alt="Produto" class="max-h-[420px] w-auto object-contain rounded-xl hidden transition-all duration-300">
+                <div id="img-skeleton" class="w-full h-80 bg-slate-800/50 rounded-xl animate-pulse flex items-center justify-center text-slate-600">
+                    <i class="fa-regular fa-image text-5xl"></i>
+                </div>
+            </div>
+
+            <!-- DIREITA: BLOCO DE OFERTAS NAS 3 LOJAS (LADO A LADO) -->
+            <div class="lg:col-span-7 bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 shadow-xl">
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+                    <div>
+                        <h2 class="text-xl font-extrabold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-tags text-emerald-400"></i> Melhores Ofertas Encontradas
+                        </h2>
+                        <p class="text-xs text-slate-400 mt-0.5">Preços atualizados diretamente pelas lojas parceiras.</p>
+                    </div>
+                </div>
+
+                <!-- CARDS DE OFERTAS (AMAZON, MERCADO LIVRE, SHOPEE) -->
+                <div id="ofertas-container" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <!-- Gerado dinamicamente via JS com Fallback de estoque -->
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FICHA TÉCNICA DETALHADA -->
+        <div id="specs-container" class="mb-14 bg-carddark border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl hidden">
+            <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-2.5">
+                <i class="fa-solid fa-sliders text-indigo-400"></i> Especificações Técnicas
+            </h2>
+            <div id="specs-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Preenchido via JavaScript -->
+            </div>
+        </div>
+
+        <!-- COMPARATIVO COM CONCORRENTES (OPCIONAL) -->
+        <div id="comparativo-container" class="mb-14 bg-slate-900/80 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl hidden">
+            <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-2.5">
+                <i class="fa-solid fa-code-compare text-indigo-400"></i> Comparativo de Mercado
+            </h2>
+            <div id="comparativo-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Preenchido via JavaScript -->
+            </div>
+        </div>
+
+        <!-- TEXTO DA ANÁLISE EM MARKDOWN RICO -->
+        <div class="bg-carddark border border-slate-800 rounded-2xl p-6 sm:p-10 shadow-xl">
+            <h2 class="text-2xl font-bold text-white mb-6 pb-4 border-b border-slate-800 flex items-center gap-2.5">
+                <i class="fa-solid fa-newspaper text-indigo-400"></i> Análise Detalhada
+            </h2>
+            <div id="markdown-body" class="prose prose-invert max-w-none text-slate-300 leading-relaxed space-y-4">
+                <div class="animate-pulse space-y-3">
+                    <div class="h-4 bg-slate-800 rounded w-3/4"></div>
+                    <div class="h-4 bg-slate-800 rounded w-full"></div>
+                    <div class="h-4 bg-slate-800 rounded w-5/6"></div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800/80 bg-slate-950 py-8 mt-20 text-sm text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <p>&copy; 2026 Guia Rápido Tech. Todos os direitos reservados.</p>
+            <div class="flex items-center gap-6">
+                <a href="/privacidade.html" class="hover:text-slate-300 transition">Política de Privacidade</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT PROCESSADOR DE MARKDOWN E DADOS DO CMS -->
+    <script>
+        // Função para extrair Frontmatter YAML do Markdown puro
+        function parseFrontmatter(text) {
+            const frontmatterRegex = /^---\s*[\r\n]([\s\S]*?)[\r\n]---\s*[\r\n]([\s\S]*)$/;
+            const match = text.match(frontmatterRegex);
+            if (!match) return { data: {}, body: text };
+            
+            const yamlText = match[1];
+            const body = match[2];
+            const data = {};
+
+            yamlText.split('\n').forEach(line => {
+                const parts = line.split(':');
+                if (parts.length >= 2) {
+                    const key = parts[0].trim();
+                    let val = parts.slice(1).join(':').trim();
+                    // Remove aspas simples/duplas das pontas se houver
+                    val = val.replace(/^["']|["']$/g, '');
+                    data[key] = val;
+                }
+            });
+
+            return { data, body };
+        }
+
+        // Renderiza as 3 lojas com fallback para esgotado/indisponível
+        function renderizarOfertas(ofertas) {
+            const container = document.getElementById('ofertas-container');
+            const lojas = [
+                { id: 'amazon', nome: 'Amazon', cor: 'emerald', icone: 'fa-amazon' },
+                { id: 'mercadolivre', nome: 'Mercado Livre', cor: 'yellow', icone: 'fa-handshake' },
+                { id: 'shopee', nome: 'Shopee', cor: 'orange', icone: 'fa-bag-shopping' }
+            ];
+
+            let html = '';
+
+            lojas.forEach(loja => {
+                const dadosLoja = ofertas ? ofertas[loja.id] : null;
+                const temLink = dadosLoja && dadosLoja.link && dadosLoja.link.trim() !== '';
+                const preco = dadosLoja && dadosLoja.preco ? dadosLoja.preco : 'Preço N/D';
+
+                if (temLink) {
+                    // LOJA DISPONÍVEL
+                    html += `
+                        <div class="bg-slate-900 border border-emerald-500/40 p-4 rounded-xl flex flex-col justify-between hover:border-emerald-500 transition">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="font-bold text-sm text-slate-200">${loja.nome}</span>
+                                    <span class="text-[10px] font-bold px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded-full border border-emerald-500/30">Em estoque</span>
+                                </div>
+                                <p class="text-xl font-extrabold text-white mb-4">${preco}</p>
+                            </div>
+                            <a href="${dadosLoja.link}" target="_blank" rel="noopener noreferrer" class="w-full text-center py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-lg transition shadow-lg flex items-center justify-center gap-1.5">
+                                Ir à Loja <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+                    `;
+                } else {
+                    // LOJA INDISPONÍVEL / ESGOTADO
+                    html += `
+                        <div class="bg-slate-900/40 border border-slate-800 p-4 rounded-xl flex flex-col justify-between opacity-60">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="font-bold text-sm text-slate-400">${loja.nome}</span>
+                                    <span class="text-[10px] font-bold px-2 py-0.5 bg-slate-800 text-slate-400 rounded-full">Esgotado</span>
+                                </div>
+                                <p class="text-sm font-semibold text-slate-500 mb-4">Indisponível no momento</p>
+                            </div>
+                            <button disabled class="w-full text-center py-2.5 bg-slate-800 text-slate-500 text-xs font-bold rounded-lg cursor-not-allowed">
+                                Indisponível
+                            </button>
+                        </div>
+                    `;
+                }
+            });
+
+            container.innerHTML = html;
+        }
+
+        // Carrega o artigo Markdown baseado na URL (ex: ?cat=smartphones&slug=meu-review)
+        async function carregarArtigo() {
+            const params = new URLSearchParams(window.location.search);
+            const cat = params.get('cat') || 'smartphones';
+            const slug = params.get('slug');
+
+            if (!slug) {
+                document.getElementById('review-title').innerText = "Artigo não especificado.";
+                renderizarOfertas(null);
+                return;
+            }
+
+            try {
+                const res = await fetch(`/${cat}/${slug}.md`);
+                if (!res.ok) throw new Error("Artigo não encontrado");
+                
+                const rawMarkdown = await res.text();
+                const { data, body } = parseFrontmatter(rawMarkdown);
+
+                // Meta SEO
+                if(data.title) {
+                    document.getElementById('review-title').innerText = data.title;
+                    document.getElementById('meta-title').innerText = `${data.title} | Guia Rápido Tech`;
+                }
+                if(data.tag) document.getElementById('review-tag').innerText = data.tag;
+                if(data.date) document.getElementById('date-val').innerText = new Date(data.date).toLocaleDateString('pt-BR');
+
+                // Imagem Principal
+                if(data.image) {
+                    const imgEl = document.getElementById('review-image');
+                    imgEl.src = data.image;
+                    imgEl.classList.remove('hidden');
+                    document.getElementById('img-skeleton').classList.add('hidden');
+                }
+
+                // Renderiza as Ofertas
+                renderizarOfertas(data.ofertas);
+
+                // Corpo da Análise em Markdown
+                document.getElementById('markdown-body').innerHTML = marked.parse(body);
+
+            } catch (err) {
+                document.getElementById('review-title').innerText = "Erro ao carregar a análise.";
+                document.getElementById('markdown-body').innerHTML = `<p class="text-rose-400">Não foi possível carregar os dados deste produto. Verifique se o artigo existe no diretório correto.</p>`;
+                renderizarOfertas(null);
+            }
+        }
+
+        carregarArtigo();
+    </script>
+</body>
+</html>
