@@ -1,0 +1,302 @@
+backend:
+  name: github
+  repo: msarrafads-max/guia-rapido-tech
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  # ==========================================
+  # 1. PÁGINAS GLOBAIS E HUBS (CONFIGURAÇÕES)
+  # ==========================================
+  - name: "paginas"
+    label: "⚙️ Configuração de Páginas & Banners"
+    delete: false
+    editor:
+      preview: false
+    files:
+      # PÁGINA INICIAL (HOME)
+      - name: "home"
+        label: "Página Inicial (Home)"
+        file: "content/home.json"
+        fields:
+          - { label: "Título SEO da Home", name: "seo_title", widget: "string", default: "Guia Rápido Tech - Análises e Comparativos" }
+          - { label: "Meta Description SEO", name: "seo_desc", widget: "text" }
+          - label: "Slider Hero em Destaque (Topo)"
+            name: "hero_slider"
+            widget: "list"
+            summary: "{{fields.titulo}}"
+            fields:
+              - { label: "Badge Superior (ex: LANÇAMENTO, TOP DE LINHA)", name: "badge", widget: "string" }
+              - { label: "Título Principal do Card", name: "titulo", widget: "string" }
+              - { label: "Subtítulo / Descrição Curta", name: "subtitulo", widget: "text" }
+              - { label: "Imagem de Fundo (Banner Grande)", name: "imagem_bg", widget: "image" }
+              - { label: "Texto do Botão", name: "btn_text", widget: "string", default: "Ler Análise Completa" }
+              - { label: "Link de Destino", name: "btn_link", widget: "string", hint: "Ex: /produtos/template.html?cat=smartphones&slug=meu-review" }
+              - label: "Cor do Gradiente/Destaque"
+                name: "cor_tema"
+                widget: "select"
+                options:
+                  - { label: "Azul Indigo (Padrão)", value: "from-indigo-950 to-slate-900" }
+                  - { label: "Roxo Tech", value: "from-purple-950 to-slate-900" }
+                  - { label: "Verde Oferta", value: "from-emerald-950 to-slate-900" }
+                  - { label: "Vermelho Destaque", value: "from-rose-950 to-slate-900" }
+
+      # HUB SMARTPHONES
+      - name: "hub_smartphones"
+        label: "Hub de Smartphones"
+        file: "smartphones/hub_config.json"
+        fields:
+          - { label: "Título do Topo", name: "titulo", widget: "string", default: "Smartphones" }
+          - { label: "Subtítulo", name: "subtitulo", widget: "string" }
+          - { label: "Texto do Badge", name: "badge", widget: "string", default: "CELULARES E MOBILIDADE" }
+          - { label: "Imagem de Banner Destaque", name: "banner_img", widget: "image", required: false }
+
+      # HUB TABLETS
+      - name: "hub_tablets"
+        label: "Hub de Tablets"
+        file: "tablets/hub_config.json"
+        fields:
+          - { label: "Título do Topo", name: "titulo", widget: "string", default: "Tablets" }
+          - { label: "Subtítulo", name: "subtitulo", widget: "string" }
+          - { label: "Texto do Badge", name: "badge", widget: "string", default: "ESTUDOS & CRIATIVIDADE" }
+          - { label: "Imagem de Banner Destaque", name: "banner_img", widget: "image", required: false }
+
+      # HUB NOTEBOOKS
+      - name: "hub_notebooks"
+        label: "Hub de Notebooks"
+        file: "notebooks/hub_config.json"
+        fields:
+          - { label: "Título do Topo", name: "titulo", widget: "string", default: "Notebooks" }
+          - { label: "Subtítulo", name: "subtitulo", widget: "string" }
+          - { label: "Texto do Badge", name: "badge", widget: "string", default: "PRODUTIVIDADE & DESEMPENHO" }
+          - { label: "Imagem de Banner Destaque", name: "banner_img", widget: "image", required: false }
+
+  # ==========================================
+  # 2. ARTIGOS: SMARTPHONES
+  # ==========================================
+  - name: "smartphones"
+    label: "📱 Artigos: Smartphones"
+    folder: "smartphones"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título da Análise", name: "title", widget: "string" }
+      - { label: "Data de Publicação", name: "date", widget: "datetime" }
+      - { label: "Imagem Principal do Produto (Alta Resolução)", name: "image", widget: "image" }
+      - { label: "Selo / Status (ex: CUSTO-BENEFÍCIO, TOP DE LINHA, NOVIDADE)", name: "tag", widget: "string", default: "ANÁLISE" }
+      
+      # OFERTAS E PREÇOS (LADO A LADO COM LOGICA DE ESTOQUE)
+      - label: "🛒 Blocos de Ofertas por Loja"
+        name: "ofertas"
+        widget: "object"
+        fields:
+          - label: "Amazon"
+            name: "amazon"
+            widget: "object"
+            fields:
+              - { label: "Preço (ex: R$ 1.899,00)", name: "preco", widget: "string", required: false }
+              - { label: "Link de Afiliado Amazon", name: "link", widget: "string", required: false }
+          - label: "Mercado Livre"
+            name: "mercadolivre"
+            widget: "object"
+            fields:
+              - { label: "Preço (ex: R$ 1.849,00)", name: "preco", widget: "string", required: false }
+              - { label: "Link de Afiliado Mercado Livre", name: "link", widget: "string", required: false }
+          - label: "Shopee"
+            name: "shopee"
+            widget: "object"
+            fields:
+              - { label: "Preço (ex: R$ 1.799,00)", name: "preco", widget: "string", required: false }
+              - { label: "Link de Afiliado Shopee", name: "link", widget: "string", required: false }
+
+      # ESPECIFICAÇÕES TÉCNICAS ESPECÍFICAS DE SMARTPHONES
+      - label: "⚙️ Ficha Técnica (Smartphone)"
+        name: "specs"
+        widget: "object"
+        fields:
+          - { label: "Tela / Painel", name: "tela", widget: "string", hint: "Ex: OLED 6.7' 120Hz Full HD+" }
+          - { label: "Processador / Chipset", name: "processador", widget: "string", hint: "Ex: Snapdragon 8 Gen 3" }
+          - { label: "Memória RAM", name: "ram", widget: "string", hint: "Ex: 8 GB ou 12 GB" }
+          - { label: "Armazenamento Interno", name: "armazenamento", widget: "string", hint: "Ex: 256 GB UFS 4.0" }
+          - { label: "Câmeras Traseiras", name: "cameras_traseiras", widget: "string", hint: "Ex: 50 MP (Principal) + 12 MP (Ultra-wide)" }
+          - { label: "Câmera Frontal", name: "camera_frontal", widget: "string", hint: "Ex: 32 MP" }
+          - { label: "Bateria & Carregamento", name: "bateria", widget: "string", hint: "Ex: 5000 mAh (Carregamento 68W)" }
+          - { label: "Sistema Operacional", name: "so", widget: "string", default: "Android 14" }
+
+      # COMPARATIVO DINÂMICO (ATÉ 2 CONCORRENTES)
+      - label: "⚔️ Comparativo com Concorrentes"
+        name: "comparativo"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Nome do Concorrente 1", name: "conc1_nome", widget: "string", required: false }
+          - { label: "Destaque/Vantagem Concorrente 1", name: "conc1_destaque", widget: "string", required: false }
+          - { label: "Preço Médio Concorrente 1", name: "conc1_preco", widget: "string", required: false }
+          - { label: "Nome do Concorrente 2", name: "conc2_nome", widget: "string", required: false }
+          - { label: "Destaque/Vantagem Concorrente 2", name: "conc2_destaque", widget: "string", required: false }
+          - { label: "Preço Médio Concorrente 2", name: "conc2_preco", widget: "string", required: false }
+
+      # ESTRATÉGIAS DE SEO
+      - label: "🔍 Configurações de SEO & Indexação"
+        name: "seo"
+        widget: "object"
+        fields:
+          - { label: "Meta Title", name: "title", widget: "string", hint: "Título para o Google (máx 60 caracteres)" }
+          - { label: "Meta Description", name: "description", widget: "text", hint: "Resumo persuasivo para os resultados de busca" }
+          - { label: "Palavras-Chave (Separadas por vírgula)", name: "keywords", widget: "string" }
+          - { label: "Imagem para Redes Sociais (OpenGraph)", name: "og_image", widget: "image", required: false }
+
+      - { label: "Texto Completo da Análise (Markdown)", name: "body", widget: "markdown" }
+
+  # ==========================================
+  # 3. ARTIGOS: TABLETS
+  # ==========================================
+  - name: "tablets"
+    label: "📱 Artigos: Tablets"
+    folder: "tablets"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título da Análise", name: "title", widget: "string" }
+      - { label: "Data de Publicação", name: "date", widget: "datetime" }
+      - { label: "Imagem Principal do Produto", name: "image", widget: "image" }
+      - { label: "Selo / Status", name: "tag", widget: "string", default: "ANÁLISE TABLET" }
+
+      # OFERTAS
+      - label: "🛒 Blocos de Ofertas por Loja"
+        name: "ofertas"
+        widget: "object"
+        fields:
+          - label: "Amazon"
+            name: "amazon"
+            widget: "object"
+            fields:
+              - { label: "Preço", name: "preco", widget: "string", required: false }
+              - { label: "Link de Afiliado", name: "link", widget: "string", required: false }
+          - label: "Mercado Livre"
+            name: "mercadolivre"
+            widget: "object"
+            fields:
+              - { label: "Preço", name: "preco", widget: "string", required: false }
+              - { label: "Link de Afiliado", name: "link", widget: "string", required: false }
+          - label: "Shopee"
+            name: "shopee"
+            widget: "object"
+            fields:
+              - { label: "Preço", name: "preco", widget: "string", required: false }
+              - { label: "Link de Afiliado", name: "link", widget: "string", required: false }
+
+      # ESPECIFICAÇÕES TÉCNICAS DE TABLETS
+      - label: "⚙️ Ficha Técnica (Tablet)"
+        name: "specs"
+        widget: "object"
+        fields:
+          - { label: "Tela & Taxa de Atualização", name: "tela", widget: "string", hint: "Ex: IPS LCD 11' 90Hz 2K" }
+          - { label: "Processador", name: "processador", widget: "string", hint: "Ex: MediaTek Helio G99" }
+          - { label: "RAM & Armazenamento", name: "memoria", widget: "string", hint: "Ex: 6 GB RAM / 128 GB (Expansível)" }
+          - { label: "Suporte a Caneta Stylus", name: "caneta_suporte", widget: "string", hint: "Ex: Compatível com S Pen (Inclusa na caixa)" }
+          - { label: "Capacidade da Bateria", name: "bateria", widget: "string", hint: "Ex: 8000 mAh com Carga Rápida" }
+          - { label: "Modo Produtividade / Desktop", name: "modo_desktop", widget: "string", hint: "Ex: Suporta Samsung DeX / Modo PC" }
+
+      # COMPARATIVO
+      - label: "⚔️ Comparativo com Concorrentes"
+        name: "comparativo"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Nome Concorrente 1", name: "conc1_nome", widget: "string", required: false }
+          - { label: "Destaque Concorrente 1", name: "conc1_destaque", widget: "string", required: false }
+          - { label: "Preço Concorrente 1", name: "conc1_preco", widget: "string", required: false }
+          - { label: "Nome Concorrente 2", name: "conc2_nome", widget: "string", required: false }
+          - { label: "Destaque Concorrente 2", name: "conc2_destaque", widget: "string", required: false }
+          - { label: "Preço Concorrente 2", name: "conc2_preco", widget: "string", required: false }
+
+      # SEO
+      - label: "🔍 Configurações de SEO"
+        name: "seo"
+        widget: "object"
+        fields:
+          - { label: "Meta Title", name: "title", widget: "string" }
+          - { label: "Meta Description", name: "description", widget: "text" }
+          - { label: "Palavras-Chave", name: "keywords", widget: "string" }
+          - { label: "Imagem OpenGraph", name: "og_image", widget: "image", required: false }
+
+      - { label: "Texto Completo da Análise (Markdown)", name: "body", widget: "markdown" }
+
+  # ==========================================
+  # 4. ARTIGOS: NOTEBOOKS
+  # ==========================================
+  - name: "notebooks"
+    label: "💻 Artigos: Notebooks"
+    folder: "notebooks"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título da Análise", name: "title", widget: "string" }
+      - { label: "Data de Publicação", name: "date", widget: "datetime" }
+      - { label: "Imagem Principal do Produto", name: "image", widget: "image" }
+      - { label: "Selo / Status", name: "tag", widget: "string", default: "ANÁLISE NOTEBOOK" }
+
+      # OFERTAS
+      - label: "🛒 Blocos de Ofertas por Loja"
+        name: "ofertas"
+        widget: "object"
+        fields:
+          - label: "Amazon"
+            name: "amazon"
+            widget: "object"
+            fields:
+              - { label: "Preço", name: "preco", widget: "string", required: false }
+              - { label: "Link de Afiliado", name: "link", widget: "string", required: false }
+          - label: "Mercado Livre"
+            name: "mercadolivre"
+            widget: "object"
+            fields:
+              - { label: "Preço", name: "preco", widget: "string", required: false }
+              - { label: "Link de Afiliado", name: "link", widget: "string", required: false }
+          - label: "Shopee"
+            name: "shopee"
+            widget: "object"
+            fields:
+              - { label: "Preço", name: "preco", widget: "string", required: false }
+              - { label: "Link de Afiliado", name: "link", widget: "string", required: false }
+
+      # ESPECIFICAÇÕES TÉCNICAS EXCLUSIVAS DE NOTEBOOKS
+      - label: "⚙️ Ficha Técnica (Notebook)"
+        name: "specs"
+        widget: "object"
+        fields:
+          - { label: "Processador (CPU)", name: "processador", widget: "string", hint: "Ex: Intel Core i5-13420H ou AMD Ryzen 7 5700U" }
+          - { label: "Placa de Vídeo (GPU)", name: "gpu", widget: "string", hint: "Ex: NVIDIA RTX 3050 4GB ou Intel Iris Xe Integrada" }
+          - { label: "Memória RAM & Expansão", name: "ram", widget: "string", hint: "Ex: 16 GB DDR4 (Expansível até 32 GB)" }
+          - { label: "Armazenamento SSD", name: "ssd", widget: "string", hint: "Ex: 512 GB SSD NVMe M.2" }
+          - { label: "Tela & Resolução", name: "tela", widget: "string", hint: "Ex: 15.6' Full HD IPS 144Hz Anti-reflexo" }
+          - { label: "Bateria & Fonte", name: "bateria", widget: "string", hint: "Ex: 57Wh (Autonomia estimada de 6 horas)" }
+          - { label: "Peso & Conectividade", name: "peso_portas", widget: "string", hint: "Ex: 1.8 kg | Wi-Fi 6, USB-C, HDMI 2.1" }
+
+      # COMPARATIVO
+      - label: "⚔️ Comparativo com Concorrentes"
+        name: "comparativo"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Nome Concorrente 1", name: "conc1_nome", widget: "string", required: false }
+          - { label: "Destaque Concorrente 1", name: "conc1_destaque", widget: "string", required: false }
+          - { label: "Preço Concorrente 1", name: "conc1_preco", widget: "string", required: false }
+          - { label: "Nome Concorrente 2", name: "conc2_nome", widget: "string", required: false }
+          - { label: "Destaque Concorrente 2", name: "conc2_destaque", widget: "string", required: false }
+          - { label: "Preço Concorrente 2", name: "conc2_preco", widget: "string", required: false }
+
+      # SEO
+      - label: "🔍 Configurações de SEO"
+        name: "seo"
+        widget: "object"
+        fields:
+          - { label: "Meta Title", name: "title", widget: "string" }
+          - { label: "Meta Description", name: "description", widget: "text" }
+          - { label: "Palavras-Chave", name: "keywords", widget: "string" }
+          - { label: "Imagem OpenGraph", name: "og_image", widget: "image", required: false }
+
+      - { label: "Texto Completo da Análise (Markdown)", name: "body", widget: "markdown" }
