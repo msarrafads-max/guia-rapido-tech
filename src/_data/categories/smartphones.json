@@ -4,8 +4,9 @@
   "seo_title": "Reviews de smartphones | Guia Rápido Tech",
   "seo_description": "Compare smartphones por marca, desempenho, bateria e custo-benefício.",
   "brands": [
-    "Motorola",
     "Samsung",
+    "Apple",
+    "Motorola",
     "Xiaomi"
   ],
   "main_card": {
