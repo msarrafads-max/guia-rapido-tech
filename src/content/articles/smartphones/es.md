@@ -8,25 +8,30 @@ model: ds
 seo_title: ds
 seo_description: sda
 keywords: dsa
+image: /assets/images/uploads/184071-1200-auto.png
 image_alt: dsa
 badge: ANÁLISE
 estimated_price: dsa
 specs:
   screen: dsa
   processor: das
-summary_analysis: dsads
 offers:
   amazon:
     availability: unavailable
+    rating_status: prelaunch
   mercadolivre:
     availability: unknown
     price: das
     detail: dsa
+    rating_status: rated
+    rating: 4.8
   shopee:
     availability: unknown
+    rating_status: prelaunch
 comparisons:
   - name: da
   - name: da
 youtube_url: dadsad
+summary_analysis: dsads
 ---
 da
