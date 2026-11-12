@@ -1,0 +1,230 @@
+backend:
+  name: github
+  repo: msarrafads-max/guia-rapido-tech
+  branch: main
+  base_url: https://decap-oauth.msarraf-ads.workers.dev
+  auth_endpoint: /auth
+
+site_url: https://guiarapidotech.com.br
+display_url: https://guiarapidotech.com.br
+logo_url: /assets/images/logo.svg
+
+media_folder: "src/assets/images/uploads"
+public_folder: "/assets/images/uploads"
+publish_mode: editorial_workflow
+collections:
+  - name: "configuracao"
+    label: "Configurações do site"
+    files:
+      - name: "site"
+        label: "Identidade visual e configurações globais"
+        file: "src/_data/site.json"
+        format: "json"
+        fields:
+          - { label: "Nome do site", name: "site_name", widget: "string", default: "Guia Rápido Tech" }
+          - { label: "Descrição padrão", name: "description", widget: "text" }
+          - { label: "Logotipo principal", name: "logo", widget: "image", required: false }
+          - { label: "Cor principal", name: "primary_color", widget: "color", default: "#2563eb" }
+          - { label: "Cor de destaque", name: "accent_color", widget: "color", default: "#12b981" }
+          - { label: "Cor de fundo claro", name: "light_background", widget: "color", default: "#f5f7fb" }
+          - { label: "Cor de texto claro", name: "light_text", widget: "color", default: "#172033" }
+          - { label: "Cor de fundo escuro", name: "dark_background", widget: "color", default: "#0b1020" }
+          - { label: "Cor de texto escuro", name: "dark_text", widget: "color", default: "#edf2ff" }
+          - { label: "Título SEO padrão", name: "seo_title", widget: "string" }
+          - { label: "Descrição SEO padrão", name: "seo_description", widget: "text" }
+          - { label: "Texto do rodapé", name: "footer_text", widget: "string" }
+      - name: "home"
+        label: "Página inicial"
+        file: "src/_data/home.json"
+        format: "json"
+        fields:
+          - { label: "Título principal", name: "hero_title", widget: "string" }
+          - { label: "Subtítulo principal", name: "hero_description", widget: "text" }
+          - { label: "Texto do botão", name: "hero_button_text", widget: "string" }
+          - { label: "Slug do artigo do botão", name: "hero_article_slug", widget: "string", required: false }
+          - { label: "Título da seção de lançamentos", name: "latest_title", widget: "string" }
+          - { label: "Descrição da seção", name: "latest_description", widget: "string", required: false }
+          - label: "Cards em destaque"
+            name: "featured_cards"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Descrição", name: "description", widget: "text", required: false }
+              - { label: "Imagem", name: "image", widget: "image", required: false }
+              - { label: "Texto do botão", name: "button_text", widget: "string", default: "Ver análise" }
+              - { label: "Categoria do destino", name: "article_category", widget: "select", options: [{label: "Smartphones", value: "smartphones"}, {label: "Tablets", value: "tablets"}, {label: "Notebooks", value: "notebooks"}], default: "smartphones" }
+              - { label: "Slug do artigo de destino", name: "article_slug", widget: "string", required: false }
+          - { label: "Exibir últimos reviews", name: "show_latest_reviews", widget: "boolean", default: true }
+          - { label: "Quantidade de últimos reviews", name: "latest_count", widget: "number", default: 6, value_type: "int", min: 1, max: 12 }
+      - name: "smartphones"
+        label: "Vitrine e marcas — Smartphones"
+        file: "src/_data/categories/smartphones.json"
+        format: "json"
+        fields: &category_fields
+          - { label: "Título da página", name: "title", widget: "string" }
+          - { label: "Subtítulo", name: "description", widget: "text" }
+          - { label: "Título SEO", name: "seo_title", widget: "string", required: false }
+          - { label: "Descrição SEO", name: "seo_description", widget: "text", required: false }
+          - label: "Marcas principais (até 4)"
+            name: "brands"
+            widget: "list"
+            max: 4
+            field: { label: "Marca", name: "brand", widget: "string" }
+          - label: "Card principal"
+            name: "main_card"
+            widget: "object"
+            fields:
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Descrição", name: "description", widget: "text", required: false }
+              - { label: "Selo", name: "badge", widget: "string", required: false }
+              - { label: "Slugs dos artigos dos slides (um por item)", name: "article_slugs", widget: "list", field: { label: "Slug do artigo", name: "slug", widget: "string" } }
+          - label: "Card inferior esquerdo"
+            name: "left_card"
+            widget: "object"
+            fields:
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Descrição", name: "description", widget: "text", required: false }
+              - { label: "Selo", name: "badge", widget: "string", required: false }
+              - { label: "Slugs dos artigos dos slides", name: "article_slugs", widget: "list", field: { label: "Slug do artigo", name: "slug", widget: "string" } }
+          - label: "Card inferior direito"
+            name: "right_card"
+            widget: "object"
+            fields:
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Descrição", name: "description", widget: "text", required: false }
+              - { label: "Selo", name: "badge", widget: "string", required: false }
+              - { label: "Slugs dos artigos dos slides", name: "article_slugs", widget: "list", field: { label: "Slug do artigo", name: "slug", widget: "string" } }
+      - name: "tablets"
+        label: "Vitrine e marcas — Tablets"
+        file: "src/_data/categories/tablets.json"
+        format: "json"
+        fields: *category_fields
+      - name: "notebooks"
+        label: "Vitrine e marcas — Notebooks"
+        file: "src/_data/categories/notebooks.json"
+        format: "json"
+        fields: *category_fields
+  - name: "smartphones"
+    label: "Reviews de smartphones"
+    folder: "src/content/articles/smartphones"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    summary: "{{title}} — {{brand}} {{model}}"
+    fields: &article_fields
+      - { label: "Título da página (H1)", name: "title", widget: "string" }
+      - { label: "Slug da URL (sem espaços)", name: "slug", widget: "string" }
+      - { label: "Status", name: "status", widget: "select", options: ["published", "draft"], default: "published" }
+      - { label: "Data e hora da publicação", name: "date", widget: "datetime", required: false, date_format: "DD/MM/YYYY", time_format: "HH:mm", format: "YYYY-MM-DDTHH:mm:ssZ" }
+      - { label: "Marca", name: "brand", widget: "string" }
+      - { label: "Modelo", name: "model", widget: "string" }
+      - { label: "Título SEO", name: "seo_title", widget: "string" }
+      - { label: "Descrição SEO", name: "seo_description", widget: "text" }
+      - { label: "Palavras-chave", name: "keywords", widget: "string", required: false }
+      - { label: "Imagem do produto", name: "image", widget: "image", required: false }
+      - { label: "Texto alternativo da imagem", name: "image_alt", widget: "string", required: false }
+      - { label: "Imagem do produto na tabela comparativa (opcional)", name: "comparison_image", widget: "image", required: false, hint: "Se deixar vazio, a tabela usa a imagem principal do produto." }
+      - { label: "Texto alternativo da imagem da tabela", name: "comparison_image_alt", widget: "string", required: false }
+      - label: "Galeria de fotos do produto"
+        name: "gallery"
+        widget: "list"
+        required: false
+        summary: "{{fields.caption}}"
+        fields:
+          - { label: "Foto", name: "image", widget: "image" }
+          - { label: "Texto alternativo", name: "alt", widget: "string", required: false }
+          - { label: "Legenda (opcional)", name: "caption", widget: "string", required: false }
+      - { label: "Selo do produto", name: "badge", widget: "string", default: "ANÁLISE" }
+      - { label: "Preço estimado", name: "estimated_price", widget: "string", required: false }
+      - label: "Destaques técnicos"
+        name: "specs"
+        widget: "object"
+        fields:
+          - { label: "Tela / display", name: "screen", widget: "string", required: false }
+          - { label: "Processador", name: "processor", widget: "string", required: false }
+          - { label: "Memória / armazenamento", name: "memory", widget: "string", required: false }
+          - { label: "Bateria / autonomia", name: "battery", widget: "string", required: false }
+          - { label: "Câmeras / gráficos", name: "camera_graphics", widget: "string", required: false }
+          - { label: "Sistema operacional", name: "os", widget: "string", required: false }
+      - { label: "Nossa análise breve (seção ‘O que achamos’)", name: "analysis_opinion", widget: "text", required: false }
+      - label: "Pontos positivos"
+        name: "pros"
+        widget: "list"
+        required: false
+        field: { label: "Ponto positivo", name: "item", widget: "string" }
+      - label: "Pontos negativos"
+        name: "cons"
+        widget: "list"
+        required: false
+        field: { label: "Ponto negativo", name: "item", widget: "string" }
+      - label: "Ofertas das lojas"
+        name: "offers"
+        widget: "object"
+        fields:
+          - label: "Amazon"
+            name: "amazon"
+            widget: "object"
+            fields: &offer_fields
+              - { label: "Ícone/logo da loja (opcional)", name: "store_icon", widget: "image", required: false }
+              - { label: "Disponibilidade", name: "availability", widget: "select", options: [{label: "Disponível", value: "available"}, {label: "Produto indisponível", value: "unavailable"}, {label: "Não verificado", value: "unknown"}], default: "unknown" }
+              - { label: "Preço", name: "price", widget: "string", required: false }
+              - { label: "Texto auxiliar", name: "detail", widget: "string", required: false }
+              - { label: "Link de afiliado", name: "url", widget: "string", required: false }
+              - label: "Situação da avaliação"
+                name: "rating_status"
+                widget: "select"
+                options:
+                  - { label: "Informar nota em estrelas", value: "rated" }
+                  - { label: "Pré-venda / ainda sem avaliações", value: "prelaunch" }
+                  - { label: "Ainda sem avaliações", value: "no_reviews" }
+                  - { label: "Avaliação não disponível", value: "unavailable" }
+                default: "unavailable"
+              - { label: "Nota da loja (0 a 5; aceita meios pontos)", name: "rating", widget: "number", value_type: "float", min: 0, max: 5, step: 0.5, required: false }
+          - label: "Mercado Livre"
+            name: "mercadolivre"
+            widget: "object"
+            fields: *offer_fields
+          - label: "Shopee"
+            name: "shopee"
+            widget: "object"
+            fields: *offer_fields
+      - label: "Comparação com dois concorrentes"
+        name: "comparisons"
+        widget: "list"
+        min: 2
+        max: 2
+        fields:
+          - { label: "Nome do concorrente", name: "name", widget: "string" }
+          - { label: "Foto do concorrente", name: "image", widget: "image", required: false }
+          - { label: "Texto alternativo da foto", name: "image_alt", widget: "string", required: false }
+          - { label: "Slug do review concorrente", name: "article_slug", widget: "string", required: false }
+          - { label: "Link externo alternativo", name: "external_url", widget: "string", required: false }
+          - { label: "Destaque", name: "highlight", widget: "string", required: false }
+          - { label: "Tela / display", name: "screen", widget: "string", required: false }
+          - { label: "Processador", name: "processor", widget: "string", required: false }
+          - { label: "Memória / armazenamento", name: "memory", widget: "string", required: false }
+          - { label: "Bateria / autonomia", name: "battery", widget: "string", required: false }
+          - { label: "Câmeras / gráficos", name: "camera_graphics", widget: "string", required: false }
+          - { label: "Preço estimado", name: "price", widget: "string", required: false }
+      - { label: "Vídeo do YouTube (opcional)", name: "youtube_url", widget: "string", required: false }
+      - { label: "Análise completa", name: "body", widget: "markdown" }
+  - name: "tablets"
+    label: "Reviews de tablets"
+    folder: "src/content/articles/tablets"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    summary: "{{title}} — {{brand}} {{model}}"
+    fields: *article_fields
+  - name: "notebooks"
+    label: "Reviews de notebooks"
+    folder: "src/content/articles/notebooks"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    summary: "{{title}} — {{brand}} {{model}}"
+    fields: *article_fields
