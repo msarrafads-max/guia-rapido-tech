@@ -15,7 +15,7 @@ keywords: motorola signature 27, motorola signature 27 512gb, motorola signature
 image: https://brmotorolanew.vtexassets.com/assets/vtex.file-manager-graphql/images/6589c053-4c07-4edc-bbc1-ecfa8faa1cef___b17a5466ce7c08aa3d7bd26f57eebee1.png
 image_alt: Smartphone Motorola Signature 27 na cor Verde Floresta com acabamento
   premium e módulo triplo de câmeras.
-comparison_image: /assets/images/uploads/logotipo.png
+comparison_image: https://brmotorolanew.vtexassets.com/arquivos/ids/184058-1200-auto?v=639288929735830000&width=1200&height=auto&aspect=true
 gallery: []
 badge: ANÁLISE
 estimated_price: Consulte as ofertas
@@ -71,7 +71,7 @@ comparisons:
     processor: Snapdragon 8 Gen 5 for Galaxy
     article_slug: ""
     highlight: Caneta S-Pen integrada e ecossistema de produtividade
-    image: https://images.samsung.com/is/image/samsung/p6pim/au/s2602/gallery/au-galaxy-s26-ultra-s948-578289-sm-s948bzsfats-550815549?$624_624_PNG$
+    image: https://http2.mlstatic.com/D_NQ_NP_2X_858653-MLA109137546558_042026-F.webp
     external_url: ""
   - memory: 8 GB RAM | 512 GB
     camera_graphics: Tripla 48 MP + 48 MP + 48 MP
