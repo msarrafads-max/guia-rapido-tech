@@ -12,9 +12,10 @@ seo_description: Análise do Motorola Signature 27 de 512 GB. Veja o desempenho
 keywords: motorola signature 27, motorola signature 27 512gb, motorola signature
   27 review, motorola signature 27 vale a pena, motorola signature 27 ficha
   tecnica
-image: https://m.media-amazon.com/images/I/61ClwU7fjML._AC_UF1000,1000_QL80_.jpg
+image: https://brmotorolanew.vtexassets.com/assets/vtex.file-manager-graphql/images/6589c053-4c07-4edc-bbc1-ecfa8faa1cef___b17a5466ce7c08aa3d7bd26f57eebee1.png
 image_alt: Smartphone Motorola Signature 27 na cor Verde Floresta com acabamento
   premium e módulo triplo de câmeras.
+comparison_image: https://brmotorolanew.vtexassets.com/arquivos/ids/184072-1200-auto?v=639288931180630000&width=1200&height=auto&aspect=true
 gallery: []
 badge: ANÁLISE
 estimated_price: Consulte as ofertas
@@ -29,6 +30,15 @@ specs:
     Teleobjetiva Periscópica 200 MP (Zoom Óptico 3x / Digital 100x) | Frontal 50
     MP com Flash
   os: Android 17 com Hello UX
+pros:
+  - Enorme espaço interno de 512 GB (com opção de 256 GB no mercado).
+  - Bateria gigante de 7.000 mAh sem perder a espessura fina (7,99 mm).
+  - Teleobjetiva de 200 MP com zoom digital de até 100x.
+  - Resistência IP68 e IP69 contra água e poeira.
+  - Desempenho no topo da categoria com o Snapdragon 8 Elite Extreme.
+cons:
+  - Investimento elevado na versão de 256 GB.
+  - Aparelho levemente encorpado na mão (227 g).
 offers:
   amazon:
     availability: available
@@ -61,7 +71,7 @@ comparisons:
     processor: Snapdragon 8 Gen 5 for Galaxy
     article_slug: ""
     highlight: Caneta S-Pen integrada e ecossistema de produtividade
-    image: https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/61xxMilaAvL._AC_SL1500_.jpg
+    image: https://images.samsung.com/is/image/samsung/p6pim/au/s2602/gallery/au-galaxy-s26-ultra-s948-578289-sm-s948bzsfats-550815549?$624_624_PNG$
     external_url: ""
   - memory: 8 GB RAM | 512 GB
     camera_graphics: Tripla 48 MP + 48 MP + 48 MP
@@ -72,7 +82,7 @@ comparisons:
     processor: Apple A19 Pro
     article_slug: ""
     highlight: Gravação de vídeo profissional 8K e ecossistema iOS
-    image: https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/51k0qRQFcuL._AC_SL1000_.jpg
+    image: https://www.pngall.com/wp-content/uploads/20/iPhone-17-Pro-Max-Artwork-PNG.png
     external_url: ""
 youtube_url: ""
 summary_analysis: O Motorola Signature 27 estabelece um novo patamar no segmento
