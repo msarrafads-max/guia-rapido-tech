@@ -1,14 +1,14 @@
 {
   "site_name": "Guia Rápido Tech",
-  "description": "Reviews, análises técnicas e comparativos para ajudar você a escolher melhor.",
-  "logo": "/assets/images/logo.svg",
   "primary_color": "#2563eb",
+  "logo": "/assets/images/uploads/4761f53e-0c30-40b1-bb8b-a979c23b88dc.png",
   "accent_color": "#12b981",
-  "light_background": "#f5f7fb",
-  "light_text": "#172033",
-  "dark_background": "#0b1020",
+  "footer_text": "Análises independentes para escolher melhor.",
   "dark_text": "#edf2ff",
+  "light_text": "#172033",
   "seo_title": "Guia Rápido Tech | Reviews e comparativos",
+  "dark_background": "#0b1020",
+  "light_background": "#f5f7fb",
   "seo_description": "Análises, comparativos e guias de compra de smartphones, tablets e notebooks.",
-  "footer_text": "Análises independentes para escolher melhor."
+  "description": "Reviews, análises técnicas e comparativos para ajudar você a escolher melhor."
 }
