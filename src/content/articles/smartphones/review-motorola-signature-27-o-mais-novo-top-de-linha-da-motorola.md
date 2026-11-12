@@ -15,7 +15,7 @@ keywords: motorola signature 27, motorola signature 27 512gb, motorola signature
 image: https://brmotorolanew.vtexassets.com/assets/vtex.file-manager-graphql/images/6589c053-4c07-4edc-bbc1-ecfa8faa1cef___b17a5466ce7c08aa3d7bd26f57eebee1.png
 image_alt: Smartphone Motorola Signature 27 na cor Verde Floresta com acabamento
   premium e módulo triplo de câmeras.
-comparison_image: https://brmotorolanew.vtexassets.com/arquivos/ids/184072-1200-auto?v=639288931180630000&width=1200&height=auto&aspect=true
+comparison_image: /assets/images/uploads/logotipo.png
 gallery: []
 badge: ANÁLISE
 estimated_price: Consulte as ofertas
