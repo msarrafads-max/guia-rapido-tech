@@ -8,7 +8,7 @@ model: ds
 seo_title: ds
 seo_description: sda
 keywords: dsa
-image: /assets/images/uploads/d_nq_np_2x_748116-mla120369510969_102026-f-1-.webp
+image: /assets/images/uploads/teste2.bmp
 image_alt: dsa
 badge: ANÁLISE
 estimated_price: dsa
