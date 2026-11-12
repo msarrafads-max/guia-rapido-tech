@@ -94,28 +94,8 @@ summary_analysis: O Motorola Signature 27 estabelece um novo patamar no segmento
 
 O Motorola Signature 27 estabelece um novo patamar no segmento ultra-premium. Combinando 512 GB de espaço interno, bateria revolucionária de 7.000 mAh e o potente Snapdragon 8 Elite Extreme em um corpo de apenas 7,99 mm, o modelo é feito para quem não aceita limitações.
 
-## Pontos positivos
-
-* * Enorme espaço interno de 512 GB (com opção de 256 GB no mercado).
-
-  * Bateria gigante de 7.000 mAh sem perder a espessura fina (7,99 mm).
-
-  * Teleobjetiva de 200 MP com zoom digital de até 100x.
-
-  * Resistência IP68 e IP69 contra água e poeira.
-
-  * Desempenho no topo da categoria com o Snapdragon 8 Elite Extreme.
-
-## Pontos a considerar
-
-* * Investimento elevado na versão de 512 GB.
-
-  * Aparelho levemente encorpado na mão (227 g).
-
 ## Vale a pena?
 
 * Para quem vale a pena: Para usuários avançados, criadores de conteúdo que gravam em alta resolução, gamers e quem precisa armazenar muitos arquivos e ter a maior autonomia de bateria do mercado topo de linha.
-
 * Para quem não vale a pena: Para quem faz uso básico do celular ou tem orçamento mais restrito (caso em que a versão de 256 GB ou a linha Edge 70 podem atender melhor custo-benefício).
-
 * Conclusão e recomendação: O Motorola Signature 27 de 512 GB é uma verdadeira máquina em termos de performance, câmera e bateria. Se você busca um celular definitivo para os próximos anos com bastante espaço interno, a compra é altamente recomendada.
