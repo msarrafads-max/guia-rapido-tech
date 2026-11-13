@@ -1,0 +1,15 @@
+{
+  "site_name": "Guia Rápido Tech",
+  "primary_color": "#2563eb",
+  "logo": "/assets/images/uploads/logotipo.png",
+  "logo_dark": "",
+  "accent_color": "#12b981",
+  "footer_text": "Análises independentes para escolher melhor.",
+  "dark_text": "#edf2ff",
+  "light_text": "#172033",
+  "seo_title": "Guia Rápido Tech | Reviews e comparativos",
+  "dark_background": "#0b1020",
+  "light_background": "#f5f7fb",
+  "seo_description": "Análises, comparativos e guias de compra de smartphones, tablets e notebooks.",
+  "description": "Reviews, análises técnicas e comparativos para ajudar você a escolher melhor."
+}

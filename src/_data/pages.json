@@ -1,0 +1,71 @@
+{
+  "about": {
+    "eyebrow": "QUEM SOMOS",
+    "heading": "Sobre o Guia Rápido Tech",
+    "lead": "O Guia Rápido Tech existe para tornar a escolha de tecnologia mais simples, transparente e informada.",
+    "sections": [
+      {
+        "heading": "Como fazemos nossas análises",
+        "paragraphs": [
+          "Publicamos reviews, comparativos e guias de compra sobre smartphones, tablets e notebooks. Nosso objetivo é explicar características relevantes, destacar diferenças e ajudar cada pessoa a avaliar o que faz sentido para sua necessidade."
+        ]
+      },
+      {
+        "heading": "Transparência",
+        "paragraphs": [
+          "Alguns links de lojas podem ser links de afiliados. Isso significa que o site pode receber uma comissão por compras qualificadas, sem custo adicional para quem compra. A existência de uma comissão não deve substituir uma avaliação honesta das características do produto."
+        ]
+      },
+      {
+        "heading": "Atualizações",
+        "paragraphs": [
+          "Preços, disponibilidade e especificações podem mudar. Sempre confira as informações atualizadas diretamente com o fabricante ou a loja."
+        ]
+      }
+    ]
+  },
+  "privacy": {
+    "eyebrow": "TRANSPARÊNCIA",
+    "heading": "Política de Privacidade",
+    "last_updated": "13 de novembro de 2026",
+    "sections": [
+      {
+        "heading": "1. Sobre esta política",
+        "paragraphs": [
+          "Esta página explica, de forma geral, como o Guia Rápido Tech trata informações relacionadas à navegação no site. Atualize este documento para refletir todos os serviços que efetivamente utilizar."
+        ]
+      },
+      {
+        "heading": "2. Armazenamento local e preferências",
+        "paragraphs": [
+          "O site usa armazenamento local do navegador para lembrar a preferência de tema claro/escuro e para registrar que o aviso informativo sobre cookies foi dispensado. Esses dados ficam no navegador e não são enviados ao site por esse recurso."
+        ]
+      },
+      {
+        "heading": "3. Cookies e serviços de terceiros",
+        "paragraphs": [
+          "O site pode incorporar serviços externos ou links para lojas. Esses terceiros podem utilizar suas próprias tecnologias e políticas de privacidade. Consulte os documentos de cada serviço antes de utilizá-lo. Se forem adicionadas ferramentas de análise, publicidade ou rastreamento, esta política e o mecanismo de consentimento deverão ser atualizados."
+        ]
+      },
+      {
+        "heading": "4. Links de afiliados",
+        "paragraphs": [
+          "Alguns links podem ser links de afiliados. Se você comprar por meio deles, o site pode receber comissão, conforme as regras do programa correspondente. A compra e o tratamento de dados no ambiente da loja são regidos pelas políticas da própria loja."
+        ]
+      },
+      {
+        "heading": "5. Segurança e contato",
+        "paragraphs": [
+          "Não inclua neste site formulários de coleta de dados pessoais sem informar sua finalidade, base legal, retenção e forma de contato. Para dúvidas sobre esta política, inclua aqui um endereço de contato oficial do projeto antes da publicação."
+        ]
+      },
+      {
+        "heading": "6. Atualizações desta política",
+        "paragraphs": [
+          "Esta política poderá ser atualizada quando funcionalidades ou serviços forem alterados. A data de atualização deve ser revisada em cada mudança relevante."
+        ]
+      }
+    ],
+    "note": "Este texto é um modelo inicial e deve ser revisado para corresponder ao funcionamento real do site e às obrigações legais aplicáveis, inclusive a LGPD."
+  }
+}
