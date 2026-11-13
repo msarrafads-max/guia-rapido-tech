@@ -69,10 +69,10 @@ comparisons:
     screen: Dynamic AMOLED 2X de 6,8" 120 Hz
     battery: 5.000 mAh (Carregamento 45W)
     processor: Snapdragon 8 Gen 5 for Galaxy
-    article_slug: ""
+    article_slug: galaxy-s26-ultra-analise-completa
     highlight: Caneta S-Pen integrada e ecossistema de produtividade
     image: https://http2.mlstatic.com/D_NQ_NP_2X_858653-MLA109137546558_042026-F.webp
-    external_url: ""
+    external_url: https://guiarapidotech.com.br/smartphones/galaxy-s26-ultra-analise-completa
   - memory: 8 GB RAM | 512 GB
     camera_graphics: Tripla 48 MP + 48 MP + 48 MP
     price: R$ 13.499,00
