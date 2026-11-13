@@ -10,20 +10,20 @@
     "Xiaomi"
   ],
   "main_card": {
-    "title": "Melhores smartphones do momento",
-    "description": "Seleções e comparativos para escolher melhor.",
+    "title": "Melhores Opções para até R$1000",
+    "description": "Confira a seleção dos smartphones com melhor custo-benefício para 2026",
     "badge": "GUIA DE COMPRA",
     "article_slugs": []
   },
   "left_card": {
-    "title": "Melhores câmeras",
-    "description": "Veja os modelos que merecem atenção.",
+    "title": "Melhores Câmeras",
+    "description": "Confira os modelos que se destacam pela câmera",
     "badge": "FOTO E VÍDEO",
     "article_slugs": []
   },
   "right_card": {
     "title": "Melhores baterias",
-    "description": "Autonomia para acompanhar sua rotina.",
+    "description": "Confira os modelos que se destacam pela bateria",
     "badge": "AUTONOMIA",
     "article_slugs": []
   }
