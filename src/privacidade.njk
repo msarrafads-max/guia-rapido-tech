@@ -1,0 +1,19 @@
+---
+layout: layouts/base.njk
+title: Política de Privacidade | Guia Rápido Tech
+permalink: /privacidade.html
+---
+<section class="container text-page">
+  <span class="eyebrow">{{ pages.privacy.eyebrow }}</span>
+  <h1>{{ pages.privacy.heading }}</h1>
+  {% if pages.privacy.last_updated %}<p class="muted">Última atualização: {{ pages.privacy.last_updated }}</p>{% endif %}
+  <div class="prose">
+    {% for section in pages.privacy.sections %}
+      {% if section.heading %}<h2>{{ section.heading }}</h2>{% endif %}
+      {% for paragraph in section.paragraphs %}
+        {% if paragraph %}<p>{{ paragraph }}</p>{% endif %}
+      {% endfor %}
+    {% endfor %}
+    {% if pages.privacy.note %}<p><strong>Nota:</strong> {{ pages.privacy.note }}</p>{% endif %}
+  </div>
+</section>

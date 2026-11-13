@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+title: Sobre nós | Guia Rápido Tech
+permalink: /sobre/index.html
+---
+<section class="container text-page">
+  <span class="eyebrow">{{ pages.about.eyebrow }}</span>
+  <h1>{{ pages.about.heading }}</h1>
+  <p class="lead">{{ pages.about.lead }}</p>
+  <div class="prose">
+    {% for section in pages.about.sections %}
+      {% if section.heading %}<h2>{{ section.heading }}</h2>{% endif %}
+      {% for paragraph in section.paragraphs %}
+        {% if paragraph %}<p>{{ paragraph }}</p>{% endif %}
+      {% endfor %}
+    {% endfor %}
+  </div>
+</section>
