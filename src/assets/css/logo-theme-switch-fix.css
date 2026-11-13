@@ -1,0 +1,36 @@
+/* Corrige a duplicação: exibe somente o logotipo correspondente ao tema ativo. */
+.brand-logo-light,
+.logo-light,
+.site-logo-light {
+  display: inline-block;
+}
+
+.brand-logo-dark,
+.logo-dark,
+.site-logo-dark {
+  display: none;
+}
+
+html[data-theme="dark"] .brand-logo-light,
+html[data-theme="dark"] .logo-light,
+html[data-theme="dark"] .site-logo-light {
+  display: none !important;
+}
+
+html[data-theme="dark"] .brand-logo-dark,
+html[data-theme="dark"] .logo-dark,
+html[data-theme="dark"] .site-logo-dark {
+  display: inline-block !important;
+}
+
+html[data-theme="light"] .brand-logo-dark,
+html[data-theme="light"] .logo-dark,
+html[data-theme="light"] .site-logo-dark {
+  display: none !important;
+}
+
+html[data-theme="light"] .brand-logo-light,
+html[data-theme="light"] .logo-light,
+html[data-theme="light"] .site-logo-light {
+  display: inline-block !important;
+}
