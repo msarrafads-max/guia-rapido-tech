@@ -1,0 +1,23 @@
+<a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+<header class="site-header">
+  <div class="header-inner container">
+    <a class="brand-lockup" href="/" aria-label="{{ site.site_name }} — página inicial">
+      <img src="{{ site.logo or '/assets/images/logo.svg' }}" alt="" class="brand-logo brand-logo-light">
+      <img src="{{ site.logo_dark or site.logo or '/assets/images/logo.svg' }}" alt="" class="brand-logo brand-logo-dark">
+      <span class="brand-name">{{ site.site_name }}</span>
+    </a>
+    <nav class="primary-nav" aria-label="Navegação principal">
+      <a href="/smartphones/">Smartphones</a>
+      <a href="/tablets/">Tablets</a>
+      <a href="/notebooks/">Notebooks</a>
+      <a href="/sobre/">Sobre nós</a>
+    </nav>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Ativar modo escuro" title="Alternar modo claro/escuro">
+      <span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label">Modo escuro</span>
+    </button>
+    <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav-mobile">Menu</button>
+  </div>
+  <nav class="mobile-nav" id="primary-nav-mobile" aria-label="Navegação móvel" hidden>
+    <a href="/smartphones/">Smartphones</a><a href="/tablets/">Tablets</a><a href="/notebooks/">Notebooks</a><a href="/sobre/">Sobre nós</a>
+  </nav>
+</header>
