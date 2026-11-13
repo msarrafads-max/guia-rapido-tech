@@ -64,8 +64,13 @@ offers:
     price: R$ 8.099,10
     rating: 4.9
   shopee:
-    availability: unknown
-    rating_status: unavailable
+    availability: available
+    rating_status: rated
+    detail: "ATENÇÃO: Versão de 256 Gb"
+    url: https://s.shopee.com.br/5VWsO0CllL
+    store_icon: https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Shopee_logo.svg/330px-Shopee_logo.svg.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=thumbnail
+    price: R$8.708,32
+    rating: 4.9
 comparisons:
   - memory: 12 GB RAM / 256 GB, 512 GB, 1 TB ou 2 TB
     camera_graphics: Tripla de 48 MP (zoom até 10x) + Frontal de 18 MP
