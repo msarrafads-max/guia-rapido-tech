@@ -1,0 +1,16 @@
+/* Correção do logotipo duplicado no cabeçalho: exibe somente a versão do tema ativo. */
+.site-header .brand-logo-light {
+  display: block;
+}
+
+.site-header .brand-logo-dark {
+  display: none;
+}
+
+html[data-theme="dark"] .site-header .brand-logo-light {
+  display: none;
+}
+
+html[data-theme="dark"] .site-header .brand-logo-dark {
+  display: block;
+}
