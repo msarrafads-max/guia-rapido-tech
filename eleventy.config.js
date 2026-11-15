@@ -5,38 +5,31 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
   eleventyConfig.addPassthroughCopy({ "src/sitemap.njk": "sitemap.xml" });
 
-  eleventyConfig.addCollection("articles", function (collectionApi) {
-    return collectionApi.getFilteredByTag("articles")
-      .filter(item => item.data.status !== "draft")
-      .sort((a, b) => {
-        const da = new Date(a.data.date || a.date || 0).getTime();
-        const db = new Date(b.data.date || b.date || 0).getTime();
-        return db - da;
-      });
-  });
+  const newestFirst = items => items
+    .filter(item => item.data.status !== "draft")
+    .sort((a, b) => new Date(b.data.date || b.date || 0).getTime() - new Date(a.data.date || a.date || 0).getTime());
+
+  eleventyConfig.addCollection("articles", api => newestFirst(api.getFilteredByTag("articles")));
+  eleventyConfig.addCollection("guidesList", api => newestFirst(api.getFilteredByGlob("src/content/guides/listas/*.md")));
+  eleventyConfig.addCollection("guidesComparison", api => newestFirst(api.getFilteredByGlob("src/content/guides/comparativos/*.md")));
+  eleventyConfig.addCollection("editorialGuides", api => newestFirst([
+    ...api.getFilteredByGlob("src/content/guides/listas/*.md"),
+    ...api.getFilteredByGlob("src/content/guides/comparativos/*.md")
+  ]));
 
   eleventyConfig.addFilter("dateBR", value => {
     if (!value) return "";
     const d = new Date(value);
     if (Number.isNaN(d.getTime())) return "";
-    return new Intl.DateTimeFormat("pt-BR", {
-      dateStyle: "long", timeStyle: "short", timeZone: "America/Sao_Paulo"
-    }).format(d);
+    return new Intl.DateTimeFormat("pt-BR", { dateStyle: "long", timeStyle: "short", timeZone: "America/Sao_Paulo" }).format(d);
   });
-
   eleventyConfig.addFilter("dateISO", value => {
     if (!value) return "";
     const d = new Date(value);
     return Number.isNaN(d.getTime()) ? "" : d.toISOString();
   });
-
-  eleventyConfig.addFilter("slugify", value => String(value || "")
-    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""));
-
-  eleventyConfig.addFilter("findArticle", (articles, slug) =>
-    (articles || []).find(article => article.data.slug === slug || article.fileSlug === slug));
-
+  eleventyConfig.addFilter("slugify", value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""));
+  eleventyConfig.addFilter("findArticle", (articles, slug) => (articles || []).find(article => article.data.slug === slug || article.fileSlug === slug));
   eleventyConfig.addFilter("jsonSafe", value => JSON.stringify(value ?? "").replace(/</g, "\\u003c"));
   eleventyConfig.addFilter("youtubeId", value => {
     const text = String(value || "");
@@ -47,18 +40,11 @@ export default function (eleventyConfig) {
     try { return new URL(path, base || "https://guiarapidotech.com.br").href; }
     catch { return path; }
   });
-
   return {
-    dir: {
-      input: "src",
-      includes: "_includes",
-      data: "_data",
-      output: "_site"
-    },
+    dir: { input: "src", includes: "_includes", data: "_data", output: "_site" },
     templateFormats: ["md", "njk", "html", "11ty.js"],
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk"
   };
 }
-
