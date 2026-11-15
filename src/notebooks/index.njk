@@ -8,7 +8,9 @@ permalink: /notebooks/index.html
 </section>
 <section class="container category-feature-section">
   <div class="showcase-card showcase-main">
-    <div class="showcase-copy"><span class="eyebrow">{{ categoryConfig.main_card.badge }}</span><h2>{{ categoryConfig.main_card.title }}</h2><p>{{ categoryConfig.main_card.description }}</p><div class="showcase-controls"><button type="button" class="slide-prev" aria-label="Slide anterior">←</button><span class="slide-status">Seleção editorial</span><button type="button" class="slide-next" aria-label="Próximo slide">→</button></div></div>
+    <div class="showcase-copy"><span class="eyebrow">{{ categoryConfig.main_card.badge }}</span><h2>{{ categoryConfig.main_card.title }}</h2><p>{{ categoryConfig.main_card.description }}</p>
+      {% if categoryConfig.main_card.guide_slug %}<a class="button button-small showcase-guide-link" href="/guias/{{ categoryConfig.main_card.guide_type or 'listas' }}/{{ categoryConfig.main_card.guide_slug }}/">Ver guia completo ↗</a>{% endif %}
+      <div class="showcase-controls"><button type="button" class="slide-prev" aria-label="Slide anterior">←</button><span class="slide-status">Seleção editorial</span><button type="button" class="slide-next" aria-label="Próximo slide">→</button></div></div>
     <div class="showcase-visual"><div class="showcase-device"><span>GRT</span><b>Review</b></div></div>
     <div class="showcase-slides" data-slugs="{{ (categoryConfig.main_card.article_slugs or []) | join(',') }}" data-category="notebooks"></div>
   </div>
@@ -18,13 +20,13 @@ permalink: /notebooks/index.html
       <article class="showcase-card small-showcase" data-slides="{{ (card.article_slugs or []) | join(',') }}">
         <div class="small-showcase-top"><span class="eyebrow">{{ card.badge }}</span><span class="slide-count">{{ (card.article_slugs or []) | length }} reviews</span></div>
         <h2>{{ card.title }}</h2><p>{{ card.description }}</p>
+        {% if card.guide_slug %}<a class="guide-card-link" href="/guias/{{ card.guide_type or 'listas' }}/{{ card.guide_slug }}/">Ver guia completo ↗</a>{% endif %}
         <div class="small-slide-content" data-slugs="{{ (card.article_slugs or []) | join(',') }}" data-category="notebooks"></div>
         <div class="small-showcase-controls"><button type="button" class="slide-prev" aria-label="Slide anterior">←</button><button type="button" class="slide-next" aria-label="Próximo slide">→</button></div>
       </article>
     {% endfor %}
   </div>
 </section>
-
 <section class="container catalog-section">
   <div class="section-heading section-heading-row"><div><span class="eyebrow">CATÁLOGO COMPLETO</span><h2>Encontre por marca</h2><p>Os reviews publicados entram automaticamente no catálogo.</p></div><label class="search-box"><span class="sr-only">Pesquisar produto</span><input type="search" id="catalog-search" placeholder="Pesquisar modelo..." autocomplete="off"></label></div>
   <div class="brand-filters" role="group" aria-label="Filtrar por marca">
