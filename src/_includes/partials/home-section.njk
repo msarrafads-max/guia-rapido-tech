@@ -1,0 +1,7 @@
+{% set allEditorialGuides = (collections.guidesList or []) + (collections.guidesComparison or []) %}
+{% if allEditorialGuides.length %}
+<section class="container section-block editorial-guides-home">
+  <div class="section-heading section-heading-row"><div><span class="eyebrow">ESPECIAIS DO GUIA</span><h2>Guias, rankings e comparativos</h2><p>Listas práticas e comparações editoriais para decidir com mais confiança.</p></div><a href="/guias/" class="text-link">Explorar guias ↗</a></div>
+  <div class="editorial-home-grid">{% for guide in allEditorialGuides | reverse %}{% if loop.index <= 6 %}<a class="editorial-home-card" href="{{ guide.url }}"><span class="eyebrow">{% if guide.data.tags and 'guidesComparison' in guide.data.tags %}COMPARATIVO{% else %}GUIA DE COMPRA{% endif %}</span><h3>{{ guide.data.title }}</h3>{% if guide.data.description %}<p>{{ guide.data.description | striptags | truncate(145) }}</p>{% endif %}<span class="text-link">Ler artigo ↗</span></a>{% endif %}{% endfor %}</div>
+</section>
+{% endif %}
