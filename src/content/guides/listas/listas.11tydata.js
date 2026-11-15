@@ -1,5 +1,5 @@
 export default {
   layout: "layouts/listicle.njk",
-  tags: ["guidesList"],
+  editorial_type: "lista",
   permalink: data => `/guias/listas/${data.slug || data.page.fileSlug}/index.html`
 };
