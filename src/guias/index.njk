@@ -1,7 +1,14 @@
 ---
 layout: layouts/base.njk
 permalink: /guias/index.html
-title: Guias e comparativos | Guia Rápido Tech
+title: Guias, listas e comparativos | Guia Rápido Tech
+seo_title: Guias, listas e comparativos | Guia Rápido Tech
 description: Rankings, listas de compra e comparativos editoriais de tecnologia.
+seo_description: Rankings, listas de compra e comparativos editoriais de tecnologia.
 ---
-<section class="container section-block editorial-page"><header class="editorial-hero"><span class="eyebrow">BIBLIOTECA EDITORIAL</span><h1>Guias, rankings e comparativos</h1><p class="editorial-lead">Conteúdo organizado para comparar opções e encontrar o produto certo para você.</p></header><div class="editorial-home-grid">{% set allEditorialGuides = (collections.guidesList or []) + (collections.guidesComparison or []) %}{% for guide in allEditorialGuides | reverse %}<a class="editorial-home-card" href="{{ guide.url }}"><span class="eyebrow">{% if guide.data.tags and 'guidesComparison' in guide.data.tags %}COMPARATIVO{% else %}GUIA DE COMPRA{% endif %}</span><h2>{{ guide.data.title }}</h2>{% if guide.data.description %}<p>{{ guide.data.description | striptags | truncate(160) }}</p>{% endif %}<span class="text-link">Ler artigo ↗</span></a>{% else %}<p>Em breve: novos guias e comparativos editoriais.</p>{% endfor %}</div></section>
+<section class="container section-block editorial-page">
+  <header class="editorial-hero"><span class="eyebrow">BIBLIOTECA EDITORIAL</span><h1>Guias, rankings e comparativos</h1><p class="editorial-lead">Conteúdo organizado para comparar opções e encontrar o produto certo para você.</p></header>
+  <div class="editorial-home-grid">
+    {% for guide in collections.editorialGuides %}<a class="editorial-home-card" href="{{ guide.url }}"><span class="eyebrow">{% if guide.data.editorial_type == 'comparativo' %}COMPARATIVO{% else %}GUIA DE COMPRA{% endif %}</span><h2>{{ guide.data.title }}</h2>{% if guide.data.description %}<p>{{ guide.data.description | striptags | truncate(180) }}</p>{% endif %}<span class="text-link">Ler artigo ↗</span></a>{% else %}<p>Os guias e comparativos publicados aparecerão aqui.</p>{% endfor %}
+  </div>
+</section>
