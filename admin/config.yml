@@ -119,7 +119,7 @@ collections:
               - { label: "Descrição", name: "description", widget: "text", required: false }
               - { label: "Selo", name: "badge", widget: "string", required: false }
               - { label: "Slugs dos artigos dos slides (um por item)", name: "article_slugs", widget: "list", field: { label: "Slug do artigo", name: "slug", widget: "string" } }
-              - { label: "Slug de guia completo (opcional)", name: "guide_slug", widget: "string", required: false, hint: "Slug de um artigo em Guias de listas ou comparativos." }
+              - { label: "Slug do guia completo (opcional)", name: "guide_slug", widget: "string", required: false, hint: "Digite apenas o slug do artigo, sem URL. Ex.: 5-smartphones-mais-baratos-dezembro." }
               - { label: "Tipo de guia", name: "guide_type", widget: "select", options: [{label: "Lista / ranking", value: "listas"}, {label: "Comparativo editorial", value: "comparativos"}], required: false }
           - label: "Card inferior esquerdo"
             name: "left_card"
@@ -129,7 +129,7 @@ collections:
               - { label: "Descrição", name: "description", widget: "text", required: false }
               - { label: "Selo", name: "badge", widget: "string", required: false }
               - { label: "Slugs dos artigos dos slides", name: "article_slugs", widget: "list", field: { label: "Slug do artigo", name: "slug", widget: "string" } }
-              - { label: "Slug de guia completo (opcional)", name: "guide_slug", widget: "string", required: false }
+              - { label: "Slug do guia completo (opcional)", name: "guide_slug", widget: "string", required: false, hint: "Digite apenas o slug do artigo, sem URL. Ex.: melhores-moto-g." }
               - { label: "Tipo de guia", name: "guide_type", widget: "select", options: [{label: "Lista / ranking", value: "listas"}, {label: "Comparativo editorial", value: "comparativos"}], required: false }
           - label: "Card inferior direito"
             name: "right_card"
@@ -139,7 +139,7 @@ collections:
               - { label: "Descrição", name: "description", widget: "text", required: false }
               - { label: "Selo", name: "badge", widget: "string", required: false }
               - { label: "Slugs dos artigos dos slides", name: "article_slugs", widget: "list", field: { label: "Slug do artigo", name: "slug", widget: "string" } }
-              - { label: "Slug de guia completo (opcional)", name: "guide_slug", widget: "string", required: false }
+              - { label: "Slug do guia completo (opcional)", name: "guide_slug", widget: "string", required: false, hint: "Digite apenas o slug do artigo, sem URL. Ex.: melhores-moto-g." }
               - { label: "Tipo de guia", name: "guide_type", widget: "select", options: [{label: "Lista / ranking", value: "listas"}, {label: "Comparativo editorial", value: "comparativos"}], required: false }
       - name: "tablets"
         label: "Vitrine e marcas — Tablets"
