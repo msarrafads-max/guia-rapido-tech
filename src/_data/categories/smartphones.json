@@ -13,7 +13,10 @@
     "title": "Melhores Opções para até R$1000",
     "description": "Confira a seleção dos smartphones com melhor custo-benefício para 2026",
     "badge": "GUIA DE COMPRA",
-    "article_slugs": []
+    "article_slugs": [
+      "melhores-ate-1000-reais"
+    ],
+    "guide_type": "listas"
   },
   "left_card": {
     "title": "Melhores Câmeras",
