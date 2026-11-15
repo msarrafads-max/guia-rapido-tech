@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+---
+<article class="editorial-page container listicle-page">
+  <nav class="breadcrumbs" aria-label="Você está aqui"><a href="/">Início</a><span>›</span><a href="/{{ category or 'smartphones' }}/">{{ category_label or (category or 'Smartphones') | title }}</a><span>›</span><span>{{ title }}</span></nav>
+  <header class="editorial-hero"><span class="eyebrow">GUIA DE COMPRA{% if category_label %} · {{ category_label | upper }}{% endif %}</span><h1>{{ title }}</h1>{% if description %}<p class="editorial-lead">{{ description }}</p>{% endif %}{% if intro %}<div class="prose editorial-intro">{{ intro | safe }}</div>{% endif %}</header>
+  {% if cover_image %}<figure class="editorial-cover"><img src="{{ cover_image }}" alt="{{ cover_alt or title }}"><figcaption>{{ cover_caption }}</figcaption></figure>{% endif %}
+  {% if products and products.length %}<section class="editorial-products" aria-label="Produtos do guia">
+    {% for product in products %}<article class="editorial-product" id="{{ product.anchor or ('produto-' + loop.index) }}">
+      <div class="editorial-product-image">{% if product.image %}<img src="{{ product.image }}" alt="{{ product.image_alt or product.name }}" loading="lazy">{% else %}<div class="image-placeholder"><span>Imagem do produto</span></div>{% endif %}</div>
+      <div class="editorial-product-content"><span class="editorial-rank">{{ product.rank or ('OPÇÃO ' + loop.index) }}</span><h2>{{ product.name }}</h2>{% if product.short_description %}<p class="editorial-product-description">{{ product.short_description }}</p>{% endif %}
+        {% if product.highlight_label or product.highlight_value %}<div class="editorial-highlight"><span>{{ product.highlight_label or 'Destaque' }}</span><strong>{{ product.highlight_value }}</strong></div>{% endif %}
+        {% if product.secondary_label or product.secondary_value %}<p class="editorial-secondary"><span>{{ product.secondary_label }}</span> <strong>{{ product.secondary_value }}</strong></p>{% endif %}
+        {% if product.analysis %}<p class="editorial-analysis">{{ product.analysis }}</p>{% endif %}
+        {% if product.review_slug %}<a class="button button-small" href="/{{ product.review_category or category or 'smartphones' }}/{{ product.review_slug }}.html">{{ product.button_text or 'Ver análise completa' }} ↗</a>{% elif product.review_url %}<a class="button button-small" href="{{ product.review_url }}">{{ product.button_text or 'Ver análise completa' }} ↗</a>{% endif %}
+      </div>
+    </article>{% endfor %}
+  </section>{% endif %}
+  {% if body %}<section class="article-body prose">{{ body | safe }}</section>{% endif %}
+  <footer class="editorial-footer"><a class="text-link" href="/{{ category or 'smartphones' }}/">← Voltar à categoria</a></footer>
+</article>

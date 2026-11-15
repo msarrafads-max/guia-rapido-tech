@@ -1,0 +1,12 @@
+---
+layout: layouts/base.njk
+---
+<article class="editorial-page container comparison-guide-page">
+  <nav class="breadcrumbs" aria-label="Você está aqui"><a href="/">Início</a><span>›</span><a href="/guias/">Guias e comparativos</a><span>›</span><span>{{ title }}</span></nav>
+  <header class="editorial-hero"><span class="eyebrow">COMPARATIVO ESPECIAL</span><h1>{{ title }}</h1>{% if description %}<p class="editorial-lead">{{ description }}</p>{% endif %}{% if intro %}<div class="prose editorial-intro">{{ intro | safe }}</div>{% endif %}</header>
+  {% if products and products.length %}<section class="comparison-guide-products">{% for product in products %}<article class="comparison-guide-product"><div class="comparison-guide-product-heading"><span class="editorial-rank">{{ product.rank or ('PRODUTO ' + loop.index) }}</span><h2>{{ product.name }}</h2></div><div class="comparison-guide-layout"><div class="comparison-guide-image">{% if product.image %}<img src="{{ product.image }}" alt="{{ product.image_alt or product.name }}" loading="lazy">{% else %}<div class="image-placeholder"><span>Imagem do produto</span></div>{% endif %}</div><div class="comparison-guide-copy">{% if product.description %}<p>{{ product.description }}</p>{% endif %}{% if product.review_slug %}<a class="button button-small" href="/{{ product.category or 'smartphones' }}/{{ product.review_slug }}.html">{{ product.button_text or 'Ver análise completa' }} ↗</a>{% elif product.review_url %}<a class="button button-small" href="{{ product.review_url }}">{{ product.button_text or 'Ver análise completa' }} ↗</a>{% endif %}</div></div>
+  {% if product.strengths and product.strengths.length %}<div class="strengths-table-wrap"><table class="strengths-table"><thead><tr><th colspan="2">Pontos fortes</th></tr></thead><tbody>{% for strength in product.strengths %}{% if loop.index <= 3 and strength %}<tr><th scope="row">{{ loop.index }}</th><td>{{ strength }}</td></tr>{% endif %}{% endfor %}</tbody></table></div>{% endif %}
+  </article>{% endfor %}</section>{% endif %}
+  {% if body %}<section class="article-body prose">{{ body | safe }}</section>{% endif %}
+  <footer class="editorial-footer"><a class="text-link" href="/">← Voltar ao início</a></footer>
+</article>
