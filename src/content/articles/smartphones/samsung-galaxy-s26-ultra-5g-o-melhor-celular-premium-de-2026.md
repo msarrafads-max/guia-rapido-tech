@@ -15,7 +15,7 @@ keywords: samsung galaxy s26 ultra 5g  galaxy s26 ultra vale a pena  galaxy s26
   ultra mais barato
 image: https://samsungbrshop.vtexassets.com/arquivos/ids/278553-400-auto?v=639076207602700000
 comparison_image: https://http2.mlstatic.com/D_Q_NP_716447-MLA109972299903_042026-F.webp
-badge: PREMIUM
+badge: Câmeras e desempenho
 estimated_price: Consulte as ofertas
 specs:
   screen: 6,9 polegadas Dynamic LTPO AMOLED 2X, resolução Quad HD+ (1440 x 3120
