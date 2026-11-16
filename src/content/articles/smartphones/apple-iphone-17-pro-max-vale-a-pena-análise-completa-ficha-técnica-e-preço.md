@@ -74,7 +74,7 @@ offers:
     rating: 4.9
   shopee:
     availability: available
-    rating_status: unavailable
+    rating_status: rated
     price: R$10.023,92
     store_icon: https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Shopee_logo.svg/330px-Shopee_logo.svg.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=thumbnail
     detail: Confira condições no site
