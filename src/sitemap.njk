@@ -8,6 +8,31 @@ eleventyExcludeFromCollections: true
   <url><loc>https://guiarapidotech.com.br/smartphones/</loc></url>
   <url><loc>https://guiarapidotech.com.br/tablets/</loc></url>
   <url><loc>https://guiarapidotech.com.br/notebooks/</loc></url>
+  <url><loc>https://guiarapidotech.com.br/guias/</loc></url>
   <url><loc>https://guiarapidotech.com.br/sobre/</loc></url>
-  {% for article in collections.articles %}<url><loc>https://guiarapidotech.com.br{{ article.url }}</loc><lastmod>{{ article.data.updated | dateISO or article.date | dateISO }}</lastmod></url>{% endfor %}
+  <url><loc>https://guiarapidotech.com.br/privacidade/</loc></url>
+  {% for article in collections.articles %}
+  {% if article.url %}
+  <url>
+    <loc>{{ ("https://guiarapidotech.com.br" + article.url) | escape }}</loc>
+    {% if article.data.updated %}
+    <lastmod>{{ article.data.updated | dateISO }}</lastmod>
+    {% elif article.date %}
+    <lastmod>{{ article.date | dateISO }}</lastmod>
+    {% endif %}
+  </url>
+  {% endif %}
+  {% endfor %}
+  {% for guide in collections.editorialGuides %}
+  {% if guide.url %}
+  <url>
+    <loc>{{ ("https://guiarapidotech.com.br" + guide.url) | escape }}</loc>
+    {% if guide.data.updated %}
+    <lastmod>{{ guide.data.updated | dateISO }}</lastmod>
+    {% elif guide.date %}
+    <lastmod>{{ guide.date | dateISO }}</lastmod>
+    {% endif %}
+  </url>
+  {% endif %}
+  {% endfor %}
 </urlset>

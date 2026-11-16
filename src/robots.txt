@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+
 Sitemap: https://guiarapidotech.com.br/sitemap.xml
