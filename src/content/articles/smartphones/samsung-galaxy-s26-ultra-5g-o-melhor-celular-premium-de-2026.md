@@ -15,7 +15,7 @@ keywords: samsung galaxy s26 ultra 5g  galaxy s26 ultra vale a pena  galaxy s26
   ultra mais barato
 image: https://samsungbrshop.vtexassets.com/arquivos/ids/278553-400-auto?v=639076207602700000
 comparison_image: https://http2.mlstatic.com/D_Q_NP_716447-MLA109972299903_042026-F.webp
-badge: PREMIUM
+badge: Câmeras e desempenho
 estimated_price: Consulte as ofertas
 specs:
   screen: 6,9 polegadas Dynamic LTPO AMOLED 2X, resolução Quad HD+ (1440 x 3120
@@ -75,7 +75,7 @@ comparisons:
   - memory: 12 GB RAM / 256 GB, 512 GB, 1 TB ou 2 TB
     camera_graphics: Tripla de 48 MP (zoom até 10x) + Frontal de 18 MP
     price: R$ 8.300 a R$ 10.700
-    name: Apple iPhone 17 Pro Ma
+    name: Apple iPhone 17 Pro Max
     screen: 6,9" Super Retina XDR OLED, 120 Hz, 3.000 nits
     battery: 6.000 mAh / Carga rápida USB-C e MagSafe
     processor: Apple A19 Pro (3 nm)
