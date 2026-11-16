@@ -3,13 +3,14 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
   eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
-  eleventyConfig.addPassthroughCopy({ "src/sitemap.njk": "sitemap.xml" });
 
   const newestFirst = items => items
     .filter(item => item.data.status !== "draft")
     .sort((a, b) => new Date(b.data.date || b.date || 0).getTime() - new Date(a.data.date || a.date || 0).getTime());
 
-  eleventyConfig.addCollection("articles", api => newestFirst(api.getFilteredByTag("articles")));
+  eleventyConfig.addCollection("articles", api => newestFirst(
+    api.getFilteredByGlob("src/content/articles/**/*.md")
+  ));
   eleventyConfig.addCollection("guidesList", api => newestFirst(api.getFilteredByGlob("src/content/guides/listas/*.md")));
   eleventyConfig.addCollection("guidesComparison", api => newestFirst(api.getFilteredByGlob("src/content/guides/comparativos/*.md")));
   eleventyConfig.addCollection("editorialGuides", api => newestFirst([
