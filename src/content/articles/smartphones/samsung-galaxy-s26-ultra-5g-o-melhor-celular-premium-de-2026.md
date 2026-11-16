@@ -75,7 +75,7 @@ comparisons:
   - memory: 12 GB RAM / 256 GB, 512 GB, 1 TB ou 2 TB
     camera_graphics: Tripla de 48 MP (zoom até 10x) + Frontal de 18 MP
     price: R$ 8.300 a R$ 10.700
-    name: Apple iPhone 17 Pro Ma
+    name: Apple iPhone 17 Pro Max
     screen: 6,9" Super Retina XDR OLED, 120 Hz, 3.000 nits
     battery: 6.000 mAh / Carga rápida USB-C e MagSafe
     processor: Apple A19 Pro (3 nm)
