@@ -79,8 +79,10 @@ comparisons:
     screen: 6,9" Super Retina XDR OLED, 120 Hz, 3.000 nits
     battery: 6.000 mAh / Carga rápida USB-C e MagSafe
     processor: Apple A19 Pro (3 nm)
+    article_slug: iphone-17-pro-max-analise-completa
     highlight: Referência absoluta em gravação de vídeo profissional
     image: https://www.pngall.com/wp-content/uploads/20/iPhone-17-Pro-Max-Artwork-PNG.png
+    external_url: https://guiarapidotech.com.br/smartphones/iphone-17-pro-max-analise-completa
   - memory: 12 GB RAM / 256 GB, 512 GB ou 1 TB
     camera_graphics: 200 MP + 50 MP + 50 MP + 10 MP / Frontal 12 MP
     price: R$ 4.100 a R$ 5.800
