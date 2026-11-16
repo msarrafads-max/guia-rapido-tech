@@ -83,7 +83,7 @@ comparisons:
     article_slug: ""
     highlight: Gravação de vídeo profissional 8K e ecossistema iOS
     image: https://www.pngall.com/wp-content/uploads/20/iPhone-17-Pro-Max-Artwork-PNG.png
-    external_url: ""
+    external_url: https://guiarapidotech.com.br/smartphones/iphone-17-pro-max-analise-completa
 youtube_url: ""
 summary_analysis: O Motorola Signature 27 estabelece um novo patamar no segmento
   ultra-premium. Combinando 512 GB de espaço interno, bateria revolucionária de
