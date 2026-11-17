@@ -91,4 +91,18 @@ comparisons:
     highlight: Resolução Full HD+ mais nítida pelo mesmo preço
     image: https://http2.mlstatic.com/D_Q_NP_772407-MLA105670783766_012026-F.webp
 ---
-ds
+
+
+
+## Visão geral
+
+
+O Motorola Moto G37 5G é a aposta de entrada da marca para democratizar o 5G, o NFC e o Android 16 abaixo dos R$ 1.000. Equipado com o chip Dimensity 6300, tela fluida de 120 Hz com proteção Gorilla Glass 7i e bateria de 5.200 mAh, ele entrega boa autonomia e resistência IP64 para o cotidiano. Contudo, os 64 GB de armazenamento desta versão exigem cautela e uso de cartão microSD para quem instala muitos aplicativos.
+
+
+
+## Vale a pena?
+
+* Para quem vale a pena: Para quem busca um celular barato e resistente para tarefas essenciais (WhatsApp, bancos com NFC, redes sociais e streaming), prioriza bateria duradoura com carregador na caixa e quer economizar ao máximo sem abrir mão do 5G.
+* Para quem não vale a pena: Para quem tira muitas fotos, grava vídeos com frequência ou instala vários jogos e aplicativos pesados — os 64 GB internos e os 4 GB de RAM física ficam apertados rapidamente, tornando a versão de 128 GB ou rivais como o Galaxy A17 5G escolhas mais seguras.
+* Conclusão e recomendação: O Moto G37 5G de 64 GB cumpre bem o papel de smartphone funcional de entrada abaixo dos R$ 950. Se a diferença de preço para a variante de 128 GB estiver pequena (abaixo de R$ 100), vale investir no dobro de espaço; caso contrário, é uma compra honesta para uso básico.
