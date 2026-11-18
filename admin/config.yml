@@ -23,7 +23,8 @@ collections:
           - { label: "Nome do site", name: "site_name", widget: "string", default: "Guia Rápido Tech" }
           - { label: "Descrição padrão", name: "description", widget: "text" }
           - { label: "Logotipo para modo claro", name: "logo", widget: "image", required: false }
-          - { label: "Logotipo para modo escuro (opcional)", name: "logo_dark", widget: "image", required: false, hint: "Envie uma versão adequada ao fundo escuro. Se ficar vazio, será usado o logotipo do modo claro." }
+          - { label: "Logotipo para modo escuro (opcional)", name: "logo_dark", widget: "image", required: false, hint: "Envie uma versão adequada ao fundo escuro. Se ficar vazio, será usado o logotipo do modo claro." }         
+          - { label: "Favicon / ícone do site", name: "favicon", widget: "image", required: false, hint: "Ícone quadrado do site. O Google decide quando exibi-lo nos resultados." }
           - { label: "Cor principal", name: "primary_color", widget: "color", default: "#2563eb" }
           - { label: "Cor de destaque", name: "accent_color", widget: "color", default: "#12b981" }
           - { label: "Cor de fundo claro", name: "light_background", widget: "color", default: "#f5f7fb" }
