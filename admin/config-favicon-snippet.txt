@@ -1,0 +1,7 @@
+ADICIONE ESTE CAMPO EM admin/config.yml
+
+Dentro da coleção "Identidade visual e configurações globais", na lista `fields`, coloque a linha abaixo logo depois do campo `logo_dark`:
+
+- { label: "Favicon / ícone do site (recomendado: imagem quadrada PNG 48×48 ou maior)", name: "favicon", widget: "image", required: false, hint: "Este ícone pode aparecer nos resultados do Google e nas abas do navegador. Prefira PNG quadrado; o Google decide quando exibi-lo." }
+
+Não substitua o config.yml inteiro por este arquivo: ele contém somente o campo que precisa ser acrescentado.
