@@ -15,13 +15,7 @@ keywords: positivo vision tab 7, tablet positivo vision tab 7, positivo vision
   positivo vision tab 7 infantil, positivo t30764f, tablet barato para criancas
 image: https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/6129bZpDSnL._AC_SL1500_.jpg
 comparison_image: https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/6129bZpDSnL._AC_SL1500_.jpg
-gallery:
-  - image: https://lojapositivo.vtexassets.com/arquivos/ids/168445/tablet-vision-7-polegadas-android-14-go-9.jpg?v=638793893698670000
-    caption: "imagem: Divulgação/Positivo."
-  - image: https://lojapositivo.vtexassets.com/arquivos/ids/168447/tablet-vision-7-polegadas-android-14-go-11.jpg?v=638793893698670000
-    caption: "imagem: Divulgação/Positivo."
-  - image: https://lojapositivo.vtexassets.com/arquivos/ids/168438/tablet-vision-7-polegadas-android-14-go-2.jpg?v=638749762924030000
-    caption: "imagem: Divulgação/Positivo."
+gallery: []
 badge: Tela IPS de 7" e 3 GB de RAM física por preço baixo
 estimated_price: R$ 399,00 – R$ 469,90
 specs:
