@@ -17,19 +17,7 @@ keywords: tablet positivo vision tab 11, positivo vision tab 11 vale a pena,
   bom, tablet para estudar com caneta e teclado
 image: https://m.media-amazon.com/images/W/BW_MEDIAX_AVIF_MEASUREMENT_1306696-T4/images/I/71JoMkfQ-XL._AC_SL1500_.jpg
 comparison_image: https://lojapositivo.vtexassets.com/arquivos/ids/172373/2_TABLET_POSITIVO_VISION_TAB_11_1000X1000.jpg?v=639159169112730000
-gallery:
-  - image: https://lojapositivo.vtexassets.com/arquivos/ids/172379/ESPECIFICACOES.jpg?v=639159169113700000
-    alt: Infográfico oficial do Tablet Positivo Vision Tab 11 destacando tela de 11
-      polegadas Full HD, conexão 4G, 8 GB de RAM, 128 GB de armazenamento e
-      caneta ativa.
-    caption: 'Principais destaques do Positivo Vision Tab 11, incluindo tela de 11"
-      Full HD e caneta ativa (Imagem: Divulgação/Positivo).'
-  - alt: "Especificações de memória do Tablet Positivo Vision Tab 11: 8 GB de RAM e
-      128 GB de armazenamento para fotos, vídeos e apps."
-    caption: "Opção 3 (Alerta de compra): Destaques de memória da versão de 8 GB/128
-      GB — ideal para evitar os engasgos da variante básica de 4 GB (Imagem:
-      Divulgação/Positivo)."
-    image: https://lojapositivo.vtexassets.com/arquivos/ids/172380/3801832.png?v=639159169113930000
+gallery: []
 badge: Kit com capa teclado, caneta ativa e conexão 4G inclusos
 estimated_price: R$ 1.310,00 – R$ 1.650,00
 specs:
