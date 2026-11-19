@@ -22,9 +22,9 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": {{ site.site_name | jsonSafe }},
+    "name": {{ site.site_name | jsonSafe | safe }},
     "url": "https://guiarapidotech.com.br/",
-    "logo": {{ (site.logo or '/assets/images/favicon.svg') | absoluteUrl('https://guiarapidotech.com.br') | jsonSafe }}
+    "logo": {{ (site.logo or '/assets/images/favicon.svg') | absoluteUrl('https://guiarapidotech.com.br') | jsonSafe | safe }}
   }
   </script>
   <link rel="stylesheet" href="/assets/css/site.css">
