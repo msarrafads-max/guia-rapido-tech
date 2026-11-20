@@ -1,21 +1,22 @@
 ---
 title: Qual Tablet Positivo Comprar para Estudar e Ler PDFs?
-slug: ual-tablet-positivo-comprar-estudar-ler-pdfs
+slug: ual-tablet-positivo-comprar-estudar-ler-pdf
 status: published
 date: 2026-11-20T17:58:00-03:00
 description: Comparamos os tablets Positivo Vision Tab 11, Tab 10 e TAB 7 para
   mostrar qual oferece a melhor tela, memória e bateria para estudar e ler PDFs
   sem gastar muito.
+editorial_label: GUIA DE COMPRA • TABLETS
+author: Equipe Guia Rápido Tech
+reading_time: 4 MIN
+cover_image: /assets/images/uploads/sem-título.png
+cover_alt: Comparativo entre os tablets Positivo Vision Tab 11, Vision Tab 10 e
+  Vision TAB 7 para estudos
+quick_answer: blablablal
 seo_title: Qual Tablet Positivo Comprar para Estudar e Ler PDFs?
 seo_description: Quer um tablet barato para estudar e ler apostilas em PDF? Veja
   a comparação direta entre o Positivo Vision Tab 11, Tab 10 e TAB 7 e escolha o
   ideal.
-cover_image: /assets/images/uploads/sem-título.png
-cover_alt: Comparativo entre os tablets Positivo Vision Tab 11, Vision Tab 10 e
-  Vision TAB 7 para estudos
-editorial_label: GUIA DE COMPRA • TABLETS
-author: Equipe Guia Rápido Tech
-reading_time: 4 MIN
 intro: >-
   
 
@@ -64,6 +65,15 @@ products:
       - Preço muito baixo (faixa de R$ 400 a R$ 470)
       - Super leve (240 g) para ler e-books no transporte
       - Android 14 Go Edition leve para leitura básica
+comparison_table_title: comparação balblabla
+comparison_table_intro: dsadasdds
+comparison_rows:
+  - feature: dadsa
+    values:
+      - dsadsa
+      - dsadsa
+verdict_title: ssrsrsr
+verdict: srarsrasrsarrasr
 ---
 ## Comparativo rápido lado a lado
 
