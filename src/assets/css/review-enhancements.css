@@ -1,0 +1,80 @@
+/* Correção das estrelas nas ofertas do Guia Rápido Tech.
+   O layout base já carrega este arquivo. As duas camadas de estrelas
+   precisam ficar sobrepostas para nunca aparecerem como duas sequências. */
+
+.store-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  min-width: 0;
+  margin-top: 0.45rem;
+}
+
+.stars {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 5em;
+  width: 5em;
+  height: 1em;
+  overflow: hidden;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.stars .stars-empty,
+.stars .stars-filled {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: Arial, sans-serif;
+  font-size: inherit;
+  line-height: 1;
+  letter-spacing: 0;
+  max-width: 100%;
+}
+
+.stars .stars-empty {
+  width: 100%;
+  color: #cbd5e1;
+}
+
+.stars .stars-filled {
+  z-index: 1;
+  color: #f59e0b;
+}
+
+.rating-number {
+  display: inline-block;
+  font-size: 0.8rem;
+  line-height: 1.2;
+  font-weight: 750;
+  white-space: nowrap;
+  color: var(--light-text, #172033);
+}
+
+html[data-theme="dark"] .rating-number {
+  color: var(--dark-text, #edf2ff);
+}
+
+@media (max-width: 420px) {
+  .store-rating {
+    gap: 0.3rem;
+  }
+
+  .stars {
+    font-size: 0.9rem;
+  }
+
+  .rating-number {
+    font-size: 0.76rem;
+  }
+}
