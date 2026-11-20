@@ -5,7 +5,6 @@ layout: layouts/base.njk
   <nav class="comparison-breadcrumbs" aria-label="Você está aqui">
     <a href="/">Início</a><span aria-hidden="true">›</span><a href="/guias/">Guias</a><span aria-hidden="true">›</span><a href="/guias/comparativos/">Comparativos</a><span aria-hidden="true">›</span><span aria-current="page">{{ title }}</span>
   </nav>
-
   <header class="comparison-hero">
     <span class="comparison-eyebrow">{{ editorial_label or 'GUIA DE COMPRA • COMPARATIVO' }}</span>
     <h1>{{ title }}</h1>
@@ -17,7 +16,6 @@ layout: layouts/base.njk
     </div>
     {% if cover_image %}<figure class="comparison-cover"><img src="{{ cover_image }}" alt="{{ cover_alt or title }}" loading="eager">{% if cover_caption %}<figcaption>{{ cover_caption }}</figcaption>{% endif %}</figure>{% endif %}
   </header>
-
   {% if quick_answer %}
   <aside class="comparison-quick-answer" aria-label="Resposta rápida">
     <div class="comparison-quick-icon" aria-hidden="true">✓</div>
@@ -25,8 +23,7 @@ layout: layouts/base.njk
   </aside>
   {% endif %}
 
-  {% if intro %}<section class="comparison-intro comparison-richtext">{{ intro | markdown | safe }}</section>{% endif %}
-
+  {% if intro %}<section class="comparison-intro comparison-richtext">{% if intro_heading %}<h2 class="comparison-intro-heading">{{ intro_heading }}</h2>{% endif %}{{ intro | markdown | safe }}</section>{% endif %}
   {% if products and products.length %}
   <section class="comparison-ranking" aria-labelledby="comparison-ranking-title">
     <div class="comparison-section-heading"><div><p class="comparison-section-kicker">NOSSA SELEÇÃO</p><h2 id="comparison-ranking-title">Ranking dos modelos avaliados</h2></div><span class="comparison-count">{{ products.length }} modelos</span></div>
@@ -34,7 +31,7 @@ layout: layouts/base.njk
       {% for product in products %}
       <article class="comparison-product-card{% if loop.index == 1 %} is-top-pick{% endif %}{% if product.is_bonus %} is-bonus{% endif %}">
         <div class="comparison-product-topline">
-          <span class="comparison-rank-badge">{% if product.is_bonus %}＋ BÔNUS{% elif product.rank %}★ {{ product.rank }}{% else %}★ {{ loop.index }}º LUGAR{% endif %}</span>
+          <span class="comparison-rank-badge">{% if product.is_bonus %}<span class="comparison-rank-number">＋ BÔNUS</span>{% elif product.rank %}★ <span class="comparison-rank-number">{{ product.rank }}</span>{% else %}★ <span class="comparison-rank-number">{{ loop.index }}º LUGAR</span>{% endif %}</span>
           {% if product.highlight_label %}<span class="comparison-product-tag">{{ product.highlight_label }}</span>{% endif %}
         </div>
         <div class="comparison-product-main">
@@ -54,7 +51,6 @@ layout: layouts/base.njk
     </div>
   </section>
   {% endif %}
-
   {% if comparison_rows and comparison_rows.length %}
   <section class="comparison-table-section" aria-labelledby="comparison-table-title">
     <div class="comparison-section-heading"><div><p class="comparison-section-kicker">BATE-OLHO</p><h2 id="comparison-table-title">{{ comparison_table_title or 'Comparativo rápido lado a lado' }}</h2></div></div>
@@ -62,9 +58,7 @@ layout: layouts/base.njk
     <div class="comparison-table-scroll"><table class="comparison-data-table"><thead><tr><th scope="col">Característica</th>{% for product in products %}<th scope="col">{{ product.name }}</th>{% endfor %}</tr></thead><tbody>{% for row in comparison_rows %}<tr><th scope="row">{{ row.feature }}</th>{% for product in products %}<td>{% if row.values and row.values[loop.index0] %}{{ row.values[loop.index0] }}{% else %}—{% endif %}</td>{% endfor %}</tr>{% endfor %}</tbody></table></div>
   </section>
   {% endif %}
-
   {% if body %}<section class="comparison-article-body"><div class="comparison-body-heading"><span aria-hidden="true">▎</span><h2>{{ body_heading or 'O que você precisa saber antes de escolher' }}</h2></div><div class="comparison-richtext">{{ body | markdown | safe }}</div></section>{% endif %}
-
   {% if verdict %}<section class="comparison-verdict"><p class="comparison-section-kicker">DECISÃO FINAL</p><h2>{{ verdict_title or 'Veredito: qual escolher?' }}</h2><div class="comparison-richtext">{{ verdict | markdown | safe }}</div></section>{% endif %}
   <footer class="comparison-footer"><a href="/guias/comparativos/">← Ver outros comparativos</a></footer>
 </article>
