@@ -362,3 +362,93 @@
   line-height: 1.78;
   margin-bottom: 1.15em;
 }
+
+
+/* Ajustes exclusivos para comparativos editoriais livres. Não afeta reviews, listas ou outras páginas. */
+.comparison-guide-page {
+  max-width: 1120px;
+  padding-top: clamp(22px, 4vw, 46px);
+  padding-bottom: clamp(40px, 6vw, 72px);
+}
+.comparison-guide-page .comparison-guide-hero {
+  max-width: 900px;
+  margin: 0 auto clamp(28px, 5vw, 52px);
+}
+.comparison-guide-page .comparison-guide-hero h1 {
+  max-width: 24ch;
+  font-size: clamp(2.1rem, 5vw, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -.04em;
+  margin: .55rem 0 1rem;
+}
+.comparison-guide-page .editorial-lead {
+  font-size: clamp(1.05rem, 1.7vw, 1.25rem);
+  line-height: 1.65;
+  max-width: 75ch;
+}
+.comparison-guide-page .comparison-guide-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 16px;
+  color: var(--muted, #64748b);
+  font-size: .9rem;
+}
+.comparison-guide-page .comparison-guide-cover { margin: 26px 0 0; }
+.comparison-guide-page .comparison-guide-cover img {
+  display: block;
+  width: 100%;
+  max-height: 460px;
+  object-fit: cover;
+  border-radius: 18px;
+}
+.comparison-guide-page .comparison-guide-cover figcaption { margin-top: 8px; font-size: .85rem; color: var(--muted, #64748b); }
+.comparison-guide-page .editorial-intro,
+.comparison-guide-page .comparison-guide-body {
+  max-width: 820px;
+  margin-inline: auto;
+  font-size: 1.075rem;
+  line-height: 1.82;
+  overflow-wrap: anywhere;
+}
+.comparison-guide-page .editorial-intro { margin-top: 24px; }
+.comparison-guide-page .comparison-guide-products {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 22px;
+  margin: 30px auto 42px;
+  max-width: 1000px;
+}
+.comparison-guide-page .comparison-guide-product {
+  min-width: 0;
+  padding: clamp(18px, 3vw, 28px);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: 20px;
+  background: var(--surface, #fff);
+  box-shadow: 0 8px 26px rgba(15, 23, 42, .055);
+}
+.comparison-guide-page .comparison-guide-product-heading { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; }
+.comparison-guide-page .comparison-guide-product-heading h2 { margin: 0; font-size: clamp(1.35rem, 2.4vw, 1.8rem); line-height: 1.2; }
+.comparison-guide-page .editorial-rank { flex: 0 0 auto; border-radius: 999px; padding: 6px 10px; background: var(--brand, #2563eb); color: #fff; font-size: .76rem; font-weight: 800; letter-spacing: .025em; }
+.comparison-guide-page .comparison-guide-layout { display: grid; grid-template-columns: minmax(180px, 280px) minmax(0, 1fr); align-items: center; gap: clamp(18px, 3vw, 32px); }
+.comparison-guide-page .comparison-guide-image { min-width: 0; display: flex; justify-content: center; align-items: center; min-height: 190px; padding: 12px; border-radius: 14px; background: transparent; }
+.comparison-guide-page .comparison-guide-image img { display: block; width: 100%; max-width: 250px; height: 220px; object-fit: contain; mix-blend-mode: multiply; }
+html[data-theme="dark"] .comparison-guide-page .comparison-guide-image img { mix-blend-mode: normal; }
+.comparison-guide-page .comparison-guide-copy p { margin: 0 0 18px; line-height: 1.75; }
+.comparison-guide-page .comparison-guide-copy .button { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; }
+.comparison-guide-page .comparison-guide-strengths-title { margin: 20px 0 10px; font-size: 1rem; }
+.comparison-guide-page .comparison-guide-strengths { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding: 0; margin: 0; list-style: none; }
+.comparison-guide-page .comparison-guide-strengths li { padding: 12px 14px; border-radius: 12px; background: var(--light-bg, #f5f7fb); font-size: .93rem; line-height: 1.55; }
+.comparison-guide-page .comparison-guide-strengths li::before { content: "✓"; margin-right: 7px; color: #16a34a; font-weight: 800; }
+.comparison-guide-page .comparison-guide-body { margin-top: 38px; }
+.comparison-guide-page .comparison-guide-body h2 { margin-top: 2.2em; }
+html[data-theme="dark"] .comparison-guide-page .comparison-guide-product { background: var(--dark-surface, #111827); border-color: rgba(148, 163, 184, .22); }
+html[data-theme="dark"] .comparison-guide-page .comparison-guide-strengths li { background: rgba(148, 163, 184, .1); }
+@media (max-width: 680px) {
+  .comparison-guide-page .comparison-guide-layout { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .comparison-guide-page .comparison-guide-image { min-height: 150px; }
+  .comparison-guide-page .comparison-guide-image img { height: 190px; }
+  .comparison-guide-page .comparison-guide-strengths { grid-template-columns: minmax(0, 1fr); }
+  .comparison-guide-page .comparison-guide-product-heading { flex-direction: column; }
+  .comparison-guide-page .comparison-guide-meta { gap: 6px 12px; }
+}
