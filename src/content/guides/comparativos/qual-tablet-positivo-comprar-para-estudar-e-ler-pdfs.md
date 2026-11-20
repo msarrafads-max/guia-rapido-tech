@@ -72,14 +72,25 @@ products:
       - Super leve (240 g) para ler e-books no transporte
       - Android 14 Go Edition leve para leitura básica
 comparison_table_title: comparação balblabla
-comparison_table_intro: dsadasdds
+comparison_table_intro: O que realmente irá importar
 comparison_rows:
   - feature: dadsa
     values:
       - dsadsa
       - dsadsa
-verdict_title: ssrsrsr
-verdict: srarsrasrsarrasr
+verdict_title: ""
+verdict: >-
+  
+
+
+  ## Qual escolher no final?
+
+
+  * **Escolha o [Positivo Vision Tab 11](<>) (1º Lugar):** Se quer a melhor tela da linha para PDFs, mais fluidez (8 GB de RAM) e acessórios completos para estudar.
+
+  * **Escolha o [Positivo Vision Tab 10](<>) (2º Lugar):** Se quer gastar menos mantendo tela grande de 10,1", 128 GB de espaço e boa bateria.
+
+  * **Considere o [Positivo Vision TAB 7](<>) (Bônus):** Apenas se o orçamento estiver bem apertado e o foco for leitura leve de e-books e resumos curtos.
 ---
 ## Comparativo rápido lado a lado
 
