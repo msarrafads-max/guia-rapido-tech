@@ -334,8 +334,15 @@ collections:
       - { label: "Descrição curta / SEO", name: "description", widget: "text" }
       - { label: "Título SEO (opcional)", name: "seo_title", widget: "string", required: false }
       - { label: "Descrição SEO (opcional)", name: "seo_description", widget: "text", required: false }
-      - { label: "Introdução", name: "intro", widget: "markdown", required: false }
+      - { label: "Imagem de capa (opcional)", name: "cover_image", widget: "image", required: false }
+      - { label: "Texto alternativo da capa", name: "cover_alt", widget: "string", required: false }
+      - { label: "Selo superior (opcional)", name: "editorial_label", widget: "string", required: false, hint: "Ex.: GUIA DE COMPRA ou COMPARATIVO ESPECIAL" }
+      - { label: "Nome do autor (opcional)", name: "author", widget: "string", required: false }
+      - { label: "Legenda da capa (opcional)", name: "cover_caption", widget: "string", required: false }
+      - { label: "Tempo de leitura (ex.: 6 min)", name: "reading_time", widget: "string", required: false }
+      - { label: "Texto de abertura / introdução", name: "intro", widget: "markdown", required: false }
       - label: "Produtos comparados"
+
         name: "products"
         widget: "list"
         min: 1
