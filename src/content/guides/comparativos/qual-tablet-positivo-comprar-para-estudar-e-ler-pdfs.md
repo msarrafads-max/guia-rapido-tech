@@ -11,16 +11,16 @@ seo_description: Quer um tablet barato para estudar e ler apostilas em PDF?
   Comparamos o Positivo Vision TAB 7, Tab 10 e Tab 11 para mostrar qual entrega
   a melhor tela e desempenho.
 intro: >-
-  Se você quer gastar pouco em um tablet para ler apostilas, abrir PDFs e
+  # Se você quer gastar pouco em um tablet para ler apostilas, abrir PDFs e
   assistir a videoaulas, a linha Positivo Vision oferece três opções bem
   diferentes no preço e no tamanho de tela: o **Vision TAB 7**, o **Vision Tab
   10** e o **Vision Tab 11**.
 
 
-  **Resposta rápida:** para estudar com conforto e ler PDFs sem precisar dar zoom a todo momento, o **Positivo Vision Tab 11** é a escolha mais completa (pela tela maior de 11" Full HD, 8 GB de RAM e suporte à capa teclado com caneta Vision Pen). Já o **Vision Tab 10** entrega o melhor equilíbrio para quem só precisa de uma tela grande de 10,1" pagando menos, enquanto o **Vision TAB 7** vale a pena apenas se o orçamento estiver muito apertado e o foco for leitura portátil.
+  # **Resposta rápida:** para estudar com conforto e ler PDFs sem precisar dar zoom a todo momento, o **Positivo Vision Tab 11** é a escolha mais completa (pela tela maior de 11" Full HD, 8 GB de RAM e suporte à capa teclado com caneta Vision Pen). Já o **Vision Tab 10** entrega o melhor equilíbrio para quem só precisa de uma tela grande de 10,1" pagando menos, enquanto o **Vision TAB 7** vale a pena apenas se o orçamento estiver muito apertado e o foco for leitura portátil.
 
 
-  Abaixo, comparamos os pontos que realmente importam na rotina de estudos para você escolher o modelo certo para o seu bolso.
+  # Abaixo, comparamos os pontos que realmente importam na rotina de estudos para você escolher o modelo certo para o seu bolso.
 products:
   - image_alt: Tablet Positivo Vision Tab 11 com capa teclado e caneta Vision Pen
     name: Positivo Vision Tab 11
