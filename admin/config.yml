@@ -332,17 +332,17 @@ collections:
       - { label: "Status", name: "status", widget: "select", options: ["published", "draft"], default: "published" }
       - { label: "Data de publicação", name: "date", widget: "datetime", required: false, date_format: "DD/MM/YYYY", time_format: "HH:mm", format: "YYYY-MM-DDTHH:mm:ssZ" }
       - { label: "Descrição curta / SEO", name: "description", widget: "text" }
-      - { label: "Título SEO (opcional)", name: "seo_title", widget: "string", required: false }
-      - { label: "Descrição SEO (opcional)", name: "seo_description", widget: "text", required: false }
+      - { label: "Selo superior", name: "editorial_label", widget: "string", required: false, default: "GUIA DE COMPRA • COMPARATIVO" }
+      - { label: "Autor (opcional)", name: "author", widget: "string", required: false }
+      - { label: "Tempo de leitura (ex.: 4 min)", name: "reading_time", widget: "string", required: false }
       - { label: "Imagem de capa (opcional)", name: "cover_image", widget: "image", required: false }
       - { label: "Texto alternativo da capa", name: "cover_alt", widget: "string", required: false }
-      - { label: "Selo superior (opcional)", name: "editorial_label", widget: "string", required: false, hint: "Ex.: GUIA DE COMPRA ou COMPARATIVO ESPECIAL" }
-      - { label: "Nome do autor (opcional)", name: "author", widget: "string", required: false }
-      - { label: "Legenda da capa (opcional)", name: "cover_caption", widget: "string", required: false }
-      - { label: "Tempo de leitura (ex.: 6 min)", name: "reading_time", widget: "string", required: false }
-      - { label: "Texto de abertura / introdução", name: "intro", widget: "markdown", required: false }
+      - { label: "Legenda da capa", name: "cover_caption", widget: "string", required: false }
+      - { label: "Resposta rápida em destaque", name: "quick_answer", widget: "markdown", required: false, hint: "Resumo objetivo destacado em uma caixa azul antes dos produtos." }
+      - { label: "Título SEO (opcional)", name: "seo_title", widget: "string", required: false }
+      - { label: "Descrição SEO (opcional)", name: "seo_description", widget: "text", required: false }
+      - { label: "Introdução", name: "intro", widget: "markdown", required: false }
       - label: "Produtos comparados"
-
         name: "products"
         widget: "list"
         min: 1
@@ -354,6 +354,9 @@ collections:
           - { label: "Imagem do produto", name: "image", widget: "image", required: false }
           - { label: "Texto alternativo", name: "image_alt", widget: "string", required: false }
           - { label: "Breve descrição", name: "description", widget: "text", required: false }
+          - { label: "Destaque curto (opcional)", name: "highlight_label", widget: "string", required: false, hint: "Ex.: MELHOR PARA ESTUDOS" }
+          - { label: "Texto do destaque (opcional)", name: "highlight_value", widget: "string", required: false, hint: "Ex.: Melhor para PDFs e multitarefa" }
+          - { label: "Este produto é um bônus?", name: "is_bonus", widget: "boolean", default: false, required: false }
           - { label: "Categoria do review", name: "category", widget: "select", options: [{label: "Smartphones", value: "smartphones"}, {label: "Tablets", value: "tablets"}, {label: "Notebooks", value: "notebooks"}], default: "smartphones" }
           - { label: "Slug do review completo", name: "review_slug", widget: "string", required: false }
           - { label: "URL alternativa do review", name: "review_url", widget: "string", required: false }
@@ -364,4 +367,23 @@ collections:
             max: 3
             required: false
             field: { label: "Ponto forte", name: "strength", widget: "string" }
-      - { label: "Conteúdo adicional do artigo", name: "body", widget: "markdown", required: false }
+      - { label: "Título da seção editorial", name: "body_heading", widget: "string", required: false, default: "O que você precisa saber antes de escolher" }
+      - { label: "Conteúdo adicional do artigo", name: "body", widget: "markdown", required: false, hint: "Este conteúdo aparece abaixo dos cards e do comparativo. Use títulos, listas e negrito." }
+      - { label: "Título da tabela comparativa", name: "comparison_table_title", widget: "string", required: false, default: "Comparativo rápido lado a lado" }
+      - { label: "Introdução da tabela (opcional)", name: "comparison_table_intro", widget: "text", required: false }
+      - label: "Linhas da tabela comparativa (opcional)"
+        name: "comparison_rows"
+        widget: "list"
+        required: false
+        max: 30
+        summary: "{{fields.feature}}"
+        fields:
+          - { label: "Característica", name: "feature", widget: "string" }
+          - label: "Valores por produto (na mesma ordem dos cards)"
+            name: "values"
+            widget: "list"
+            min: 1
+            max: 20
+            field: { label: "Valor", name: "value", widget: "string" }
+      - { label: "Título do veredito final", name: "verdict_title", widget: "string", required: false, default: "Veredito: qual escolher?" }
+      - { label: "Veredito final por perfil de usuário", name: "verdict", widget: "markdown", required: false }
