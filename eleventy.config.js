@@ -1,6 +1,8 @@
 import MarkdownIt from "markdown-it";
 
 export default function (eleventyConfig) {
+  const markdown = new MarkdownIt({ html: false, linkify: true, breaks: false });
+  eleventyConfig.addFilter("markdown", value => markdown.render(String(value || "")));
   eleventyConfig.addPassthroughCopy({ "admin": "admin" });
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
@@ -19,9 +21,6 @@ export default function (eleventyConfig) {
     ...api.getFilteredByGlob("src/content/guides/listas/*.md"),
     ...api.getFilteredByGlob("src/content/guides/comparativos/*.md")
   ]));
-
-  const markdown = new MarkdownIt({ html: false, linkify: true, breaks: false });
-  eleventyConfig.addFilter("markdown", value => markdown.render(String(value || "")));
 
   eleventyConfig.addFilter("dateBR", value => {
     if (!value) return "";
