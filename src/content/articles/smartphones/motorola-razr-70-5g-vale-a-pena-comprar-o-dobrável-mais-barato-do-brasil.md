@@ -23,7 +23,7 @@ gallery:
     caption: "Dimensões do Razr 70 (Foto: Divulgação / Motorola)"
   - image: https://brmotorolanew.vtexassets.com/arquivos/ids/180704-1200-auto?v=639181026284970000&width=1200&height=auto&aspect=true
     caption: "Pontos fortes (Foto: Divulgação / Motorola)"
-badge: ANÁLISE
+badge: Dobrável mais barato do Brasil com bateria de 4.800 mAh
 estimated_price: R$ 3.599,00 – R$ 4.499,00
 specs:
   screen: Interna 6,9" Extreme AMOLED FHD+ (120 Hz) + Externa 3,6" (90 Hz).
