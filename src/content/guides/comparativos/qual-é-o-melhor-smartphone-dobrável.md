@@ -1,5 +1,5 @@
 ---
-title: QUal é o melhor smartphone dobrável
+title: Qual é o melhor smartphone dobrável para 2027 ?
 slug: dsa
 status: published
 description: dsa
