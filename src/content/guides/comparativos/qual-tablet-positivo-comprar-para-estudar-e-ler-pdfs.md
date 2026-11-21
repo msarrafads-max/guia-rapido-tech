@@ -71,26 +71,27 @@ products:
       - Preço muito baixo (faixa de R$ 400 a R$ 470)
       - Super leve (240 g) para ler e-books no transporte
       - Android 14 Go Edition leve para leitura básica
-comparison_table_title: comparação balblabla
-comparison_table_intro: O que realmente irá importar
+comparison_table_title: O que muda na prática na hora de estudar?
+comparison_table_intro: ""
 comparison_rows:
-  - feature: dadsa
+  - feature: Veja lado a lado os três pontos principais que um os tablets oferecem
+      para quem busca estudar.
     values:
-      - dsadsa
-      - dsadsa
+      - Tela
+      - 11" Full HD IPS
+      - 10,1" HD IPS
+      - 7" HD IPS
+      - Memória RAM
+      - 8 GB
 verdict_title: ""
 verdict: >-
   
 
+  1. **Escolha o [Positivo Vision Tab 11](https://guiarapidotech.com.br/tablets/positivo-vision-tab-11-analise): Se quer a melhor tela da linha para PDFs, mais fluidez (8 GB de RAM) e acessórios completos para estudar.**
 
-  ## Qual escolher no final?
+  2. **Escolha o [Positivo Vision Tab 10](https://guiarapidotech.com.br/tablets/positivo-vision-tab-10-analise): Se quer gastar menos mantendo tela grande de 10,1", 128 GB de espaço e boa bateria.**
 
-
-  * **Escolha o [Positivo Vision Tab 11](<>) (1º Lugar):** Se quer a melhor tela da linha para PDFs, mais fluidez (8 GB de RAM) e acessórios completos para estudar.
-
-  * **Escolha o [Positivo Vision Tab 10](<>) (2º Lugar):** Se quer gastar menos mantendo tela grande de 10,1", 128 GB de espaço e boa bateria.
-
-  * **Considere o [Positivo Vision TAB 7](<>) (Bônus):** Apenas se o orçamento estiver bem apertado e o foco for leitura leve de e-books e resumos curtos.
+  3. **Considere o [Positivo Vision TAB 7: ](https://guiarapidotech.com.br/tablets/positivo-vision-tab-7-analise)Apenas se o orçamento estiver bem apertado e o foco for leitura leve de e-books e resumos curtos.**
 ---
 ## Comparativo rápido lado a lado
 
