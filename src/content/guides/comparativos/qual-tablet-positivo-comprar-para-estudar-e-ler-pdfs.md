@@ -34,7 +34,7 @@ intro: >-
 products:
   - category: tablets
     button_text: VER ANÁLISE COMPLETA
-    rank: 1º Lugar — Melhor para Estudos
+    rank: 1º Lugar
     name: Positivo Vision Tab 11
     image: https://lojapositivo.vtexassets.com/arquivos/ids/172373/2_TABLET_POSITIVO_VISION_TAB_11_1000X1000.jpg?v=639159169112730000
     description: Tela grande de 11" Full HD, 8 GB de RAM e Android 16 para ler PDFs
