@@ -9,7 +9,7 @@ description: Comparamos os tablets Positivo Vision Tab 11, Tab 10 e TAB 7 para
 editorial_label: GUIA DE COMPRA • TABLETS
 author: Equipe Guia Rápido Tech
 reading_time: 4 MIN
-cover_image: /assets/images/uploads/sem-título.png
+cover_image: /assets/images/uploads/gemini_generated_image_xvipmkxvipmkxvip.jpeg
 cover_alt: Comparativo entre os tablets Positivo Vision Tab 11, Vision Tab 10 e
   Vision TAB 7 para estudos
 quick_answer: ""
