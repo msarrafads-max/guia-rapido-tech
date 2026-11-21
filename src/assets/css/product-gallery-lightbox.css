@@ -1,0 +1,32 @@
+
+/* Galeria compacta das reviews */
+.review-page .product-photo > a.product-main-image,
+.review-page .product-photo > .product-main-image{display:grid;place-items:center;width:100%;height:clamp(220px,28vw,340px);max-height:340px;overflow:hidden;border-radius:14px;cursor:zoom-in}
+.review-page .product-photo > a.product-main-image img,
+.review-page .product-photo > .product-main-image img{width:100%;height:100%;max-height:100%;object-fit:contain}
+.review-page .product-gallery{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:12px 0 4px}
+.review-page .product-gallery a.gallery-thumb,.review-page .product-gallery .gallery-thumb{flex:0 0 76px;display:grid;place-items:center;width:76px;height:76px;padding:4px;overflow:hidden;border:1px solid var(--border,#dfe5ef);border-radius:10px;background:var(--surface,#fff);cursor:zoom-in;transition:border-color .15s,box-shadow .15s,transform .15s}
+.review-page .product-gallery a.gallery-thumb:hover,.review-page .product-gallery a.gallery-thumb:focus-visible{border-color:var(--brand,#2563eb);box-shadow:0 0 0 2px color-mix(in srgb,var(--brand,#2563eb) 18%,transparent);transform:translateY(-1px);outline:none}
+.review-page .product-gallery a.gallery-thumb img,.review-page .product-gallery .gallery-thumb img{display:block;width:100%;height:100%;max-height:none;object-fit:contain;border-radius:5px}
+.review-page .product-gallery .gallery-thumb span{display:none}
+/* Lightbox sobre a página atual */
+.grt-gallery-lightbox{position:fixed;inset:0;z-index:99999;display:grid;grid-template-rows:auto minmax(0,1fr) auto;place-items:center;gap:12px;padding:clamp(12px,3vw,28px);color:#fff;background:rgba(5,10,22,.93);backdrop-filter:blur(7px)}
+.grt-gallery-lightbox[hidden]{display:none!important}
+.grt-lightbox-top,.grt-lightbox-bottom{display:flex;align-items:center;justify-content:space-between;gap:14px;width:min(1100px,100%)}
+.grt-lightbox-count{color:rgba(255,255,255,.8);font-size:.9rem;font-variant-numeric:tabular-nums}
+.grt-lightbox-close,.grt-lightbox-arrow{display:grid;place-items:center;flex:0 0 auto;border:1px solid rgba(255,255,255,.35);border-radius:999px;color:#fff;background:rgba(255,255,255,.1);cursor:pointer}
+.grt-lightbox-close{width:42px;height:42px;font-size:1.7rem;line-height:1}
+.grt-lightbox-stage{display:grid;grid-template-columns:48px minmax(0,1fr) 48px;align-items:center;gap:clamp(8px,2vw,24px);width:min(1200px,100%);height:100%;min-height:0}
+.grt-lightbox-image-wrap{display:grid;place-items:center;height:100%;min-height:0}
+.grt-lightbox-image{display:block;max-width:100%;max-height:min(76vh,900px);width:auto;height:auto;object-fit:contain;border-radius:8px;box-shadow:0 16px 60px rgba(0,0,0,.3)}
+.grt-lightbox-arrow{width:46px;height:46px;font-size:2rem;line-height:1}
+.grt-lightbox-arrow:hover,.grt-lightbox-close:hover{background:rgba(255,255,255,.23)}
+.grt-lightbox-caption{flex:1;text-align:center;font-size:.9rem;color:rgba(255,255,255,.86)}
+.grt-lightbox-hint{min-width:40px;color:rgba(255,255,255,.55);font-size:.75rem}
+html.grt-lightbox-open,html.grt-lightbox-open body{overflow:hidden}
+/* O JS aplica o percentual real de preenchimento da nota */
+.review-page .stars{position:relative;display:inline-block;width:5em;height:1em;overflow:hidden;vertical-align:middle;white-space:nowrap;font-family:Arial,sans-serif;font-size:.95rem;line-height:1}
+.review-page .stars .stars-empty,.review-page .stars .stars-filled{position:absolute;inset:0 auto auto 0;display:block;width:100%!important;height:100%;overflow:hidden;white-space:nowrap;font:inherit;letter-spacing:0;line-height:1}
+.review-page .stars .stars-empty{color:#cbd5e1}
+.review-page .stars .stars-filled{z-index:1;color:#f59e0b!important;clip-path:inset(0 calc(100% - var(--rating-percent,100%)) 0 0)}
+@media(max-width:720px){.review-page .product-photo > a.product-main-image,.review-page .product-photo > .product-main-image{height:clamp(210px,62vw,300px)}.review-page .product-gallery{gap:8px}.review-page .product-gallery a.gallery-thumb,.review-page .product-gallery .gallery-thumb{flex-basis:68px;width:68px;height:68px}.grt-lightbox-stage{grid-template-columns:38px minmax(0,1fr) 38px;gap:5px}.grt-lightbox-arrow{width:36px;height:36px;font-size:1.6rem}.grt-lightbox-image{max-height:72vh}.grt-lightbox-hint{display:none}}
