@@ -1,32 +1,47 @@
+/* Galeria e estrelas fracionadas — Guia Rápido Tech */
+.review-page .product-gallery-wrap { min-width: 0; }
+.review-page a.product-main-image { display:flex; align-items:center; justify-content:center; cursor:zoom-in; }
+.review-page .product-main-image img { display:block; width:100%; max-height:440px; object-fit:contain; }
+.review-page .product-gallery { display:flex; flex-wrap:wrap; align-items:flex-start; gap:8px; margin-top:12px; }
+.review-page .product-gallery .gallery-thumb {
+  display:flex; flex:0 0 72px; width:72px; height:72px; box-sizing:border-box;
+  align-items:center; justify-content:center; overflow:hidden; padding:4px;
+  border:1px solid var(--border,#dfe5ef); border-radius:10px; background:transparent; cursor:zoom-in;
+}
+.review-page .product-gallery .gallery-thumb img { display:block; width:100%; height:100%; object-fit:contain; }
+.review-page .product-gallery .gallery-thumb span { display:none; }
+.review-page .product-gallery .gallery-thumb.is-active { border:2px solid var(--brand,#2563eb); padding:3px; }
+.grt-lightbox { position:fixed; inset:0; z-index:10000; display:none; align-items:center; justify-content:center; padding:24px; background:rgba(4,8,18,.94); }
+.grt-lightbox.is-open { display:flex; }
+.grt-lightbox__figure { display:flex; flex-direction:column; align-items:center; justify-content:center; max-width:min(100%,1100px); max-height:100%; margin:0; }
+.grt-lightbox__image { display:block; width:auto; height:auto; max-width:100%; max-height:calc(100vh - 100px); object-fit:contain; }
+.grt-lightbox__caption { margin-top:10px; color:#fff; text-align:center; font-size:.9rem; }
+.grt-lightbox__close, .grt-lightbox__nav { position:absolute; display:flex; align-items:center; justify-content:center; width:46px; height:46px; padding:0; border:1px solid rgba(255,255,255,.4); border-radius:50%; color:white; background:rgba(15,23,42,.82); font-size:28px; line-height:1; cursor:pointer; }
+.grt-lightbox__close { top:16px; right:16px; }
+.grt-lightbox__nav--prev { left:16px; }
+.grt-lightbox__nav--next { right:16px; }
+.grt-lightbox__close:hover, .grt-lightbox__nav:hover { background:#2563eb; }
+body.grt-lightbox-open { overflow:hidden; }
+@media(max-width:560px) {
+  .review-page .product-gallery .gallery-thumb { flex-basis:60px; width:60px; height:60px; }
+  .grt-lightbox { padding:12px; }
+  .grt-lightbox__nav { width:40px; height:40px; }
+  .grt-lightbox__nav--prev { left:7px; }
+  .grt-lightbox__nav--next { right:7px; }
+  .grt-lightbox__image { max-height:calc(100vh - 80px); }
+}
 
-/* Galeria compacta das reviews */
-.review-page .product-photo > a.product-main-image,
-.review-page .product-photo > .product-main-image{display:grid;place-items:center;width:100%;height:clamp(220px,28vw,340px);max-height:340px;overflow:hidden;border-radius:14px;cursor:zoom-in}
-.review-page .product-photo > a.product-main-image img,
-.review-page .product-photo > .product-main-image img{width:100%;height:100%;max-height:100%;object-fit:contain}
-.review-page .product-gallery{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:12px 0 4px}
-.review-page .product-gallery a.gallery-thumb,.review-page .product-gallery .gallery-thumb{flex:0 0 76px;display:grid;place-items:center;width:76px;height:76px;padding:4px;overflow:hidden;border:1px solid var(--border,#dfe5ef);border-radius:10px;background:var(--surface,#fff);cursor:zoom-in;transition:border-color .15s,box-shadow .15s,transform .15s}
-.review-page .product-gallery a.gallery-thumb:hover,.review-page .product-gallery a.gallery-thumb:focus-visible{border-color:var(--brand,#2563eb);box-shadow:0 0 0 2px color-mix(in srgb,var(--brand,#2563eb) 18%,transparent);transform:translateY(-1px);outline:none}
-.review-page .product-gallery a.gallery-thumb img,.review-page .product-gallery .gallery-thumb img{display:block;width:100%;height:100%;max-height:none;object-fit:contain;border-radius:5px}
-.review-page .product-gallery .gallery-thumb span{display:none}
-/* Lightbox sobre a página atual */
-.grt-gallery-lightbox{position:fixed;inset:0;z-index:99999;display:grid;grid-template-rows:auto minmax(0,1fr) auto;place-items:center;gap:12px;padding:clamp(12px,3vw,28px);color:#fff;background:rgba(5,10,22,.93);backdrop-filter:blur(7px)}
-.grt-gallery-lightbox[hidden]{display:none!important}
-.grt-lightbox-top,.grt-lightbox-bottom{display:flex;align-items:center;justify-content:space-between;gap:14px;width:min(1100px,100%)}
-.grt-lightbox-count{color:rgba(255,255,255,.8);font-size:.9rem;font-variant-numeric:tabular-nums}
-.grt-lightbox-close,.grt-lightbox-arrow{display:grid;place-items:center;flex:0 0 auto;border:1px solid rgba(255,255,255,.35);border-radius:999px;color:#fff;background:rgba(255,255,255,.1);cursor:pointer}
-.grt-lightbox-close{width:42px;height:42px;font-size:1.7rem;line-height:1}
-.grt-lightbox-stage{display:grid;grid-template-columns:48px minmax(0,1fr) 48px;align-items:center;gap:clamp(8px,2vw,24px);width:min(1200px,100%);height:100%;min-height:0}
-.grt-lightbox-image-wrap{display:grid;place-items:center;height:100%;min-height:0}
-.grt-lightbox-image{display:block;max-width:100%;max-height:min(76vh,900px);width:auto;height:auto;object-fit:contain;border-radius:8px;box-shadow:0 16px 60px rgba(0,0,0,.3)}
-.grt-lightbox-arrow{width:46px;height:46px;font-size:2rem;line-height:1}
-.grt-lightbox-arrow:hover,.grt-lightbox-close:hover{background:rgba(255,255,255,.23)}
-.grt-lightbox-caption{flex:1;text-align:center;font-size:.9rem;color:rgba(255,255,255,.86)}
-.grt-lightbox-hint{min-width:40px;color:rgba(255,255,255,.55);font-size:.75rem}
-html.grt-lightbox-open,html.grt-lightbox-open body{overflow:hidden}
-/* O JS aplica o percentual real de preenchimento da nota */
-.review-page .stars{position:relative;display:inline-block;width:5em;height:1em;overflow:hidden;vertical-align:middle;white-space:nowrap;font-family:Arial,sans-serif;font-size:.95rem;line-height:1}
-.review-page .stars .stars-empty,.review-page .stars .stars-filled{position:absolute;inset:0 auto auto 0;display:block;width:100%!important;height:100%;overflow:hidden;white-space:nowrap;font:inherit;letter-spacing:0;line-height:1}
-.review-page .stars .stars-empty{color:#cbd5e1}
-.review-page .stars .stars-filled{z-index:1;color:#f59e0b!important;clip-path:inset(0 calc(100% - var(--rating-percent,100%)) 0 0)}
-@media(max-width:720px){.review-page .product-photo > a.product-main-image,.review-page .product-photo > .product-main-image{height:clamp(210px,62vw,300px)}.review-page .product-gallery{gap:8px}.review-page .product-gallery a.gallery-thumb,.review-page .product-gallery .gallery-thumb{flex-basis:68px;width:68px;height:68px}.grt-lightbox-stage{grid-template-columns:38px minmax(0,1fr) 38px;gap:5px}.grt-lightbox-arrow{width:36px;height:36px;font-size:1.6rem}.grt-lightbox-image{max-height:72vh}.grt-lightbox-hint{display:none}}
+/* Força a sobreposição e o recorte proporcional das estrelas. */
+.review-page .store-rating .stars {
+  position:relative; display:inline-block; flex:0 0 5em; width:5em; height:1.05em;
+  overflow:hidden; vertical-align:middle; white-space:nowrap; font-family:Arial,sans-serif;
+  font-size:.95rem; line-height:1; letter-spacing:0;
+}
+.review-page .store-rating .stars .stars-empty,
+.review-page .store-rating .stars .stars-filled {
+  position:absolute; top:0; left:0; display:block; height:100%; overflow:hidden;
+  white-space:nowrap; font-family:Arial,sans-serif; font-size:inherit; line-height:1;
+  letter-spacing:0; max-width:100%;
+}
+.review-page .store-rating .stars .stars-empty { width:100%; color:#cbd5e1; }
+.review-page .store-rating .stars .stars-filled { z-index:1; color:#f59e0b; }
