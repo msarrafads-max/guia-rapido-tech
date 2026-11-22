@@ -66,7 +66,7 @@ offers:
     price: R$ 1.249,00
     detail: Consulte variações na loja.
     url: https://meli.la/1mFZEC9
-    rating: 2
+    rating: 4.9
   shopee:
     availability: available
     rating_status: rated
