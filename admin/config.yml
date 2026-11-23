@@ -192,7 +192,6 @@ collections:
           - { label: "Memória / armazenamento", name: "memory", widget: "string", required: false }
           - { label: "Bateria / autonomia", name: "battery", widget: "string", required: false }
           - { label: "Câmeras / gráficos", name: "camera_graphics", widget: "string", required: false }
-          - { label: "Sistema operacional", name: "os", widget: "string", required: false }
           - { label: "Preço estimado", name: "price", widget: "string", required: false }
       - label: "Galeria de fotos do produto"
         name: "gallery"
