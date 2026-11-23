@@ -6,7 +6,11 @@ permalink: /index.html
   <div class="hero-copy"><span class="eyebrow">GUIA RÁPIDO TECH</span><h1>{{ home.hero_title }}</h1><p>{{ home.hero_description }}</p>
     {% if home.hero_article_slug %}<a class="button" href="/smartphones/{{ home.hero_article_slug }}.html">{{ home.hero_button_text or "Ver análise" }} ↗</a>{% else %}<a class="button" href="/smartphones/">{{ home.hero_button_text or "Explorar reviews" }} ↗</a>{% endif %}
   </div>
+  {% if home.hero_image %}
+  <div class="hero-art hero-art-image"><img class="home-hero-image" src="{{ home.hero_image }}" alt="{{ home.hero_image_alt or '' }}" fetchpriority="high"></div>
+  {% else %}
   <div class="hero-art"><div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div><div class="hero-device"><span>GRT</span><strong>Escolha<br>melhor.</strong><small>Reviews • Comparativos • Tecnologia</small></div></div>
+  {% endif %}
 </section>
 <section class="container section-block">
   <div class="section-heading"><div><span class="eyebrow">EXPLORE POR CATEGORIA</span><h2>Encontre o que procura</h2><p>Conteúdo organizado para ajudar na sua próxima escolha.</p></div></div>
