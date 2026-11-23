@@ -96,11 +96,26 @@ comparisons:
 
 
 
-Visão Geral
+## Visão geral
+
+
 Lançado no Brasil em 2026 com preços oficiais a partir de R$ 4.189 (256 GB), o Motorola Edge 70 Pro aposta em um conjunto técnico muito difícil de bater na faixa intermediária premium. Ele combina uma bateria gigante de 6.500 mAh (silício-carbono) em um corpo ultrafino de apenas 190 g, tela Extreme AMOLED 1.5K de 144Hz com 5.200 nits, quatro câmeras de 50 MP com zoom periscópico de 3,5x e resistência máxima IP68/IP69. No varejo brasileiro (Amazon, Mercado Livre e Shopee), já aparece em ofertas por volta de R$ 3.059 a R$ 3.499, com tendência de estabilizar abaixo dos R$ 2.900 nos próximos meses, pressionando diretamente rivais como o Galaxy S25 FE e o POCO F8 Pro.
 
-Vale a pena?
 
-* Sim, se você busca autonomia extrema sem tijolão na mão: A bateria de 6.500 mAh com recarga TurboPower de 90W na caixa (mais carregamento sem fio de 15W) coloca o aparelho muito à frente dos concorrentes diretos.
-* Sim, se você prioriza câmeras versáteis e resistência: Ter sensores de 50 MP nas quatro câmeras (incluindo lente periscópica de 3,5x e gravação 4K 60fps na frontal) somados à proteção IP68/IP69 entrega recursos de topo de linha.
-* Talvez não, se o seu foco principal for jogos pesados no talo ou longevidade de sistema: Para máximo desempenho gráfico bruto, o *POCO F8 Pro* (Snapdragon 8 Elite) é superior; já para quem quer 7 anos de atualizações de Android, o *Galaxy S25 FE* leva vantagem sobre os 3 updates da Motorola.
+
+
+## Vale a pena?
+
+* * Sim, se você busca autonomia extrema sem tijolão na mão: A bateria de 6.500 mAh com recarga TurboPower de 90W na caixa (mais carregamento sem fio de 15W) coloca o aparelho muito à frente dos concorrentes diretos.
+
+  * Sim, se você prioriza câmeras versáteis e resistência: Ter sensores de 50 MP nas quatro câmeras (incluindo lente periscópica de 3,5x e gravação 4K 60fps na frontal) somados à proteção IP68/IP69 entrega recursos de topo de linha.
+
+  * Talvez não, se o seu foco principal for jogos pesados no talo ou longevidade de sistema: Para máximo desempenho gráfico bruto, o 
+
+    *POCO F8 Pro*
+
+     (Snapdragon 8 Elite) é superior; já para quem quer 7 anos de atualizações de Android, o 
+
+    *Galaxy S25 FE*
+
+     leva vantagem sobre os 3 updates da Motorola.
