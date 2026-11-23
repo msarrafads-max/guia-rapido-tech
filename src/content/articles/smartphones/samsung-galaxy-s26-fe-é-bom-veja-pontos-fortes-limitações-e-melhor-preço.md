@@ -80,6 +80,7 @@ comparisons:
     screen: 6,8" Extreme AMOLED 1.5K, 144 Hz, 5.200 nits
     battery: 6.500 mAh (Si/C) | TurboPower 90 W + sem fio 15 W
     processor: MediaTek Dimensity 8500 Extreme (4 nm)
+    article_slug: motorola-edge-70-pro-5g-analise
     highlight: Tela 144 Hz ultrabrilhante, 4 câmeras de 50 MP e bateria de 6.500 mAh
     image: https://http2.mlstatic.com/D_Q_NP_660092-MLA110410356432_052026-F.webp
   - memory: 12 GB RAM + 256 GB ou 512 GB
