@@ -26,13 +26,16 @@ gallery:
     caption: "Atualização (Foto: Divulgação / Samsung)"
     alt: "Atualização (Foto: Divulgação / Samsung)"
 badge: 7 anos de Android, Galaxy AI completo e zoom óptico 3x
+estimated_price: R$ 3.290 – R$ 3.799 (128 GB)  |  R$ 4.040 – R$ 4.799 (256 GB)
 specs:
   screen: 6,7" Dynamic AMOLED 2X Full HD+, 120 Hz, 1.900 nits
   processor: Samsung Exynos 2500 (3 nm)
   memory: 8 GB RAM + 128 GB ou 256 GB
   battery: 4.900 mAh | Suporte 45 W (25 W na caixa) + sem fio
   camera_graphics: Traseira 50 MP + 12 MP + 8 MP (zoom 3x) | Frontal 12 MP | GPU Xclipse 950
-  os: R$ 3.290 – R$ 3.799 (128 GB)  |  R$ 4.040 – R$ 4.799 (256 GB)
+  os: Android 17 de fábrica sob a interface One UI 9, com pacote completo Galaxy
+    AI e garantia oficial de 7 gerações de sistema Android e 7 anos de
+    atualizações de segurança.
 pros:
   - Sai de fábrica já com Android 17 (One UI 9) e recebe 7 anos de atualizações
     de sistema e segurança.
