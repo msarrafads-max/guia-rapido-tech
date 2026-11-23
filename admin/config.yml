@@ -81,7 +81,7 @@ collections:
         fields:
           - { label: "Título principal", name: "hero_title", widget: "string" }
           - { label: "Subtítulo principal", name: "hero_description", widget: "text" }
-          - { label: "Imagem principal da home (opcional)", name: "hero_image", widget: "image", required: false, hint: "Imagem decorativa da seção principal. Não será clicável." }
+          - { label: "Imagem principal da home (opcional)", name: "hero_image", widget: "image", required: false, hint: "Formato recomendado: horizontal 4:3 (1200 × 900 px). A imagem preencherá toda a área; as bordas podem ser cortadas para evitar faixas. A imagem não será clicável." }
           - { label: "Texto alternativo da imagem principal", name: "hero_image_alt", widget: "string", required: false, hint: "Descreva a imagem para leitores de tela. Deixe vazio se for puramente decorativa." }
           - { label: "Texto do botão", name: "hero_button_text", widget: "string" }
           - { label: "Slug do artigo do botão", name: "hero_article_slug", widget: "string", required: false }
@@ -94,7 +94,7 @@ collections:
             fields:
               - { label: "Título", name: "title", widget: "string" }
               - { label: "Descrição", name: "description", widget: "text", required: false }
-              - { label: "Imagem", name: "image", widget: "image", required: false }
+              - { label: "Imagem (opcional)", name: "image", widget: "image", required: false, hint: "Formato recomendado: horizontal 16:9 (1200 × 675 px). A imagem preencherá toda a área; as bordas podem ser cortadas para evitar faixas." }
               - { label: "Texto do botão", name: "button_text", widget: "string", default: "Ver análise" }
               - { label: "Categoria do destino", name: "article_category", widget: "select", options: [{label: "Smartphones", value: "smartphones"}, {label: "Tablets", value: "tablets"}, {label: "Notebooks", value: "notebooks"}], default: "smartphones" }
               - { label: "Slug do artigo de destino", name: "article_slug", widget: "string", required: false }
