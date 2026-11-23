@@ -81,6 +81,8 @@ collections:
         fields:
           - { label: "Título principal", name: "hero_title", widget: "string" }
           - { label: "Subtítulo principal", name: "hero_description", widget: "text" }
+          - { label: "Imagem principal da home (opcional)", name: "hero_image", widget: "image", required: false, hint: "Imagem decorativa da seção principal. Não será clicável." }
+          - { label: "Texto alternativo da imagem principal", name: "hero_image_alt", widget: "string", required: false, hint: "Descreva a imagem para leitores de tela. Deixe vazio se for puramente decorativa." }
           - { label: "Texto do botão", name: "hero_button_text", widget: "string" }
           - { label: "Slug do artigo do botão", name: "hero_article_slug", widget: "string", required: false }
           - { label: "Título da seção de lançamentos", name: "latest_title", widget: "string" }
@@ -174,6 +176,24 @@ collections:
       - { label: "Texto alternativo da imagem", name: "image_alt", widget: "string", required: false }
       - { label: "Imagem do produto na tabela comparativa (opcional)", name: "comparison_image", widget: "image", required: false, hint: "Se deixar vazio, a tabela usa a imagem principal do produto." }
       - { label: "Texto alternativo da imagem da tabela", name: "comparison_image_alt", widget: "string", required: false }
+      - label: "Modelo anterior (opcional)"
+        name: "previous_model"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Ativar coluna Modelo anterior", name: "enabled", widget: "boolean", default: false, required: false }
+          - { label: "Nome do modelo anterior", name: "name", widget: "string", required: false }
+          - { label: "Imagem do modelo anterior", name: "image", widget: "image", required: false }
+          - { label: "Texto alternativo da imagem", name: "image_alt", widget: "string", required: false }
+          - { label: "Destaque", name: "highlight", widget: "string", required: false }
+          - { label: "Tela / display", name: "screen", widget: "string", required: false }
+          - { label: "Processador", name: "processor", widget: "string", required: false }
+          - { label: "Memória / armazenamento", name: "memory", widget: "string", required: false }
+          - { label: "Bateria / autonomia", name: "battery", widget: "string", required: false }
+          - { label: "Câmeras / gráficos", name: "camera_graphics", widget: "string", required: false }
+          - { label: "Sistema operacional", name: "os", widget: "string", required: false }
+          - { label: "Preço estimado", name: "price", widget: "string", required: false }
       - label: "Galeria de fotos do produto"
         name: "gallery"
         widget: "list"
@@ -254,6 +274,7 @@ collections:
           - { label: "Memória / armazenamento", name: "memory", widget: "string", required: false }
           - { label: "Bateria / autonomia", name: "battery", widget: "string", required: false }
           - { label: "Câmeras / gráficos", name: "camera_graphics", widget: "string", required: false }
+          - { label: "Sistema operacional", name: "os", widget: "string", required: false }
           - { label: "Preço estimado", name: "price", widget: "string", required: false }
       - { label: "Vídeo do YouTube (opcional)", name: "youtube_url", widget: "string", required: false }
       - { label: "Análise completa", name: "body", widget: "markdown" }
