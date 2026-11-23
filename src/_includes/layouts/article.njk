@@ -53,7 +53,7 @@ layout: layouts/base.njk
       {% if previous_enabled %}<th scope="col"><div class="comparison-device"><div class="comparison-device-image">{% if previous_model.image %}<img src="{{ previous_model.image }}" alt="{{ previous_model.image_alt or previous_model.name or 'Modelo anterior' }}" loading="lazy">{% else %}<span class="comparison-image-placeholder">Imagem não cadastrada</span>{% endif %}</div><span class="comparison-device-name">{{ previous_model.name or "Modelo anterior" }}</span><span class="comparison-device-tag">Modelo anterior</span></div></th>{% endif %}
       {% for competitor in comparisons %}<th scope="col"><div class="comparison-device"><div class="comparison-device-image">{% if competitor.image %}<img src="{{ competitor.image }}" alt="{{ competitor.image_alt or competitor.name }}" loading="lazy">{% else %}<span class="comparison-image-placeholder">Imagem não cadastrada</span>{% endif %}</div><span class="comparison-device-name">{{ competitor.name }}</span><span class="comparison-device-tag">Concorrente {{ loop.index }}</span></div></th>{% endfor %}</tr></thead>
       <tbody>
-      {% set rows = [["Destaque", badge or "—", comparisons[0].highlight, comparisons[1].highlight], ["Tela / display", specs.screen, comparisons[0].screen, comparisons[1].screen], ["Processador", specs.processor, comparisons[0].processor, comparisons[1].processor], ["Memória / armazenamento", specs.memory, comparisons[0].memory, comparisons[1].memory], ["Bateria / autonomia", specs.battery, comparisons[0].battery, comparisons[1].battery], ["Câmeras / gráficos", specs.camera_graphics, comparisons[0].camera_graphics, comparisons[1].camera_graphics], ["Sistema operacional", specs.os, comparisons[0].os, comparisons[1].os], ["Preço estimado", estimated_price, comparisons[0].price, comparisons[1].price]] %}
+      {% set rows = [["Destaque", badge or "—", comparisons[0].highlight, comparisons[1].highlight], ["Tela / display", specs.screen, comparisons[0].screen, comparisons[1].screen], ["Processador", specs.processor, comparisons[0].processor, comparisons[1].processor], ["Memória / armazenamento", specs.memory, comparisons[0].memory, comparisons[1].memory], ["Bateria / autonomia", specs.battery, comparisons[0].battery, comparisons[1].battery], ["Câmeras / gráficos", specs.camera_graphics, comparisons[0].camera_graphics, comparisons[1].camera_graphics], ["Preço estimado", estimated_price, comparisons[0].price, comparisons[1].price]] %}
       {% for row in rows %}<tr><th scope="row">{{ row[0] }}</th><td>{{ row[1] or "—" }}</td>
         {% if previous_enabled %}
           {% if row[0] == "Destaque" %}<td>{{ previous_model.highlight or "—" }}</td>
@@ -62,7 +62,6 @@ layout: layouts/base.njk
           {% elif row[0] == "Memória / armazenamento" %}<td>{{ previous_model.memory or "—" }}</td>
           {% elif row[0] == "Bateria / autonomia" %}<td>{{ previous_model.battery or "—" }}</td>
           {% elif row[0] == "Câmeras / gráficos" %}<td>{{ previous_model.camera_graphics or "—" }}</td>
-          {% elif row[0] == "Sistema operacional" %}<td>{{ previous_model.os or "—" }}</td>
           {% elif row[0] == "Preço estimado" %}<td>{{ previous_model.price or "—" }}</td>{% endif %}
         {% endif %}
         <td>{{ row[2] or "—" }}</td><td>{{ row[3] or "—" }}</td></tr>{% endfor %}
