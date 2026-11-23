@@ -1,12 +1,8 @@
 {
-  "hero_title": "Tecnologia explicada para você escolher melhor",
-  "hero_description": "Reviews independentes, comparativos e guias práticos de smartphones, tablets e notebooks.",
-  "hero_image": "",
   "hero_image_alt": "",
-  "hero_button_text": "Explorar reviews",
-  "hero_article_slug": "",
   "latest_title": "Últimos lançamentos e reviews",
   "latest_description": "Confira as análises mais recentes do Guia Rápido Tech.",
+  "show_latest_reviews": true,
   "featured_cards": [
     {
       "title": "Smartphones em destaque",
@@ -33,6 +29,10 @@
       "article_category": "notebooks"
     }
   ],
-  "show_latest_reviews": true,
-  "latest_count": 6
+  "hero_title": "Tecnologia explicada para você escolher melhor",
+  "hero_button_text": "Explorar reviews",
+  "hero_image": "/assets/images/uploads/33752899-d99b-4d7b-a39b-40ccd0a4f827.webp",
+  "latest_count": 6,
+  "hero_description": "Reviews independentes, comparativos e guias práticos de smartphones, tablets e notebooks.",
+  "hero_article_slug": ""
 }
