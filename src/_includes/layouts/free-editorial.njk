@@ -1,0 +1,67 @@
+---
+layout: layouts/base.njk
+permalink: "/guias/editoriais/{{ slug or page.fileSlug }}.html"
+---
+<link rel="stylesheet" href="/assets/css/free-editorial.css?v=1">
+<article class="free-editorial container">
+  <nav class="free-editorial__breadcrumbs" aria-label="Você está aqui">
+    <a href="/">Início</a><span aria-hidden="true">›</span><a href="/guias/">Guias</a><span aria-hidden="true">›</span><span aria-current="page">{{ title }}</span>
+  </nav>
+  <header class="free-editorial__hero">
+    {% if editorial_label %}<span class="free-editorial__eyebrow">{{ editorial_label }}</span>{% endif %}
+    <h1>{{ title }}</h1>
+    {% if description %}<p class="free-editorial__deck">{{ description }}</p>{% endif %}
+    <div class="free-editorial__meta">
+      {% if author %}<span>Por {{ author }}</span>{% endif %}
+      {% if reading_time %}<span>{{ reading_time }} de leitura</span>{% endif %}
+      {% if date %}<time datetime="{{ date | dateISO }}">{{ date | dateBR }}</time>{% endif %}
+    </div>
+    {% if cover_image %}
+    <figure class="free-editorial__cover">
+      <img src="{{ cover_image }}" alt="{{ cover_alt or title }}" loading="eager">
+      {% if cover_caption %}<figcaption>{{ cover_caption }}</figcaption>{% endif %}
+    </figure>
+    {% endif %}
+  </header>
+
+  {% if intro %}<section class="free-editorial__intro grt-richtext">{{ intro | markdown | safe }}</section>{% endif %}
+
+  <div class="free-editorial__content">
+  {% for block in blocks %}
+    {% if block.type == "paragraph" and block.text %}
+      <div class="free-editorial__text grt-richtext">{{ block.text | markdown | safe }}</div>
+    {% elif block.type == "heading2" and block.text %}
+      <h2{% if block.anchor %} id="{{ block.anchor | slugify }}"{% endif %}>{{ block.text }}</h2>
+    {% elif block.type == "heading3" and block.text %}
+      <h3>{{ block.text }}</h3>
+    {% elif block.type == "image" and block.image %}
+      <figure class="free-editorial__figure is-{{ block.width or 'wide' }}">
+        <img src="{{ block.image }}" alt="{{ block.alt or '' }}" loading="lazy">
+        {% if block.caption %}<figcaption>{{ block.caption }}</figcaption>{% endif %}
+      </figure>
+    {% elif block.type == "quote" and block.text %}
+      <blockquote class="free-editorial__quote"><p>{{ block.text }}</p>{% if block.source %}<cite>{{ block.source }}</cite>{% endif %}</blockquote>
+    {% elif block.type == "callout" and block.text %}
+      <aside class="free-editorial__callout is-{{ block.style or 'blue' }}">{% if block.title %}<h3>{{ block.title }}</h3>{% endif %}<div class="grt-richtext">{{ block.text | markdown | safe }}</div></aside>
+    {% elif block.type == "list" and block.items %}
+      {% set list_items = block.items.split('\n') %}
+      <div class="free-editorial__list">{% if block.title %}<h3>{{ block.title }}</h3>{% endif %}
+      {% if block.ordered %}<ol>{% for item in list_items %}{% if item | trim %}<li>{{ item | trim }}</li>{% endif %}{% endfor %}</ol>
+      {% else %}<ul>{% for item in list_items %}{% if item | trim %}<li>{{ item | trim }}</li>{% endif %}{% endfor %}</ul>{% endif %}
+      </div>
+    {% elif block.type == "table" and block.headers %}
+      {% set headers = block.headers.split('|') %}
+      {% set table_rows = block.rows.split('\n') if block.rows else [] %}
+      <div class="free-editorial__table-wrap">{% if block.title %}<h3>{{ block.title }}</h3>{% endif %}<table class="free-editorial__table"><thead><tr>{% for header in headers %}<th scope="col">{{ header | trim }}</th>{% endfor %}</tr></thead><tbody>{% for row in table_rows %}{% if row | trim %}<tr>{% for cell in row.split('|') %}<td>{{ cell | trim }}</td>{% endfor %}</tr>{% endif %}{% endfor %}</tbody></table></div>
+    {% elif block.type == "proscons" %}
+      <section class="free-editorial__proscons">{% if block.title %}<h3>{{ block.title }}</h3>{% endif %}<div class="free-editorial__pros"><h4>Pontos positivos</h4><ul>{% for item in (block.pros or '').split('\n') %}{% if item | trim %}<li>{{ item | trim }}</li>{% endif %}{% endfor %}</ul></div><div class="free-editorial__cons"><h4>Pontos negativos</h4><ul>{% for item in (block.cons or '').split('\n') %}{% if item | trim %}<li>{{ item | trim }}</li>{% endif %}{% endfor %}</ul></div></section>
+    {% elif block.type == "button" and block.url and block.text %}
+      <div class="free-editorial__button-row align-{{ block.align or 'left' }} space-top-{{ block.space_top or 'normal' }} space-bottom-{{ block.space_bottom or 'normal' }}">
+        <a class="free-editorial__button size-{{ block.size or 'normal' }} style-{{ block.style or 'solid' }}" href="{{ block.url }}" style="--cta-bg: {{ block.background or '#2563eb' }}; --cta-color: {{ block.color or '#ffffff' }};"{% if block.url.startsWith('http') %} rel="noopener noreferrer"{% endif %}>{{ block.text }} <span aria-hidden="true">→</span></a>
+      </div>
+    {% endif %}
+  {% endfor %}
+  </div>
+  {% if conclusion %}<section class="free-editorial__conclusion grt-richtext"><h2>Conclusão</h2>{{ conclusion | markdown | safe }}</section>{% endif %}
+  <footer class="free-editorial__footer"><a href="/guias/">← Ver outros guias</a></footer>
+</article>
