@@ -21,6 +21,7 @@ export default function (eleventyConfig) {
     ...api.getFilteredByGlob("src/content/guides/listas/*.md"),
     ...api.getFilteredByGlob("src/content/guides/comparativos/*.md")
   ]));
+  eleventyConfig.addCollection("freeEditorials", api => newestFirst(api.getFilteredByGlob("src/content/guides/editoriais-livres/*.md")));
 
   eleventyConfig.addFilter("dateBR", value => {
     if (!value) return "";
