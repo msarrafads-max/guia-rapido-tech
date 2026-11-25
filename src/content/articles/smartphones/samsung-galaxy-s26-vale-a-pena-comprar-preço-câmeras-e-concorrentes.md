@@ -47,7 +47,7 @@ offers:
     availability: available
     rating_status: rated
     store_icon: /assets/images/uploads/mercadolivre.webp
-    price: R$ 3.998,70
+    price: R$3.998,70
     detail: Oferta promocional da Black Friday
     url: https://meli.la/1e66uB1
     rating: 4.9
