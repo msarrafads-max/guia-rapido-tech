@@ -1,0 +1,27 @@
+---
+layout: layouts/base.njk
+title: "Artigos editoriais"
+description: "Artigos e conteúdos editoriais do Guia Rápido Tech."
+permalink: "/guias/editoriais/index.html"
+---
+<section class="container editorial-listing">
+  <header class="section-heading">
+    <p class="eyebrow">GUIA RÁPIDO TECH</p>
+    <h1>Artigos editoriais</h1>
+    <p>Conteúdos, explicações e análises para ajudar você a escolher melhor.</p>
+  </header>
+  <div class="article-grid">
+    {% for item in collections.freeEditorials %}
+      {% if item.data.status != "draft" %}
+      <article class="article-card">
+        {% if item.data.cover_image %}<a href="{{ item.url }}"><img src="{{ item.data.cover_image }}" alt="{{ item.data.cover_alt or item.data.title }}" loading="lazy"></a>{% endif %}
+        <div class="article-card__content">
+          <h2><a href="{{ item.url }}">{{ item.data.title }}</a></h2>
+          {% if item.data.description %}<p>{{ item.data.description }}</p>{% endif %}
+          <a href="{{ item.url }}">Ler artigo →</a>
+        </div>
+      </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
