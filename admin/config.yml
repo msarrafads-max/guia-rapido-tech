@@ -81,8 +81,6 @@ collections:
         fields:
           - { label: "Título principal", name: "hero_title", widget: "string" }
           - { label: "Subtítulo principal", name: "hero_description", widget: "text" }
-          - { label: "Imagem principal da home (opcional)", name: "hero_image", widget: "image", required: false, hint: "Formato recomendado: horizontal 4:3 (1200 × 900 px). A imagem preencherá toda a área; as bordas podem ser cortadas para evitar faixas. A imagem não será clicável." }
-          - { label: "Texto alternativo da imagem principal", name: "hero_image_alt", widget: "string", required: false, hint: "Descreva a imagem para leitores de tela. Deixe vazio se for puramente decorativa." }
           - { label: "Texto do botão", name: "hero_button_text", widget: "string" }
           - { label: "Slug do artigo do botão", name: "hero_article_slug", widget: "string", required: false }
           - { label: "Título da seção de lançamentos", name: "latest_title", widget: "string" }
@@ -94,7 +92,7 @@ collections:
             fields:
               - { label: "Título", name: "title", widget: "string" }
               - { label: "Descrição", name: "description", widget: "text", required: false }
-              - { label: "Imagem (opcional)", name: "image", widget: "image", required: false, hint: "Formato recomendado: horizontal 16:9 (1200 × 675 px). A imagem preencherá toda a área; as bordas podem ser cortadas para evitar faixas." }
+              - { label: "Imagem", name: "image", widget: "image", required: false }
               - { label: "Texto do botão", name: "button_text", widget: "string", default: "Ver análise" }
               - { label: "Categoria do destino", name: "article_category", widget: "select", options: [{label: "Smartphones", value: "smartphones"}, {label: "Tablets", value: "tablets"}, {label: "Notebooks", value: "notebooks"}], default: "smartphones" }
               - { label: "Slug do artigo de destino", name: "article_slug", widget: "string", required: false }
@@ -176,23 +174,6 @@ collections:
       - { label: "Texto alternativo da imagem", name: "image_alt", widget: "string", required: false }
       - { label: "Imagem do produto na tabela comparativa (opcional)", name: "comparison_image", widget: "image", required: false, hint: "Se deixar vazio, a tabela usa a imagem principal do produto." }
       - { label: "Texto alternativo da imagem da tabela", name: "comparison_image_alt", widget: "string", required: false }
-      - label: "Modelo anterior (opcional)"
-        name: "previous_model"
-        widget: "object"
-        required: false
-        collapsed: true
-        fields:
-          - { label: "Ativar coluna Modelo anterior", name: "enabled", widget: "boolean", default: false, required: false }
-          - { label: "Nome do modelo anterior", name: "name", widget: "string", required: false }
-          - { label: "Imagem do modelo anterior", name: "image", widget: "image", required: false }
-          - { label: "Texto alternativo da imagem", name: "image_alt", widget: "string", required: false }
-          - { label: "Destaque", name: "highlight", widget: "string", required: false }
-          - { label: "Tela / display", name: "screen", widget: "string", required: false }
-          - { label: "Processador", name: "processor", widget: "string", required: false }
-          - { label: "Memória / armazenamento", name: "memory", widget: "string", required: false }
-          - { label: "Bateria / autonomia", name: "battery", widget: "string", required: false }
-          - { label: "Câmeras / gráficos", name: "camera_graphics", widget: "string", required: false }
-          - { label: "Preço estimado", name: "price", widget: "string", required: false }
       - label: "Galeria de fotos do produto"
         name: "gallery"
         widget: "list"
@@ -273,7 +254,6 @@ collections:
           - { label: "Memória / armazenamento", name: "memory", widget: "string", required: false }
           - { label: "Bateria / autonomia", name: "battery", widget: "string", required: false }
           - { label: "Câmeras / gráficos", name: "camera_graphics", widget: "string", required: false }
-          - { label: "Sistema operacional", name: "os", widget: "string", required: false }
           - { label: "Preço estimado", name: "price", widget: "string", required: false }
       - { label: "Vídeo do YouTube (opcional)", name: "youtube_url", widget: "string", required: false }
       - { label: "Análise completa", name: "body", widget: "markdown" }
@@ -407,3 +387,104 @@ collections:
             field: { label: "Valor", name: "value", widget: "string" }
       - { label: "Título do veredito final", name: "verdict_title", widget: "string", required: false, default: "Veredito: qual escolher?" }
       - { label: "Veredito final por perfil de usuário", name: "verdict", widget: "markdown", required: false }
+  - name: "editoriais-livres"
+    label: "Artigos editoriais livres"
+    folder: "src/content/guides/editoriais-livres"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { label: "Título do artigo", name: "title", widget: "string" }
+      - { label: "Slug da URL (sem espaços)", name: "slug", widget: "string" }
+      - { label: "Status", name: "status", widget: "select", options: ["published", "draft"], default: "published" }
+      - { label: "Data de publicação", name: "date", widget: "datetime", required: false, date_format: "DD/MM/YYYY", time_format: "HH:mm", format: "YYYY-MM-DDTHH:mm:ssZ" }
+      - { label: "Resumo / descrição", name: "description", widget: "text" }
+      - { label: "Selo superior (opcional)", name: "editorial_label", widget: "string", required: false, default: "GUIA RÁPIDO TECH" }
+      - { label: "Autor (opcional)", name: "author", widget: "string", required: false }
+      - { label: "Tempo de leitura (opcional)", name: "reading_time", widget: "string", required: false }
+      - { label: "Imagem de capa", name: "cover_image", widget: "image", required: false }
+      - { label: "Texto alternativo da capa", name: "cover_alt", widget: "string", required: false }
+      - { label: "Legenda da capa", name: "cover_caption", widget: "string", required: false }
+      - { label: "Título SEO (opcional)", name: "seo_title", widget: "string", required: false }
+      - { label: "Descrição SEO (opcional)", name: "seo_description", widget: "text", required: false }
+      - { label: "Palavras-chave SEO (opcional)", name: "keywords", widget: "string", required: false }
+      - { label: "Introdução (opcional)", name: "intro", widget: "markdown", required: false }
+      - label: "Blocos do artigo — adicione e reorganize como quiser"
+        name: "blocks"
+        widget: "list"
+        required: false
+        types:
+          - label: "Parágrafo"
+            name: "paragraph"
+            widget: "object"
+            fields:
+              - { label: "Texto", name: "text", widget: "markdown" }
+          - label: "Título H2"
+            name: "heading2"
+            widget: "object"
+            fields:
+              - { label: "Título", name: "text", widget: "string" }
+              - { label: "ID da seção (opcional)", name: "anchor", widget: "string", required: false }
+          - label: "Título H3"
+            name: "heading3"
+            widget: "object"
+            fields:
+              - { label: "Título", name: "text", widget: "string" }
+          - label: "Imagem"
+            name: "image"
+            widget: "object"
+            fields:
+              - { label: "Imagem", name: "image", widget: "image" }
+              - { label: "Texto alternativo", name: "alt", widget: "string" }
+              - { label: "Legenda (opcional)", name: "caption", widget: "string", required: false }
+              - { label: "Largura", name: "width", widget: "select", options: [{label: "Normal", value: "normal"}, {label: "Larga", value: "wide"}, {label: "Compacta", value: "compact"}, {label: "Tela inteira", value: "full"}], default: "wide" }
+          - label: "Citação"
+            name: "quote"
+            widget: "object"
+            fields:
+              - { label: "Texto da citação", name: "text", widget: "text" }
+              - { label: "Fonte / autor (opcional)", name: "source", widget: "string", required: false }
+          - label: "Caixa de destaque"
+            name: "callout"
+            widget: "object"
+            fields:
+              - { label: "Título (opcional)", name: "title", widget: "string", required: false }
+              - { label: "Texto", name: "text", widget: "markdown" }
+              - { label: "Estilo", name: "style", widget: "select", options: [{label: "Azul", value: "blue"}, {label: "Verde", value: "green"}, {label: "Amarelo", value: "yellow"}, {label: "Neutro", value: "neutral"}], default: "blue" }
+          - label: "Lista"
+            name: "list"
+            widget: "object"
+            fields:
+              - { label: "Título (opcional)", name: "title", widget: "string", required: false }
+              - { label: "Itens (um por linha)", name: "items", widget: "text" }
+              - { label: "Lista numerada?", name: "ordered", widget: "boolean", default: false }
+          - label: "Tabela"
+            name: "table"
+            widget: "object"
+            fields:
+              - { label: "Título (opcional)", name: "title", widget: "string", required: false }
+              - { label: "Cabeçalhos (separados por |)", name: "headers", widget: "string", hint: "Ex.: Modelo | Tela | Bateria" }
+              - { label: "Linhas (uma por linha; colunas separadas por |)", name: "rows", widget: "text", hint: "Ex.: Modelo A | 6,5 pol. | 5000 mAh" }
+          - label: "Pontos positivos e negativos"
+            name: "proscons"
+            widget: "object"
+            fields:
+              - { label: "Título (opcional)", name: "title", widget: "string", required: false }
+              - { label: "Pontos positivos (um por linha)", name: "pros", widget: "text" }
+              - { label: "Pontos negativos (um por linha)", name: "cons", widget: "text" }
+          - label: "Botão / chamada para ação"
+            name: "button"
+            widget: "object"
+            fields:
+              - { label: "Texto do botão", name: "text", widget: "string", default: "VER ANÁLISE COMPLETA" }
+              - { label: "Destino (URL completa ou caminho)", name: "url", widget: "string", hint: "Ex.: /smartphones/motorola-signature-27.html" }
+              - { label: "Cor de fundo (hex)", name: "background", widget: "string", default: "#2563eb" }
+              - { label: "Cor do texto (hex)", name: "color", widget: "string", default: "#ffffff" }
+              - { label: "Tamanho", name: "size", widget: "select", options: [{label: "Compacto", value: "small"}, {label: "Normal", value: "normal"}, {label: "Grande", value: "large"}], default: "normal" }
+              - { label: "Formato", name: "style", widget: "select", options: [{label: "Preenchido", value: "solid"}, {label: "Contorno", value: "outline"}], default: "solid" }
+              - { label: "Alinhamento", name: "align", widget: "select", options: [{label: "Esquerda", value: "left"}, {label: "Centro", value: "center"}, {label: "Direita", value: "right"}], default: "left" }
+              - { label: "Espaço acima", name: "space_top", widget: "select", options: [{label: "Pequeno", value: "small"}, {label: "Normal", value: "normal"}, {label: "Grande", value: "large"}], default: "normal" }
+              - { label: "Espaço abaixo", name: "space_bottom", widget: "select", options: [{label: "Pequeno", value: "small"}, {label: "Normal", value: "normal"}, {label: "Grande", value: "large"}], default: "normal" }
+      - { label: "Conclusão (opcional)", name: "conclusion", widget: "markdown", required: false }
