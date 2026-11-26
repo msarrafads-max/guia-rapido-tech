@@ -33,6 +33,27 @@ permalink: /index.html
 </section>
 {% endif %}
 {% include "partials/home-section.njk" %}
+{% if collections.freeEditorials and collections.freeEditorials.length %}
+<section class="container section-block">
+  <div class="section-heading section-heading-row">
+    <div>
+      <span class="eyebrow">CONTEÚDO EDITORIAL</span>
+      <h2>Artigos e guias especiais</h2>
+      <p>Explicações, dicas e conteúdos para ajudar você a escolher melhor.</p>
+    </div>
+    <a href="/guias/editoriais/" class="text-link">Ver todos os artigos ↗</a>
+  </div>
+  <div class="article-grid">
+    {% for editorial in collections.freeEditorials %}
+      {% if loop.index <= 3 %}
+        {% set article = editorial %}
+        {% include "partials/article-card.njk" %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
 {% if home.show_latest_reviews %}
 <section class="container section-block">
   <div class="section-heading section-heading-row"><div><span class="eyebrow">PUBLICAÇÕES RECENTES</span><h2>{{ home.latest_title }}</h2><p>{{ home.latest_description }}</p></div><a href="/smartphones/" class="text-link">Explorar categorias ↗</a></div>
