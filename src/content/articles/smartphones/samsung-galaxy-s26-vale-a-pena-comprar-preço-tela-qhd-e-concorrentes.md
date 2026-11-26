@@ -55,11 +55,12 @@ cons:
 offers:
   amazon:
     availability: available
-    rating_status: unavailable
+    rating_status: rated
     store_icon: /assets/images/uploads/amazon_icon.png
     url: https://link.amazon/B0ckN7pnj
     price: "R$ 4.355,74 "
     detail: Confira variações no site.
+    rating: 5
   mercadolivre:
     availability: available
     rating_status: rated
