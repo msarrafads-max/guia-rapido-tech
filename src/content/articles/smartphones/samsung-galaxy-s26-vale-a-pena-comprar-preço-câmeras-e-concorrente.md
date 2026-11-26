@@ -1,5 +1,5 @@
 ---
-title: "Samsung Galaxy S26: Vale a Pena Comprar? Preço, Câmeras e Concorrente"
+title: "Samsung Galaxy S26: Vale a Pena Comprar? Preço, Câmeras e Concorrentes"
 slug: galaxy-s26-ficha-tecnica-analise
 status: published
 date: 2026-11-26T15:32:00-03:00
