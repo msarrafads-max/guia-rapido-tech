@@ -3,21 +3,40 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ seo_title or title or site.seo_title or site.site_name }}</title>
-  <meta name="description" content="{{ seo_description or description or site.seo_description or site.description }}">
-  {% if keywords %}<meta name="keywords" content="{{ keywords }}">{% endif %}
+  {% set pageTitle = seo_title or title or site.seo_title or site.site_name %}
+  {% set pageDescription = seo_description or description or site.seo_description or site.description %}
+  {% set canonicalUrl = canonical %}
+  {% if not canonicalUrl %}
+    {% if page.url == "/index.html" or page.url == "/" %}
+      {% set canonicalUrl = "https://guiarapidotech.com.br/" %}
+    {% else %}
+      {% set canonicalUrl = page.url | absoluteUrl("https://guiarapidotech.com.br") %}
+    {% endif %}
+  {% endif %}
+  <title>{{ pageTitle | striptags | trim | escape }}</title>
+  <meta name="description" content="{{ pageDescription | striptags | trim | escape }}">
+  {% if keywords %}<meta name="keywords" content="{{ keywords | striptags | trim | escape }}">{% endif %}
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="{{ canonicalUrl | escape }}">
   <meta name="color-scheme" content="light dark">
-  <meta property="og:site_name" content="{{ site.site_name }}">
-  <meta property="og:title" content="{{ seo_title or title or site.seo_title or site.site_name }}">
-  <meta property="og:description" content="{{ seo_description or description or site.seo_description or site.description }}">
-  {% if image %}<meta property="og:image" content="{{ image | absoluteUrl('https://guiarapidotech.com.br') }}">{% endif %}
-  {% if canonical %}<link rel="canonical" href="{{ canonical }}">{% endif %}
+  <meta property="og:site_name" content="{{ site.site_name | escape }}">
+  <meta property="og:type" content="{% if category or editorial_type %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{{ pageTitle | striptags | trim | escape }}">
+  <meta property="og:description" content="{{ pageDescription | striptags | trim | escape }}">
+  <meta property="og:url" content="{{ canonicalUrl | escape }}">
+  {% if image %}<meta property="og:image" content="{{ image | absoluteUrl('https://guiarapidotech.com.br') | escape }}">{% endif %}
+  <meta name="twitter:card" content="{% if image %}summary_large_image{% else %}summary{% endif %}">
+  <meta name="twitter:title" content="{{ pageTitle | striptags | trim | escape }}">
+  <meta name="twitter:description" content="{{ pageDescription | striptags | trim | escape }}">
+  {% if image %}<meta name="twitter:image" content="{{ image | absoluteUrl('https://guiarapidotech.com.br') | escape }}">{% endif %}
   {% if site.favicon %}
   <link rel="icon" href="{{ site.favicon | absoluteUrl('https://guiarapidotech.com.br') }}">
   <link rel="shortcut icon" href="{{ site.favicon | absoluteUrl('https://guiarapidotech.com.br') }}">
   {% else %}
-  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/images/favicon.png" type="image/png">
+  <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/png">
   {% endif %}
+  <link rel="apple-touch-icon" href="/assets/images/favicon.png">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -27,12 +46,31 @@
     "logo": {{ (site.logo or '/assets/images/favicon.svg') | absoluteUrl('https://guiarapidotech.com.br') | jsonSafe | safe }}
   }
   </script>
+  {% if category and date %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": {{ (seo_title or title) | jsonSafe | safe }},
+    "description": {{ (seo_description or description or "") | jsonSafe | safe }},
+    "datePublished": {{ date | dateISO | jsonSafe | safe }},
+    "dateModified": {{ (updated or date) | dateISO | jsonSafe | safe }},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": {{ canonicalUrl | jsonSafe | safe }}},
+    "author": {"@type": "Organization", "name": {{ site.site_name | jsonSafe | safe }}},
+    "publisher": {
+      "@type": "Organization",
+      "name": {{ site.site_name | jsonSafe | safe }},
+      "logo": {"@type": "ImageObject", "url": {{ (site.logo or '/assets/images/favicon.png') | absoluteUrl('https://guiarapidotech.com.br') | jsonSafe | safe }}}
+    }{% if image %},
+    "image": {{ image | absoluteUrl('https://guiarapidotech.com.br') | jsonSafe | safe }}{% endif %}
+  }
+  </script>
+  {% endif %}
   <link rel="stylesheet" href="/assets/css/site.css">
   <link rel="stylesheet" href="/assets/css/review-enhancements.css">
   <link rel="stylesheet" href="/assets/css/review-offers-verdict.css">
   <link rel="stylesheet" href="/assets/css/comparison-table-images.css">
   <link rel="stylesheet" href="/assets/css/comparison-guide.css">
-  <link rel="stylesheet" href="/assets/css/free-editorial.css?v=2">
   <link rel="stylesheet" href="/assets/css/logo-theme-fix.css?v=1">
   <link rel="stylesheet" href="/assets/css/product-gallery-lightbox.css?v=3">
   <script>(function(){try{var t=localStorage.getItem('grt-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t;}catch(e){}})();</script>
