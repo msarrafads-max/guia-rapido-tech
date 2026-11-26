@@ -35,4 +35,17 @@ eleventyExcludeFromCollections: true
   </url>
   {% endif %}
   {% endfor %}
+
+  {% for editorial in collections.freeEditorials %}
+  {% if editorial.url %}
+  <url>
+    <loc>{{ ("https://guiarapidotech.com.br" + editorial.url) | escape }}</loc>
+    {% if editorial.data.updated %}
+    <lastmod>{{ editorial.data.updated | dateISO }}</lastmod>
+    {% elif editorial.date %}
+    <lastmod>{{ editorial.date | dateISO }}</lastmod>
+    {% endif %}
+  </url>
+  {% endif %}
+  {% endfor %}
 </urlset>
