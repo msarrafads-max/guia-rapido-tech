@@ -9,6 +9,24 @@ seo_description: Rankings, listas de compra e comparativos editoriais de tecnolo
 <section class="container section-block editorial-page">
   <header class="editorial-hero"><span class="eyebrow">BIBLIOTECA EDITORIAL</span><h1>Guias, rankings e comparativos</h1><p class="editorial-lead">Conteúdo organizado para comparar opções e encontrar o produto certo para você.</p></header>
   <div class="editorial-home-grid">
-    {% for guide in collections.editorialGuides %}<a class="editorial-home-card" href="{{ guide.url }}"><span class="eyebrow">{% if guide.data.editorial_type == 'comparativo' %}COMPARATIVO{% else %}GUIA DE COMPRA{% endif %}</span><h2>{{ guide.data.title }}</h2>{% if guide.data.description %}<p>{{ guide.data.description | striptags | truncate(180) }}</p>{% endif %}<span class="text-link">Ler artigo ↗</span></a>{% else %}<p>Os guias e comparativos publicados aparecerão aqui.</p>{% endfor %}
+    {% for guide in collections.editorialGuides %}
+      <a class="editorial-home-card" href="{{ guide.url }}">
+        <span class="eyebrow">{% if guide.data.editorial_type == 'comparativo' %}COMPARATIVO{% else %}GUIA DE COMPRA{% endif %}</span>
+        <h2>{{ guide.data.title }}</h2>
+        {% if guide.data.description %}<p>{{ guide.data.description | striptags | truncate(180) }}</p>{% endif %}
+        <span class="text-link">Ler artigo ↗</span>
+      </a>
+    {% endfor %}
+    {% for guide in collections.freeEditorials %}
+      <a class="editorial-home-card" href="{{ guide.url }}">
+        <span class="eyebrow">{{ guide.data.editorial_label or "ARTIGO EDITORIAL" }}</span>
+        <h2>{{ guide.data.title }}</h2>
+        {% if guide.data.description %}<p>{{ guide.data.description | striptags | truncate(180) }}</p>{% endif %}
+        <span class="text-link">Ler artigo ↗</span>
+      </a>
+    {% endfor %}
+    {% if not collections.editorialGuides.length and not collections.freeEditorials.length %}
+      <p>Os guias e artigos editoriais publicados aparecerão aqui.</p>
+    {% endif %}
   </div>
 </section>
