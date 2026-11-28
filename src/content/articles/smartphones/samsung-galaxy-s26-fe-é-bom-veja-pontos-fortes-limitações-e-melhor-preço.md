@@ -25,7 +25,7 @@ keywords: galaxy s26 fe, samsung galaxy s26 fe, galaxy s26 fe vale a pena,
   galaxy s26 fe ficha tecnica, galaxy s26 fe preco, galaxy s26 fe analise,
   galaxy s26 fe review, galaxy s26 fe 128gb, galaxy s26 fe 256gb, galaxy s26 fe
   vs concorrentes
-image: ""
+image: https://ik.imagekit.io/aeofmnypd/Imagens%20site/Samsung%20Galaxy%20S26%20FE%20Minimalista.png
 comparison_image: ""
 gallery: []
 badge: 7 anos de Android, Galaxy AI completo e zoom óptico 3x
