@@ -43,101 +43,43 @@ layout: layouts/base.njk
       <p class="affiliate-note">Os preços, avaliações e a disponibilidade podem mudar. Confira as condições diretamente na loja. Alguns links podem gerar comissão para o Guia Rápido Tech.</p>
     </div>
   </section>
-  {% if technical_sheet and technical_sheet.groups and technical_sheet.groups.length %}
+  {% if technical_sheet %}
+  {% set technical_groups = [
+    {"title":"Tela", "data":technical_sheet.screen, "fields":[["Tamanho","size"],["Painel","panel"],["Resolução","resolution"],["Taxa de atualização","refresh_rate"],["Brilho máximo","brightness"],["Proteção da tela","protection"]]},
+    {"title":"Processador e GPU", "data":technical_sheet.processor_gpu, "fields":[["Chipset / SoC","chipset"],["CPU","cpu"],["GPU","gpu"]]},
+    {"title":"Memória e armazenamento", "data":technical_sheet.memory_storage, "fields":[["Memória RAM","ram"],["Tipo de RAM","ram_type"],["Armazenamento interno","storage"],["Tipo de armazenamento","storage_type"],["Expansão por microSD","microsd"]]},
+    {"title":"Bateria e carregamento", "data":technical_sheet.battery, "fields":[["Capacidade","capacity"],["Carregamento com fio","wired_charging"],["Carregamento sem fio","wireless_charging"],["Carregamento reverso","reverse_charging"]]},
+    {"title":"Sistema e conectividade", "data":technical_sheet.connectivity, "fields":[["Sistema operacional","os"],["Conectividade móvel / rede","mobile_network"],["Wi-Fi","wifi"],["Bluetooth","bluetooth"],["Portas e conexões","ports"],["Biometria e segurança","security"]]}
+  ] %}
+  {% set has_fixed_specs = technical_sheet.screen.size or technical_sheet.screen.panel or technical_sheet.screen.resolution or technical_sheet.screen.refresh_rate or technical_sheet.screen.brightness or technical_sheet.screen.protection or technical_sheet.processor_gpu.chipset or technical_sheet.processor_gpu.cpu or technical_sheet.processor_gpu.gpu or technical_sheet.memory_storage.ram or technical_sheet.memory_storage.ram_type or technical_sheet.memory_storage.storage or technical_sheet.memory_storage.storage_type or technical_sheet.memory_storage.microsd or technical_sheet.battery.capacity or technical_sheet.battery.wired_charging or technical_sheet.battery.wireless_charging or technical_sheet.battery.reverse_charging or technical_sheet.connectivity.os or technical_sheet.connectivity.mobile_network or technical_sheet.connectivity.wifi or technical_sheet.connectivity.bluetooth or technical_sheet.connectivity.ports or technical_sheet.connectivity.security %}
+  {% if has_fixed_specs %}
   <section class="spec-section technical-sheet-section review-section-card">
-    <div class="section-heading">
-      <div>
-        <span class="eyebrow">{{ technical_sheet.eyebrow or "ESPECIFICAÇÕES" }}</span>
-        <h2>{{ technical_sheet.title or "Ficha técnica e hardware" }}</h2>
-        {% if technical_sheet.intro %}<p>{{ technical_sheet.intro }}</p>{% else %}<p>Confira os detalhes que fazem a diferença na escolha.</p>{% endif %}
-      </div>
-    </div>
+    <div class="section-heading"><div><span class="eyebrow">ESPECIFICAÇÕES</span><h2>{{ technical_sheet.title or "Ficha técnica e principais características" }}</h2>{% if technical_sheet.intro %}<p>{{ technical_sheet.intro }}</p>{% else %}<p>Confira os detalhes que fazem a diferença na escolha.</p>{% endif %}</div></div>
     <div class="technical-groups-grid">
-      {% for group in technical_sheet.groups %}
-        {% if group.title and group.items and group.items.length %}
-        <section class="technical-group-card{% if group.wide %} technical-group-wide{% endif %}">
-          <header class="technical-group-heading">
-            {% if group.icon %}<span class="technical-group-icon" aria-hidden="true">{{ group.icon }}</span>{% endif %}
-            <h3>{{ group.title }}</h3>
-          </header>
-          <dl class="technical-spec-list">
-            {% for item in group.items %}
-              {% if item.label and item.value %}
-              <div class="technical-spec-row">
-                <dt>{{ item.label }}</dt>
-                <dd>{{ item.value }}</dd>
-              </div>
-              {% endif %}
-            {% endfor %}
-          </dl>
-        </section>
-        {% endif %}
+      {% for group in technical_groups %}
+        {% set populated = [] %}
+        {% for field in group.fields %}{% if group.data and group.data[field[1]] %}{% set ignored = populated.push(field) %}{% endif %}{% endfor %}
+        {% if populated.length %}<section class="technical-group-card"><header class="technical-group-heading"><h3>{{ group.title }}</h3></header><dl class="technical-spec-list">{% for field in populated %}<div class="technical-spec-row"><dt>{{ field[0] }}</dt><dd>{{ group.data[field[1]] }}</dd></div>{% endfor %}</dl></section>{% endif %}
       {% endfor %}
-      {% if technical_sheet.cameras and technical_sheet.cameras.length %}
-      <section class="technical-group-card technical-group-wide technical-cameras-card">
-        <header class="technical-group-heading">
-          <span class="technical-group-icon" aria-hidden="true">◎</span>
-          <div><h3>{{ technical_sheet.cameras_title or "Câmeras" }}</h3>
-          {% if technical_sheet.cameras_subtitle %}<p>{{ technical_sheet.cameras_subtitle }}</p>{% endif %}</div>
-        </header>
-        <div class="technical-camera-grid">
-          {% for camera in technical_sheet.cameras %}
-            {% if camera.type or camera.megapixels or camera.details %}
-            <article class="technical-camera-item">
-              {% if camera.type %}<span class="technical-camera-type">{{ camera.type }}</span>{% endif %}
-              {% if camera.megapixels %}<strong class="technical-camera-mp">{{ camera.megapixels }}</strong>{% endif %}
-              {% if camera.details %}<p>{{ camera.details }}</p>{% endif %}
-              {% if camera.stabilization %}<span class="technical-camera-stabilization">{{ camera.stabilization }}</span>{% endif %}
-            </article>
-            {% endif %}
-          {% endfor %}
-        </div>
-        {% if technical_sheet.video_recording %}
-        <div class="technical-video-row"><span>Gravação de vídeo</span><strong>{{ technical_sheet.video_recording }}</strong></div>
-        {% endif %}
-      </section>
+      {% if technical_sheet.cameras %}
+      {% set camera_list = [{"title":"Principal","data":technical_sheet.cameras.primary},{"title":"Ultrawide","data":technical_sheet.cameras.ultrawide},{"title":"Telefoto","data":technical_sheet.cameras.telephoto},{"title":"Frontal","data":technical_sheet.cameras.front}] %}
+      {% set has_cameras = technical_sheet.cameras.primary.megapixels or technical_sheet.cameras.primary.details or technical_sheet.cameras.primary.stabilization or technical_sheet.cameras.ultrawide.megapixels or technical_sheet.cameras.ultrawide.details or technical_sheet.cameras.ultrawide.stabilization or technical_sheet.cameras.telephoto.megapixels or technical_sheet.cameras.telephoto.details or technical_sheet.cameras.telephoto.stabilization or technical_sheet.cameras.front.megapixels or technical_sheet.cameras.front.details or technical_sheet.cameras.front.stabilization or technical_sheet.cameras.video_recording %}
+      {% if has_cameras %}<section class="technical-group-card technical-group-wide technical-cameras-card"><header class="technical-group-heading"><h3>Câmeras</h3></header><div class="technical-camera-grid">{% for camera in camera_list %}{% if camera.data.megapixels or camera.data.details or camera.data.stabilization %}<article class="technical-camera-item"><span class="technical-camera-type">{{ camera.title }}</span>{% if camera.data.megapixels %}<strong class="technical-camera-mp">{{ camera.data.megapixels }}</strong>{% endif %}{% if camera.data.details %}<p>{{ camera.data.details }}</p>{% endif %}{% if camera.data.stabilization %}<p class="technical-camera-stabilization">{{ camera.data.stabilization }}</p>{% endif %}</article>{% endif %}{% endfor %}</div>{% if technical_sheet.cameras.video_recording %}<div class="technical-video-row"><span>Gravação de vídeo</span><strong>{{ technical_sheet.cameras.video_recording }}</strong></div>{% endif %}</section>{% endif %}
       {% endif %}
     </div>
   </section>
+  {% elif technical_sheet.groups and technical_sheet.groups.length %}
+  <section class="spec-section technical-sheet-section review-section-card"><div class="section-heading"><div><span class="eyebrow">ESPECIFICAÇÕES</span><h2>{{ technical_sheet.title or "Ficha técnica e hardware" }}</h2><p>{{ technical_sheet.intro or "Confira os detalhes que fazem a diferença na escolha." }}</p></div></div><div class="technical-groups-grid">{% for group in technical_sheet.groups %}{% if group.title and group.items and group.items.length %}<section class="technical-group-card"><header class="technical-group-heading"><h3>{{ group.title }}</h3></header><dl class="technical-spec-list">{% for item in group.items %}{% if item.label and item.value %}<div class="technical-spec-row"><dt>{{ item.label }}</dt><dd>{{ item.value }}</dd></div>{% endif %}{% endfor %}</dl></section>{% endif %}{% endfor %}{% if technical_sheet.cameras and technical_sheet.cameras.length %}<section class="technical-group-card technical-group-wide"><header class="technical-group-heading"><h3>{{ technical_sheet.cameras_title or "Câmeras" }}</h3></header><div class="technical-camera-grid">{% for camera in technical_sheet.cameras %}{% if camera.type or camera.megapixels or camera.details %}<article class="technical-camera-item">{% if camera.type %}<span class="technical-camera-type">{{ camera.type }}</span>{% endif %}{% if camera.megapixels %}<strong class="technical-camera-mp">{{ camera.megapixels }}</strong>{% endif %}{% if camera.details %}<p>{{ camera.details }}</p>{% endif %}{% if camera.stabilization %}<p class="technical-camera-stabilization">{{ camera.stabilization }}</p>{% endif %}</article>{% endif %}{% endfor %}</div>{% if technical_sheet.video_recording %}<div class="technical-video-row"><span>Gravação de vídeo</span><strong>{{ technical_sheet.video_recording }}</strong></div>{% endif %}</section>{% endif %}</div></section>
   {% elif specs %}
-  <section class="spec-section technical-sheet-section review-section-card">
-    <div class="section-heading"><div><span class="eyebrow">ESPECIFICAÇÕES</span><h2>Ficha técnica e hardware</h2><p>Os detalhes que mais importam na hora de escolher.</p></div></div>
-    <div class="technical-groups-grid">
-      {% for pair in [["Tela / display", specs.screen, "▣"], ["Processador", specs.processor, "▦"], ["Memória / armazenamento", specs.memory, "▤"], ["Bateria / autonomia", specs.battery, "⚡"], ["Câmeras / gráficos", specs.camera_graphics, "◎"], ["Sistema operacional", specs.os, "◈"]] %}
-        {% if pair[1] %}
-        <section class="technical-group-card">
-          <header class="technical-group-heading"><span class="technical-group-icon" aria-hidden="true">{{ pair[2] }}</span><h3>{{ pair[0] }}</h3></header>
-          <dl class="technical-spec-list"><div class="technical-spec-row"><dt>{{ pair[0] }}</dt><dd>{{ pair[1] }}</dd></div></dl>
-        </section>
-        {% endif %}
-      {% endfor %}
-    </div>
-  </section>
+  <section class="spec-section technical-sheet-section review-section-card"><div class="section-heading"><div><span class="eyebrow">ESPECIFICAÇÕES</span><h2>Ficha técnica e principais características</h2><p>Os detalhes que mais importam na hora de escolher.</p></div></div><div class="technical-groups-grid">{% for pair in [["Tela / display", specs.screen], ["Processador", specs.processor], ["Memória / armazenamento", specs.memory], ["Bateria / autonomia", specs.battery], ["Câmeras / gráficos", specs.camera_graphics], ["Sistema operacional", specs.os]] %}{% if pair[1] %}<section class="technical-group-card"><header class="technical-group-heading"><h3>{{ pair[0] }}</h3></header><dl class="technical-spec-list"><div class="technical-spec-row"><dt>{{ pair[0] }}</dt><dd>{{ pair[1] }}</dd></div></dl></section>{% endif %}{% endfor %}</div></section>
   {% endif %}
-  {% if feature_checklist and feature_checklist.items and feature_checklist.items.length %}
-  <section class="feature-checklist-section review-section-card">
-    <div class="section-heading"><div>
-      <span class="eyebrow">{{ feature_checklist.eyebrow or "RECURSOS E EXTRAS" }}</span>
-      <h2>{{ feature_checklist.title or "O que o aparelho oferece" }}</h2>
-      {% if feature_checklist.intro %}<p>{{ feature_checklist.intro }}</p>{% endif %}
-    </div></div>
-    <div class="feature-checklist-grid">
-      {% for item in feature_checklist.items %}
-        {% if item.label %}
-        <div class="feature-checklist-item">
-          <span class="feature-checklist-label">{{ item.label }}</span>
-          {% if item.status == "yes" %}
-            <span class="feature-status feature-status-yes"><span aria-hidden="true">✓</span> Sim</span>
-          {% elif item.status == "no" %}
-            <span class="feature-status feature-status-no"><span aria-hidden="true">×</span> Não</span>
-          {% else %}
-            <span class="feature-status feature-status-custom"><span aria-hidden="true">i</span> {{ item.custom_text or "Confira os detalhes" }}</span>
-          {% endif %}
-        </div>
-        {% endif %}
-      {% endfor %}
-    </div>
-  </section>
+  {% if feature_checklist %}
+  {% set checklist_defs = [["NFC para pagamentos por aproximação","nfc"],["Carregador incluído na caixa","charger_in_box"],["Capa protetora incluída","case_included"],["Proteção contra água e poeira","water_resistance"],["Suporte a eSIM","esim"],["Carregamento sem fio","wireless_charging"],["Som estéreo","stereo_speakers"],["Entrada para cartão microSD","microsd"],["Entrada P2 para fone de ouvido","headphone_jack"],["Película aplicada de fábrica","factory_screen_protector"],["Leitor de impressão digital","fingerprint_reader"],["Reconhecimento facial","face_recognition"],["Caneta stylus incluída ou compatível","stylus"],["Teclado incluído ou compatível","keyboard"]] %}
+  {% set has_fixed_checklist = feature_checklist.nfc.status or feature_checklist.charger_in_box.status or feature_checklist.case_included.status or feature_checklist.water_resistance.status or feature_checklist.esim.status or feature_checklist.wireless_charging.status or feature_checklist.stereo_speakers.status or feature_checklist.microsd.status or feature_checklist.headphone_jack.status or feature_checklist.factory_screen_protector.status or feature_checklist.fingerprint_reader.status or feature_checklist.face_recognition.status or feature_checklist.stylus.status or feature_checklist.keyboard.status %}
+  {% if has_fixed_checklist %}<section class="feature-checklist-section review-section-card"><div class="section-heading"><div><span class="eyebrow">RECURSOS E EXTRAS</span><h2>{{ feature_checklist.title or "O que o aparelho oferece" }}</h2>{% if feature_checklist.intro %}<p>{{ feature_checklist.intro }}</p>{% endif %}</div></div><div class="feature-checklist-grid">{% for pair in checklist_defs %}{% set item = feature_checklist[pair[1]] %}{% if item and item.status %}<div class="feature-checklist-item"><span class="feature-checklist-label">{{ pair[0] }}</span>{% if item.status == "yes" %}<span class="feature-status feature-status-yes">Sim</span>{% elif item.status == "no" %}<span class="feature-status feature-status-no">Não</span>{% else %}<span class="feature-status feature-status-custom">{{ item.custom_text or "Confira os detalhes" }}</span>{% endif %}</div>{% endif %}{% endfor %}</div></section>
+  {% elif feature_checklist.items and feature_checklist.items.length %}
+  <section class="feature-checklist-section review-section-card"><div class="section-heading"><div><span class="eyebrow">RECURSOS E EXTRAS</span><h2>{{ feature_checklist.title or "O que o aparelho oferece" }}</h2>{% if feature_checklist.intro %}<p>{{ feature_checklist.intro }}</p>{% endif %}</div></div><div class="feature-checklist-grid">{% for item in feature_checklist.items %}{% if item.label %}<div class="feature-checklist-item"><span class="feature-checklist-label">{{ item.label }}</span>{% if item.status == "yes" %}<span class="feature-status feature-status-yes">Sim</span>{% elif item.status == "no" %}<span class="feature-status feature-status-no">Não</span>{% else %}<span class="feature-status feature-status-custom">{{ item.custom_text or "Confira os detalhes" }}</span>{% endif %}</div>{% endif %}{% endfor %}</div></section>
+  {% endif %}
   {% endif %}
   {% if comparisons and comparisons.length %}
   {% set previous_enabled = previous_model and previous_model.enabled %}
