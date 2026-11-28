@@ -1,4 +1,16 @@
 ---
+previous_model:
+  memory: 8 GB RAM + 128 GB ou 256 GB
+  enabled: true
+  camera_graphics: Traseira 50 MP + 12 MP + 8 MP (zoom 3x) | Frontal 12 MP | GPU Xclipse 940
+  price: R$ 2.550 – R$ 2.999 (128 GB) ou R$ 3.400 – R$ 3.750 (256 GB)
+  name: Samsung Galaxy S25 FE
+  screen: 6,7" Dynamic AMOLED 2X Full HD+, 120 Hz, 1.900 nits, Gorilla Glass Victus+
+  battery: 4.900 mAh | Suporte 45 W (25 W na caixa) + sem fio
+  processor: Samsung Exynos 2400 (Deca-Core até 3,2 GHz, 4 nm)
+  highlight: Ótimo custo-benefício atual, chip Exynos 2400 (4 nm) e 7 anos de
+    suporte (desde Android 16)
+  image: https://http2.mlstatic.com/D_NQ_NP_2X_840870-MLA96785958150_112025-F.webp
 title: Samsung Galaxy S26 FE é Bom? Veja Pontos Fortes, Limitações e Melhor Preço
 slug: samsung-galaxy-s26-fe-analise
 status: published
@@ -13,30 +25,9 @@ keywords: galaxy s26 fe, samsung galaxy s26 fe, galaxy s26 fe vale a pena,
   galaxy s26 fe ficha tecnica, galaxy s26 fe preco, galaxy s26 fe analise,
   galaxy s26 fe review, galaxy s26 fe 128gb, galaxy s26 fe 256gb, galaxy s26 fe
   vs concorrentes
-image: https://http2.mlstatic.com/D_Q_NP_778540-MLA117213952535_092026-B.webp
-comparison_image: https://http2.mlstatic.com/D_Q_NP_778540-MLA117213952535_092026-F.webp
-previous_model:
-  memory: 8 GB RAM + 128 GB ou 256 GB
-  enabled: true
-  camera_graphics: Traseira 50 MP + 12 MP + 8 MP (zoom 3x) | Frontal 12 MP | GPU Xclipse 940
-  price: R$ 2.550 – R$ 2.999 (128 GB) ou R$ 3.400 – R$ 3.750 (256 GB)
-  name: Samsung Galaxy S25 FE
-  screen: 6,7" Dynamic AMOLED 2X Full HD+, 120 Hz, 1.900 nits, Gorilla Glass Victus+
-  battery: 4.900 mAh | Suporte 45 W (25 W na caixa) + sem fio
-  processor: Samsung Exynos 2400 (Deca-Core até 3,2 GHz, 4 nm)
-  highlight: Ótimo custo-benefício atual, chip Exynos 2400 (4 nm) e 7 anos de
-    suporte (desde Android 16)
-  image: https://http2.mlstatic.com/D_NQ_NP_2X_840870-MLA96785958150_112025-F.webp
-gallery:
-  - image: https://http2.mlstatic.com/D_Q_NP_922973-MLA117214035243_092026-F.webp
-    caption: "Disponível em 3 cores (Foto: Divulgação / Samsung)"
-    alt: "Disponível em 3 cores (Foto: Divulgação / Samsung)"
-  - image: https://http2.mlstatic.com/D_Q_NP_915879-MLA115760597670_092026-F.webp
-    caption: "Câmeras (Foto: Divulgação / Samsung)"
-    alt: "Câmeras (Foto: Divulgação / Samsung)"
-  - image: https://http2.mlstatic.com/D_Q_NP_983353-MLA117214035303_092026-F.webp
-    caption: "Atualização (Foto: Divulgação / Samsung)"
-    alt: "Atualização (Foto: Divulgação / Samsung)"
+image: ""
+comparison_image: ""
+gallery: []
 badge: 7 anos de Android, Galaxy AI completo e zoom óptico 3x
 estimated_price: R$ 3.290 – R$ 3.799 (128 GB)  |  R$ 4.040 – R$ 4.799 (256 GB)
 specs:
@@ -94,7 +85,7 @@ comparisons:
     processor: MediaTek Dimensity 8500 Extreme (4 nm)
     article_slug: motorola-edge-70-pro-5g-analise
     highlight: Tela 144 Hz ultrabrilhante, 4 câmeras de 50 MP e bateria de 6.500 mAh
-    image: https://http2.mlstatic.com/D_Q_NP_660092-MLA110410356432_052026-F.webp
+    image: ""
   - memory: 12 GB RAM + 256 GB ou 512 GB
     camera_graphics: Traseira 50 MP + 50 MP (zoom 2,5x) + 8 MP | Frontal 20 MP | GPU Adreno
     price: R$ 3.360 – R$ 4.086 (256 GB / 512 GB)
@@ -103,7 +94,7 @@ comparisons:
     battery: 6.210 mAh | HyperCharge 100 W
     processor: Qualcomm Snapdragon 8 Elite (3 nm)
     highlight: Chip Snapdragon 8 Elite, som Bose e recarga de 100 W
-    image: https://http2.mlstatic.com/D_Q_NP_904449-MLA109612791409_032026-F.webp
+    image: ""
 ---
 
 
