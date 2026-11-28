@@ -4,10 +4,9 @@
 .technical-groups-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
 .technical-group-card { min-width:0; border:1px solid var(--border); border-radius:18px; padding:20px; background:var(--surface); box-shadow:var(--shadow); }
 .technical-group-wide { grid-column:1 / -1; }
-.technical-group-heading { display:flex; align-items:center; gap:11px; padding-bottom:13px; margin-bottom:4px; border-bottom:1px solid var(--border); }
+.technical-group-heading { display:flex; align-items:center; padding-bottom:13px; margin-bottom:4px; border-bottom:1px solid var(--border); }
 .technical-group-heading h3 { margin:0; font-size:1.05rem; line-height:1.3; letter-spacing:-.025em; }
 .technical-group-heading p { margin:3px 0 0; color:var(--muted); font-size:.82rem; }
-.technical-group-icon { flex:0 0 36px; width:36px; height:36px; display:grid; place-items:center; border-radius:11px; color:var(--brand); background:color-mix(in srgb,var(--brand) 11%,var(--surface)); font-size:1.1rem; font-weight:850; }
 .technical-spec-list { margin:0; }
 .technical-spec-row { display:flex; align-items:flex-start; justify-content:space-between; gap:18px; padding:11px 0; border-bottom:1px solid color-mix(in srgb,var(--border) 72%,transparent); }
 .technical-spec-row:last-child { border-bottom:0; padding-bottom:3px; }
