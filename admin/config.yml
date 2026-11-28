@@ -195,6 +195,70 @@ collections:
           - { label: "Bateria / autonomia", name: "battery", widget: "string", required: false }
           - { label: "Câmeras / gráficos", name: "camera_graphics", widget: "string", required: false }
           - { label: "Sistema operacional", name: "os", widget: "string", required: false }
+      - label: "Ficha técnica ampliada"
+        name: "technical_sheet"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Texto superior da seção", name: "eyebrow", widget: "string", required: false, default: "ESPECIFICAÇÕES" }
+          - { label: "Título da seção", name: "title", widget: "string", required: false, default: "Ficha técnica e hardware" }
+          - { label: "Texto introdutório", name: "intro", widget: "text", required: false }
+          - label: "Cartões de especificações"
+            name: "groups"
+            widget: "list"
+            required: false
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Título do cartão", name: "title", widget: "string" }
+              - { label: "Ícone ou símbolo (opcional)", name: "icon", widget: "string", required: false, hint: "Ex.: ◉, ⚡, ▣. Deixe vazio para não mostrar ícone." }
+              - { label: "O cartão ocupa a largura toda?", name: "wide", widget: "boolean", default: false, required: false }
+              - label: "Características"
+                name: "items"
+                widget: "list"
+                required: false
+                summary: "{{fields.label}}: {{fields.value}}"
+                fields:
+                  - { label: "Nome da característica", name: "label", widget: "string" }
+                  - { label: "Valor / descrição", name: "value", widget: "string" }
+          - { label: "Título da área de câmeras", name: "cameras_title", widget: "string", required: false, default: "Câmeras" }
+          - { label: "Subtítulo das câmeras (opcional)", name: "cameras_subtitle", widget: "string", required: false }
+          - label: "Sensores / câmeras (opcional)"
+            name: "cameras"
+            widget: "list"
+            required: false
+            summary: "{{fields.type}} — {{fields.megapixels}}"
+            fields:
+              - { label: "Tipo de câmera", name: "type", widget: "string", required: false, hint: "Ex.: Principal, Ultrawide, Telefoto, Frontal" }
+              - { label: "Resolução (opcional)", name: "megapixels", widget: "string", required: false, hint: "Ex.: 50 MP" }
+              - { label: "Detalhes técnicos", name: "details", widget: "string", required: false, hint: "Ex.: f/1.8 · OIS · zoom óptico 3x" }
+              - { label: "Estabilização / observação (opcional)", name: "stabilization", widget: "string", required: false, hint: "Ex.: Com OIS" }
+          - { label: "Gravação de vídeo (opcional)", name: "video_recording", widget: "string", required: false }
+      - label: "Checklist de recursos"
+        name: "feature_checklist"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Texto superior da seção", name: "eyebrow", widget: "string", required: false, default: "RECURSOS E EXTRAS" }
+          - { label: "Título da seção", name: "title", widget: "string", required: false, default: "O que o aparelho oferece" }
+          - { label: "Texto introdutório (opcional)", name: "intro", widget: "text", required: false }
+          - label: "Itens do checklist"
+            name: "items"
+            widget: "list"
+            required: false
+            summary: "{{fields.label}}"
+            fields:
+              - { label: "Recurso / característica", name: "label", widget: "string" }
+              - label: "Situação"
+                name: "status"
+                widget: "select"
+                options:
+                  - { label: "Sim", value: "yes" }
+                  - { label: "Não", value: "no" }
+                  - { label: "Texto personalizado", value: "custom" }
+                default: "yes"
+              - { label: "Texto personalizado (para situação personalizada)", name: "custom_text", widget: "string", required: false, hint: "Ex.: IP68, carregador de 25 W incluso ou depende da versão." }
       - { label: "Nossa análise breve (seção ‘O que achamos’)", name: "analysis_opinion", widget: "text", required: false }
       - label: "Pontos positivos"
         name: "pros"
