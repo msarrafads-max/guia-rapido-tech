@@ -201,64 +201,151 @@ collections:
         required: false
         collapsed: true
         fields:
-          - { label: "Texto superior da seção", name: "eyebrow", widget: "string", required: false, default: "ESPECIFICAÇÕES" }
-          - { label: "Título da seção", name: "title", widget: "string", required: false, default: "Ficha técnica e hardware" }
-          - { label: "Texto introdutório", name: "intro", widget: "text", required: false }
-          - label: "Cartões de especificações"
-            name: "groups"
-            widget: "list"
-            required: false
-            summary: "{{fields.title}}"
+          - { label: "Título da seção", name: "title", widget: "string", required: false, default: "Ficha técnica e principais características" }
+          - { label: "Texto introdutório (opcional)", name: "intro", widget: "text", required: false }
+          - label: "1. Tela"
+            name: "screen"
+            widget: "object"
             fields:
-              - { label: "Título do cartão", name: "title", widget: "string" }
-              - { label: "Ícone ou símbolo (opcional)", name: "icon", widget: "string", required: false, hint: "Ex.: ◉, ⚡, ▣. Deixe vazio para não mostrar ícone." }
-              - { label: "O cartão ocupa a largura toda?", name: "wide", widget: "boolean", default: false, required: false }
-              - label: "Características"
-                name: "items"
-                widget: "list"
-                required: false
-                summary: "{{fields.label}}: {{fields.value}}"
-                fields:
-                  - { label: "Nome da característica", name: "label", widget: "string" }
-                  - { label: "Valor / descrição", name: "value", widget: "string" }
-          - { label: "Título da área de câmeras", name: "cameras_title", widget: "string", required: false, default: "Câmeras" }
-          - { label: "Subtítulo das câmeras (opcional)", name: "cameras_subtitle", widget: "string", required: false }
-          - label: "Sensores / câmeras (opcional)"
+              - { label: "Tamanho", name: "size", widget: "string", required: false }
+              - { label: "Painel", name: "panel", widget: "string", required: false }
+              - { label: "Resolução", name: "resolution", widget: "string", required: false }
+              - { label: "Taxa de atualização", name: "refresh_rate", widget: "string", required: false }
+              - { label: "Brilho máximo", name: "brightness", widget: "string", required: false }
+              - { label: "Proteção da tela", name: "protection", widget: "string", required: false }
+          - label: "2. Processador e GPU"
+            name: "processor_gpu"
+            widget: "object"
+            fields:
+              - { label: "Chipset / SoC", name: "chipset", widget: "string", required: false }
+              - { label: "CPU", name: "cpu", widget: "string", required: false }
+              - { label: "GPU", name: "gpu", widget: "string", required: false }
+          - label: "3. Memória e armazenamento"
+            name: "memory_storage"
+            widget: "object"
+            fields:
+              - { label: "Memória RAM", name: "ram", widget: "string", required: false }
+              - { label: "Tipo de RAM", name: "ram_type", widget: "string", required: false }
+              - { label: "Armazenamento interno", name: "storage", widget: "string", required: false }
+              - { label: "Tipo de armazenamento", name: "storage_type", widget: "string", required: false }
+              - { label: "Expansão por microSD", name: "microsd", widget: "string", required: false }
+          - label: "4. Bateria e carregamento"
+            name: "battery"
+            widget: "object"
+            fields:
+              - { label: "Capacidade", name: "capacity", widget: "string", required: false }
+              - { label: "Carregamento com fio", name: "wired_charging", widget: "string", required: false }
+              - { label: "Carregamento sem fio", name: "wireless_charging", widget: "string", required: false }
+              - { label: "Carregamento reverso", name: "reverse_charging", widget: "string", required: false }
+          - label: "5. Câmeras"
             name: "cameras"
-            widget: "list"
-            required: false
-            summary: "{{fields.type}} — {{fields.megapixels}}"
+            widget: "object"
             fields:
-              - { label: "Tipo de câmera", name: "type", widget: "string", required: false, hint: "Ex.: Principal, Ultrawide, Telefoto, Frontal" }
-              - { label: "Resolução (opcional)", name: "megapixels", widget: "string", required: false, hint: "Ex.: 50 MP" }
-              - { label: "Detalhes técnicos", name: "details", widget: "string", required: false, hint: "Ex.: f/1.8 · OIS · zoom óptico 3x" }
-              - { label: "Estabilização / observação (opcional)", name: "stabilization", widget: "string", required: false, hint: "Ex.: Com OIS" }
-          - { label: "Gravação de vídeo (opcional)", name: "video_recording", widget: "string", required: false }
-      - label: "Checklist de recursos"
+              - label: "Câmera principal"
+                name: "primary"
+                widget: "object"
+                fields:
+                  - { label: "Resolução", name: "megapixels", widget: "string", required: false }
+                  - { label: "Detalhes (abertura, zoom etc.)", name: "details", widget: "string", required: false }
+                  - { label: "Estabilização", name: "stabilization", widget: "string", required: false }
+              - label: "Câmera ultrawide"
+                name: "ultrawide"
+                widget: "object"
+                fields:
+                  - { label: "Resolução", name: "megapixels", widget: "string", required: false }
+                  - { label: "Detalhes (abertura, ângulo etc.)", name: "details", widget: "string", required: false }
+                  - { label: "Estabilização", name: "stabilization", widget: "string", required: false }
+              - label: "Câmera telefoto"
+                name: "telephoto"
+                widget: "object"
+                fields:
+                  - { label: "Resolução", name: "megapixels", widget: "string", required: false }
+                  - { label: "Detalhes (abertura, zoom etc.)", name: "details", widget: "string", required: false }
+                  - { label: "Estabilização", name: "stabilization", widget: "string", required: false }
+              - label: "Câmera frontal"
+                name: "front"
+                widget: "object"
+                fields:
+                  - { label: "Resolução", name: "megapixels", widget: "string", required: false }
+                  - { label: "Detalhes (abertura etc.)", name: "details", widget: "string", required: false }
+                  - { label: "Estabilização", name: "stabilization", widget: "string", required: false }
+              - { label: "Gravação de vídeo", name: "video_recording", widget: "string", required: false }
+          - label: "6. Sistema e conectividade"
+            name: "connectivity"
+            widget: "object"
+            fields:
+              - { label: "Sistema operacional", name: "os", widget: "string", required: false }
+              - { label: "Conectividade móvel / rede", name: "mobile_network", widget: "string", required: false }
+              - { label: "Wi-Fi", name: "wifi", widget: "string", required: false }
+              - { label: "Bluetooth", name: "bluetooth", widget: "string", required: false }
+              - { label: "Portas e conexões", name: "ports", widget: "string", required: false }
+              - { label: "Biometria e segurança", name: "security", widget: "string", required: false }
+      - label: "Checklist rápido — recursos do aparelho"
         name: "feature_checklist"
         widget: "object"
         required: false
         collapsed: true
         fields:
-          - { label: "Texto superior da seção", name: "eyebrow", widget: "string", required: false, default: "RECURSOS E EXTRAS" }
           - { label: "Título da seção", name: "title", widget: "string", required: false, default: "O que o aparelho oferece" }
           - { label: "Texto introdutório (opcional)", name: "intro", widget: "text", required: false }
-          - label: "Itens do checklist"
-            name: "items"
-            widget: "list"
-            required: false
-            summary: "{{fields.label}}"
-            fields:
-              - { label: "Recurso / característica", name: "label", widget: "string" }
-              - label: "Situação"
-                name: "status"
-                widget: "select"
-                options:
-                  - { label: "Sim", value: "yes" }
-                  - { label: "Não", value: "no" }
-                  - { label: "Texto personalizado", value: "custom" }
-                default: "yes"
-              - { label: "Texto personalizado (para situação personalizada)", name: "custom_text", widget: "string", required: false, hint: "Ex.: IP68, carregador de 25 W incluso ou depende da versão." }
+          - label: "NFC para pagamentos por aproximação"
+            name: "nfc"
+            widget: "object"
+            fields: &check_item_fields
+              - { label: "Situação", name: "status", widget: "select", options: [{label: "Sim", value: "yes"}, {label: "Não", value: "no"}, {label: "Texto personalizado", value: "custom"}], default: "yes" }
+              - { label: "Texto personalizado", name: "custom_text", widget: "string", required: false }
+          - label: "Carregador incluído na caixa"
+            name: "charger_in_box"
+            widget: "object"
+            fields: *check_item_fields
+          - label: "Capa protetora incluída"
+            name: "case_included"
+            widget: "object"
+            fields: *check_item_fields
+          - label: "Proteção contra água e poeira"
+            name: "water_resistance"
+            widget: "object"
+            fields: *check_item_fields
+          - label: "Suporte a eSIM"
+            name: "esim"
+            widget: "object"
+            fields: *check_item_fields
+          - label: "Carregamento sem fio"
+            name: "wireless_charging"
+            widget: "object"
+            fields: *check_item_fields
+          - label: "Som estéreo"
+            name: "stereo_speakers"
+            widget: "object"
+            fields: *check_item_fields
+          - label: "Entrada para cartão microSD"
+            name: "microsd"
+            widget: "object"
+            fields: *check_item_fields
+          - label: "Entrada P2 para fone de ouvido"
+            name: "headphone_jack"
+            widget: "object"
+            fields: *check_item_fields
+          - label: "Película aplicada de fábrica"
+            name: "factory_screen_protector"
+            widget: "object"
+            fields: *check_item_fields
+          - label: "Leitor de impressão digital"
+            name: "fingerprint_reader"
+            widget: "object"
+            fields: *check_item_fields
+          - label: "Reconhecimento facial"
+            name: "face_recognition"
+            widget: "object"
+            fields: *check_item_fields
+          - label: "Caneta stylus incluída ou compatível"
+            name: "stylus"
+            widget: "object"
+            fields: *check_item_fields
+          - label: "Teclado incluído ou compatível"
+            name: "keyboard"
+            widget: "object"
+            fields: *check_item_fields
       - { label: "Nossa análise breve (seção ‘O que achamos’)", name: "analysis_opinion", widget: "text", required: false }
       - label: "Pontos positivos"
         name: "pros"
