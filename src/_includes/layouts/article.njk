@@ -43,7 +43,102 @@ layout: layouts/base.njk
       <p class="affiliate-note">Os preços, avaliações e a disponibilidade podem mudar. Confira as condições diretamente na loja. Alguns links podem gerar comissão para o Guia Rápido Tech.</p>
     </div>
   </section>
-  {% if specs %}<section class="spec-section review-section-card"><div class="section-heading"><div><span class="eyebrow">FICHA TÉCNICA</span><h2>Principais características</h2><p>Os detalhes que mais importam na hora de escolher.</p></div></div><div class="spec-grid">{% for pair in [["Tela / display", specs.screen], ["Processador", specs.processor], ["Memória / armazenamento", specs.memory], ["Bateria / autonomia", specs.battery], ["Câmeras / gráficos", specs.camera_graphics], ["Sistema operacional", specs.os]] %}{% if pair[1] %}<div class="spec-item"><span>{{ pair[0] }}</span><strong>{{ pair[1] }}</strong></div>{% endif %}{% endfor %}</div></section>{% endif %}
+  {% if technical_sheet and technical_sheet.groups and technical_sheet.groups.length %}
+  <section class="spec-section technical-sheet-section review-section-card">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">{{ technical_sheet.eyebrow or "ESPECIFICAÇÕES" }}</span>
+        <h2>{{ technical_sheet.title or "Ficha técnica e hardware" }}</h2>
+        {% if technical_sheet.intro %}<p>{{ technical_sheet.intro }}</p>{% else %}<p>Confira os detalhes que fazem a diferença na escolha.</p>{% endif %}
+      </div>
+    </div>
+    <div class="technical-groups-grid">
+      {% for group in technical_sheet.groups %}
+        {% if group.title and group.items and group.items.length %}
+        <section class="technical-group-card{% if group.wide %} technical-group-wide{% endif %}">
+          <header class="technical-group-heading">
+            {% if group.icon %}<span class="technical-group-icon" aria-hidden="true">{{ group.icon }}</span>{% endif %}
+            <h3>{{ group.title }}</h3>
+          </header>
+          <dl class="technical-spec-list">
+            {% for item in group.items %}
+              {% if item.label and item.value %}
+              <div class="technical-spec-row">
+                <dt>{{ item.label }}</dt>
+                <dd>{{ item.value }}</dd>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </dl>
+        </section>
+        {% endif %}
+      {% endfor %}
+      {% if technical_sheet.cameras and technical_sheet.cameras.length %}
+      <section class="technical-group-card technical-group-wide technical-cameras-card">
+        <header class="technical-group-heading">
+          <span class="technical-group-icon" aria-hidden="true">◎</span>
+          <div><h3>{{ technical_sheet.cameras_title or "Câmeras" }}</h3>
+          {% if technical_sheet.cameras_subtitle %}<p>{{ technical_sheet.cameras_subtitle }}</p>{% endif %}</div>
+        </header>
+        <div class="technical-camera-grid">
+          {% for camera in technical_sheet.cameras %}
+            {% if camera.type or camera.megapixels or camera.details %}
+            <article class="technical-camera-item">
+              {% if camera.type %}<span class="technical-camera-type">{{ camera.type }}</span>{% endif %}
+              {% if camera.megapixels %}<strong class="technical-camera-mp">{{ camera.megapixels }}</strong>{% endif %}
+              {% if camera.details %}<p>{{ camera.details }}</p>{% endif %}
+              {% if camera.stabilization %}<span class="technical-camera-stabilization">{{ camera.stabilization }}</span>{% endif %}
+            </article>
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% if technical_sheet.video_recording %}
+        <div class="technical-video-row"><span>Gravação de vídeo</span><strong>{{ technical_sheet.video_recording }}</strong></div>
+        {% endif %}
+      </section>
+      {% endif %}
+    </div>
+  </section>
+  {% elif specs %}
+  <section class="spec-section technical-sheet-section review-section-card">
+    <div class="section-heading"><div><span class="eyebrow">ESPECIFICAÇÕES</span><h2>Ficha técnica e hardware</h2><p>Os detalhes que mais importam na hora de escolher.</p></div></div>
+    <div class="technical-groups-grid">
+      {% for pair in [["Tela / display", specs.screen, "▣"], ["Processador", specs.processor, "▦"], ["Memória / armazenamento", specs.memory, "▤"], ["Bateria / autonomia", specs.battery, "⚡"], ["Câmeras / gráficos", specs.camera_graphics, "◎"], ["Sistema operacional", specs.os, "◈"]] %}
+        {% if pair[1] %}
+        <section class="technical-group-card">
+          <header class="technical-group-heading"><span class="technical-group-icon" aria-hidden="true">{{ pair[2] }}</span><h3>{{ pair[0] }}</h3></header>
+          <dl class="technical-spec-list"><div class="technical-spec-row"><dt>{{ pair[0] }}</dt><dd>{{ pair[1] }}</dd></div></dl>
+        </section>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+  {% if feature_checklist and feature_checklist.items and feature_checklist.items.length %}
+  <section class="feature-checklist-section review-section-card">
+    <div class="section-heading"><div>
+      <span class="eyebrow">{{ feature_checklist.eyebrow or "RECURSOS E EXTRAS" }}</span>
+      <h2>{{ feature_checklist.title or "O que o aparelho oferece" }}</h2>
+      {% if feature_checklist.intro %}<p>{{ feature_checklist.intro }}</p>{% endif %}
+    </div></div>
+    <div class="feature-checklist-grid">
+      {% for item in feature_checklist.items %}
+        {% if item.label %}
+        <div class="feature-checklist-item">
+          <span class="feature-checklist-label">{{ item.label }}</span>
+          {% if item.status == "yes" %}
+            <span class="feature-status feature-status-yes"><span aria-hidden="true">✓</span> Sim</span>
+          {% elif item.status == "no" %}
+            <span class="feature-status feature-status-no"><span aria-hidden="true">×</span> Não</span>
+          {% else %}
+            <span class="feature-status feature-status-custom"><span aria-hidden="true">i</span> {{ item.custom_text or "Confira os detalhes" }}</span>
+          {% endif %}
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
   {% if comparisons and comparisons.length %}
   {% set previous_enabled = previous_model and previous_model.enabled %}
   <section class="comparison-section review-section-card">
